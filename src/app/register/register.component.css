@@ -1,0 +1,17 @@
+.register{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%) ;
+    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
+    -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
+    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
+    border-radius: 10%;
+    padding: 1rem;
+    padding-left: 18rem;
+    padding-right: 18rem;
+    background-color: var(--cds-alias-status-neutral-tint) ;
+}
+.register-group{
+    text-align: left;
+}
