@@ -1,3 +1,4 @@
+
 .register{
     position: absolute;
     top: 50%;
@@ -6,12 +7,17 @@
     box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
     -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
-    border-radius: 10%;
+    border-radius: 5rem;
     padding: 1rem;
-    padding-left: 18rem;
-    padding-right: 18rem;
+    padding-left: 5rem;
+    padding-right: 10rem;
     background-color: var(--cds-alias-status-neutral-tint) ;
 }
-.register-group{
+.registerGroup{
     text-align: left;
+    margin: auto 10rem auto 0;
+    width: 15rem;
+}
+input{
+    width: 15rem;
 }

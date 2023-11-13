@@ -1,106 +1,109 @@
-<form class="register">
-  <section class="title">
-    <!-- These could be heading elements. -->
-    <div class="welcome">
-      <h1>Crear cuenta</h1>
+<div class="register">
+  <form class="registerGroup" >
+    <section class="title">
+      <!-- These could be heading elements. -->
+      <div class="welcome">
+        <h1>Crear cuenta</h1>
+      </div>
+    </section>
+    <div >
+      <clr-input-container>
+        <label class="clr-sr-only">Nombre(s)</label>
+        <input
+          type="text"
+          autocomplete="name"
+          name="name"
+          clrInput
+          placeholder="Nombre(s)"
+          [(ngModel)]="name"
+        />
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Primer apellido</label>
+        <input
+          type="text"
+          autocomplete="lastname"
+          name="lastname"
+          clrInput
+          placeholder="Primer apellido"
+          [(ngModel)]="lastname"
+        />
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Segundo apellido</label>
+        <input
+          type="text"
+          autocomplete="lastname2"
+          name="lastname2"
+          clrInput
+          placeholder="Segundo apellido"
+          [(ngModel)]="lastname2"
+        />
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Celular</label>
+        <input
+          type="text"
+          autocomplete="phonenumber"
+          name="phonenumber"
+          clrInput
+          placeholder="Celular"
+          [(ngModel)]="phonenumber"
+        />
+      </clr-input-container>
+      <clr-select-container>
+        <label>Especialidad</label>
+        <select clrSelect name="specialty" [(ngModel)]="specialty">
+          <option value="Ginecologia">Ginecologia</option>
+          <option value="General">General</option>
+        </select>
+      </clr-select-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Correo</label>
+        <input
+          type="text"
+          autocomplete="email"
+          name="email"
+          clrInput
+          placeholder="Correo"
+          [(ngModel)]="email"
+        />
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Cedula profesional</label>
+        <input
+          type="text"
+          autocomplete="license"
+          name="license"
+          clrInput
+          placeholder="Cedula profesional"
+          [(ngModel)]="license"
+        />
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Contraseña</label>
+        <input
+          type="password"
+          autocomplete="current-password"
+          name="password"
+          clrPassword
+          placeholder="Contraseña"
+          [(ngModel)]="password"
+        />
+      </clr-password-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Confirmar contraseña</label>
+        <input
+          type="confirmPassword"
+          autocomplete="current-password"
+          name="confirmPassword"
+          clrPassword
+          placeholder="Confirmar contraseña"
+          [(ngModel)]="confirmPassword"
+        />
+      </clr-password-container>
+      <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>
     </div>
-  </section>
-  <div class="register-group">
-    <clr-input-container>
-      <label class="clr-sr-only">Nombre(s)</label>
-      <input
-        type="text"
-        autocomplete="name"
-        name="name"
-        clrInput
-        placeholder="Nombre(s)"
-        [(ngModel)]="name"
-      />
-    </clr-input-container>
-    <clr-input-container>
-      <label class="clr-sr-only">Primer apellido</label>
-      <input
-        type="text"
-        autocomplete="lastname"
-        name="lastname"
-        clrInput
-        placeholder="Primer apellido"
-        [(ngModel)]="lastname"
-      />
-    </clr-input-container>
-    <clr-input-container>
-      <label class="clr-sr-only">Segundo apellido</label>
-      <input
-        type="text"
-        autocomplete="lastname2"
-        name="lastname2"
-        clrInput
-        placeholder="Segundo apellido"
-        [(ngModel)]="lastname2"
-      />
-    </clr-input-container>
-    <clr-input-container>
-      <label class="clr-sr-only">Celular</label>
-      <input
-        type="text"
-        autocomplete="phonenumber"
-        name="phonenumber"
-        clrInput
-        placeholder="Celular"
-        [(ngModel)]="phonenumber"
-      />
-    </clr-input-container>
-    <clr-select-container>
-      <label>Especialidad</label>
-      <select clrSelect name="specialty" [(ngModel)]="specialty">
-        <option value="Ginecologia">Ginecologia</option>
-        <option value="General">General</option>
-      </select>
-    </clr-select-container>
-    <clr-input-container>
-      <label class="clr-sr-only">Correo</label>
-      <input
-        type="text"
-        autocomplete="email"
-        name="email"
-        clrInput
-        placeholder="Correo"
-        [(ngModel)]="email"
-      />
-    </clr-input-container>
-    <clr-input-container>
-      <label class="clr-sr-only">Cedula profesional</label>
-      <input
-        type="text"
-        autocomplete="license"
-        name="license"
-        clrInput
-        placeholder="Cedula profesional"
-        [(ngModel)]="license"
-      />
-    </clr-input-container>
-    <clr-password-container>
-      <label class="clr-sr-only">Contraseña</label>
-      <input
-        type="password"
-        autocomplete="current-password"
-        name="password"
-        clrPassword
-        placeholder="Contraseña"
-        [(ngModel)]="password"
-      />
-    </clr-password-container>
-    <clr-password-container>
-      <label class="clr-sr-only">Confirmar contraseña</label>
-      <input
-        type="confirmPassword"
-        autocomplete="current-password"
-        name="confirmPassword"
-        clrPassword
-        placeholder="Confirmar contraseña"
-        [(ngModel)]="confirmPassword"
-      />
-    </clr-password-container>
-    <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>
-  </div>
-</form>
+  </form>
+  
+</div>
