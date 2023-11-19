@@ -14,13 +14,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     PageprincipalComponent,
+    NavbarComponent,
+    HeaderComponent
+  ],
+  exports: [
     NavbarComponent,
     HeaderComponent
   ],
@@ -32,6 +35,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
