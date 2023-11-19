@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PageprincipalComponent } from './pageprincipal/pageprincipal.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -18,7 +19,8 @@ import { PageprincipalComponent } from './pageprincipal/pageprincipal.component'
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PageprincipalComponent
+    PageprincipalComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
