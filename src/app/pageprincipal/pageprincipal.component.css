@@ -1,0 +1,84 @@
+
+.pantalla{
+    position: absolute;
+    background-color:#f5f7f8;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.svg{
+    position: absolute;
+    z-index: -50;
+    width: 100%;
+    bottom: 30px;
+}
+.imagen{
+   position: absolute;
+   z-index: -40;
+   right: 40px;
+   top: 40px;
+    width: 500px;
+    height: 450px;
+    flex-shrink: 0;
+}
+.h1{
+    position: absolute;
+    margin-left: 30px;
+    color: white;
+}
+.h2{
+    position: absolute;
+    margin-top: 220px;
+    margin-left: 100px;
+    color: white;
+}
+.h3{
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 100px;
+    color: white;
+}
+.iniciarsesion{
+    position: absolute;
+    width: 150px;
+    height: 37px;
+    flex-shrink: 0;color: #FFF;
+    background-color: #78C5F0;
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 20px;
+    border: 1px solid #7482CA;
+  margin-top: 400PX;
+  margin-left: 100px;
+  
+}
+.iniciarsesion:hover{
+    background-color:rgb(158, 167, 241);
+}
+.registrar{
+ 
+        position: absolute;
+        width: 150px;
+        height: 37px;
+        flex-shrink: 0;color: #FFF;
+        background-color: #78C5F0;
+        font-family: Nunito;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border-radius: 20px;
+        border: 1px solid #7482CA;
+      margin-top: 400PX;
+      margin-left: 300px;
+      
+    
+}
+.registrar:hover{
+    background-color:rgb(158, 167, 241);
+}
