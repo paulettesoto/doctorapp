@@ -10,29 +10,25 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PageprincipalComponent } from './pageprincipal/pageprincipal.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderComponent } from './header/header.component';
-
-
+import { SharedModule } from './shared/shared.module';
+import { ProfileModule } from './profile/profile.module';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PageprincipalComponent,
-    NavbarComponent,
-    HeaderComponent
+    PageprincipalComponent
   ],
   exports: [
-    NavbarComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent],
