@@ -12,12 +12,14 @@ import { RegisterComponent } from './register/register.component';
 import { PageprincipalComponent } from './pageprincipal/pageprincipal.component';
 import { SharedModule } from './shared/shared.module';
 import { ProfileModule } from './profile/profile.module';
+import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PageprincipalComponent
+    PageprincipalComponent,
+    UpdatepasswordComponent
   ],
   exports: [
   ],
