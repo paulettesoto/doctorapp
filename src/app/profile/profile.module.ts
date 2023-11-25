@@ -8,12 +8,15 @@ import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
   declarations: [
-    EditProfileComponent
+    EditProfileComponent,
+    UpdatepasswordComponent
   ],
   imports: [
     CommonModule,
