@@ -16,10 +16,10 @@ import { ScheduleComponent } from './patient/schedule/schedule.component';
 import { SearchspecialistComponent } from './patient/searchspecialist/searchspecialist.component';
 
 const routes: Routes = [
-  { path: "", component: AppComponent, pathMatch: "full" },
+  //{ path: "", component: AppComponent, pathMatch: "full" },
   { path: "login", component: LoginComponent, pathMatch: "full"},
   { path: "register", component: RegisterComponent, pathMatch: "full"},
-  { path: "homepage", component: PageprincipalComponent, pathMatch: "full" },
+  { path: "", component: PageprincipalComponent, pathMatch: "full" },
   //doctor
   { path: "profile/editprofile", component: EditProfileComponent, pathMatch: "full" },
   { path: "updatepassword", component: UpdatepasswordComponent, pathMatch: "full" },
