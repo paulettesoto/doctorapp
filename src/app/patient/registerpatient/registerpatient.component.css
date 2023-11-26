@@ -38,3 +38,12 @@ input{
 .header{
     background-color: #68A1B2;
 }
+.btnregis{
+    width: 90px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    background: #7482CA;
+    margin-top: 10px;
+    margin-left: 70px;
+}
