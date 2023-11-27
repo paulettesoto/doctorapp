@@ -17,9 +17,10 @@ import { SearchspecialistComponent } from './patient/searchspecialist/searchspec
 
 const routes: Routes = [
   //{ path: "", component: AppComponent, pathMatch: "full" },
+  { path: "", component: PageprincipalComponent, pathMatch: "full" },
   { path: "login", component: LoginComponent, pathMatch: "full"},
   { path: "register", component: RegisterComponent, pathMatch: "full"},
-  { path: "", component: PageprincipalComponent, pathMatch: "full" },
+  
   //doctor
   { path: "profile/editprofile", component: EditProfileComponent, pathMatch: "full" },
   { path: "updatepassword", component: UpdatepasswordComponent, pathMatch: "full" },
