@@ -13,7 +13,9 @@ import { RegisterComponent } from './register/register.component';
 import { PageprincipalComponent } from './pageprincipal/pageprincipal.component';
 import { SharedModule } from './shared/shared.module';
 import { ProfileModule } from './profile/profile.module';
-
+import { DoctorScheduleModule } from './doctor-schedule/doctor-schedule.module';
+import { PatientsModule } from './patients/patients.module';
+import { ReviewsModule } from './reviews/reviews.module';
 //patient
 import { PatientModule } from './patient/patient.module';
 
@@ -36,7 +38,10 @@ import { PatientModule } from './patient/patient.module';
     FormsModule,
     SharedModule,
     ProfileModule,
-    PatientModule
+    PatientModule,
+    DoctorScheduleModule,
+    PatientsModule,
+    ReviewsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,17 +6,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from '../shared/shared.module';
-
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
-
+import { ScheduleViewComponent } from './schedule-view/schedule-view.component';
+import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 
 
 
 @NgModule({
   declarations: [
-    EditProfileComponent,
-    UpdatepasswordComponent
+    ScheduleViewComponent,
+    NewAppointmentComponent
   ],
   imports: [
     CommonModule,
@@ -27,4 +25,4 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
     SharedModule
   ]
 })
-export class ProfileModule { }
+export class DoctorScheduleModule { }

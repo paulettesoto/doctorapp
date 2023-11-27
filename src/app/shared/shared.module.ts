@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
@@ -20,7 +20,8 @@ import { NavbarpatientComponent } from './navbarpatient/navbarpatient.component'
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   exports: [
     HeaderComponent,
