@@ -23,10 +23,10 @@ const routes: Routes = [
   
   //doctor
   { path: "profile/editprofile", component: EditProfileComponent, pathMatch: "full" },
-  { path: "updatepassword", component: UpdatepasswordComponent, pathMatch: "full" },
+  { path: "profile/updatepassword", component: UpdatepasswordComponent, pathMatch: "full" },
 
   //patient
-  { path: "patientpanel", component: PatientpanelComponent, pathMatch: "full" },
+  { path: "patient/patientpanel", component: PatientpanelComponent, pathMatch: "full" },
   { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full" },
   { path: "schedule", component: ScheduleComponent, pathMatch: "full" },
   { path: "search", component: SearchspecialistComponent, pathMatch: "full" },
