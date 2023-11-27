@@ -1,31 +1,23 @@
 <div class="main-container">   
     <div class="content-container">
-        <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible" [clrVerticalNavCollapsible]="true" class="nav-trigger--bottom">
-            <clr-vertical-nav-group routerLinkActive="active">
+        <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible" [clrVerticalNavCollapsible]="true" class="nav-trigger">
+            <a clrVerticalNavLink routerLinkActive="active" routerLink="/favorites">
               <cds-icon shape="users" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
               Favoritos
-              <clr-vertical-nav-group-children>
-                <a clrVerticalNavLink routerLink="./normal/pidgey" routerLinkActive="active">Pidgey</a>
-                <a clrVerticalNavLink routerLink="./normal/snorlax" routerLinkActive="active">Snorlax</a>
-              </clr-vertical-nav-group-children>
-            </clr-vertical-nav-group>
-            <clr-vertical-nav-group routerLinkActive="active">
-              <cds-icon shape="calendar" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
-              Citas
-              <clr-vertical-nav-group-children>
-                <a clrVerticalNavLink routerLink="./fire/charmander" routerLinkActive="active">Charmander</a>
-                <a clrVerticalNavLink routerLink="./fire/charizard" routerLinkActive="active">Charizard</a>
-              </clr-vertical-nav-group-children>
-            </clr-vertical-nav-group>
-            <clr-vertical-nav-group routerLinkActive="active">
+            </a>  
+        
+            <a clrVerticalNavLink routerLinkActive="active" routerLink="/patient/patientpanel">
               <cds-icon shape="world" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
-             Perfil
+             Citas
+            </a> 
+            <clr-vertical-nav-group routerLinkActive="active">
+              <cds-icon shape="user" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
+              Perfil
               <clr-vertical-nav-group-children>
-                <a clrVerticalNavLink routerLink="./electric/pikachu" routerLinkActive="active">Pikachu</a>
-                <a clrVerticalNavLink routerLink="./electric/raichu" routerLinkActive="active">Raichu</a>
+                <a clrVerticalNavLink routerLink="/perfilpatient/updatedata" routerLinkActive="active">Datos personales</a>
+                <a clrVerticalNavLink routerLink="/perfilpatient/updatepasswordpatient" routerLinkActive="active">Modificar contraseña</a>
               </clr-vertical-nav-group-children>
             </clr-vertical-nav-group>
-          
           </clr-vertical-nav>
     </div>
 </div>

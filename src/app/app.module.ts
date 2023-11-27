@@ -18,6 +18,7 @@ import { PatientsModule } from './patients/patients.module';
 import { ReviewsModule } from './reviews/reviews.module';
 //patient
 import { PatientModule } from './patient/patient.module';
+import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.module';
 
 
 @NgModule({

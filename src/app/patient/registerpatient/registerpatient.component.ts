@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { AppModule } from 'src/app/app.module';
 
 import { HeaderComponent } from 'src/app/shared/header/header.component';
-import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
-
+import { NavbarpatientComponent } from 'src/app/shared/navbarpatient/navbarpatient.component';
 @Component({
   selector: 'app-registerpatient',
   templateUrl: './registerpatient.component.html',

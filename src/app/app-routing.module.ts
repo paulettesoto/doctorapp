@@ -21,7 +21,9 @@ import { RegisterpatientComponent } from './patient/registerpatient/registerpati
 import { ScheduleComponent } from './patient/schedule/schedule.component';
 import { SearchspecialistComponent } from './patient/searchspecialist/searchspecialist.component';
 import { PatientslistComponent } from './patients/patientslist/patientslist.component';
-
+import { UpdatedataComponent } from './patient/perfilpatient/updatedata/updatedata.component';
+import { UpdatepasswordpatientComponent } from './patient/perfilpatient/updatepasswordpatient/updatepasswordpatient.component';
+import { FavoritesComponent } from './patient/favorites/favorites.component';
 
 const routes: Routes = [
   //{ path: "", component: AppComponent, pathMatch: "full" },
@@ -42,7 +44,9 @@ const routes: Routes = [
   { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full" },
   { path: "schedule", component: ScheduleComponent, pathMatch: "full" },
   { path: "search", component: SearchspecialistComponent, pathMatch: "full" },
-
+  { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" },
+  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordComponent, pathMatch: "full" },
+  { path: "favorites", component: FavoritesComponent, pathMatch: "full" },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
