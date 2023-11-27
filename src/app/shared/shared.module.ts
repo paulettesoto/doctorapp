@@ -7,11 +7,13 @@ import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarpatientComponent } from './navbarpatient/navbarpatient.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    NavbarpatientComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   exports: [
     HeaderComponent,
     NavbarComponent,
+    NavbarpatientComponent,
     CommonModule,
     FormsModule
   ]
