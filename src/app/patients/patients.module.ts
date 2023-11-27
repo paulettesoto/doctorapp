@@ -7,17 +7,10 @@ import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from '../shared/shared.module';
 
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
-
-
 
 
 @NgModule({
-  declarations: [
-    EditProfileComponent,
-    UpdatepasswordComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     BrowserModule,
@@ -27,4 +20,4 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
     SharedModule
   ]
 })
-export class ProfileModule { }
+export class PatientsModule { }

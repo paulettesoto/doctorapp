@@ -7,6 +7,7 @@ import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   exports: [
     HeaderComponent,
