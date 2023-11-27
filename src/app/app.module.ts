@@ -40,7 +40,7 @@ import { PatientModule } from './patient/patient.module';
     ProfileModule,
     PatientModule,
     DoctorScheduleModule,
-    PatientModule,
+    PatientsModule,
     ReviewsModule
   ],
   providers: [],

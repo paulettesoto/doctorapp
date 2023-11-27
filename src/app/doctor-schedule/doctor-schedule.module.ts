@@ -6,11 +6,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from '../shared/shared.module';
+import { ScheduleViewComponent } from './schedule-view/schedule-view.component';
+import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ScheduleViewComponent,
+    NewAppointmentComponent
+  ],
   imports: [
     CommonModule,
     BrowserModule,

@@ -6,11 +6,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from '../shared/shared.module';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ReviewsComponent
+  ],
   imports: [
     CommonModule,
     BrowserModule,

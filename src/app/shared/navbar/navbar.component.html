@@ -1,7 +1,7 @@
 <div class="main-container">   
     <div class="content-container">
         <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible" [clrVerticalNavCollapsible]="true" class="nav-trigger">
-            <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">
+            <a clrVerticalNavLink routerLinkActive="active" routerLink="/patientslist">
               <cds-icon shape="users" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
               Pacientes
             </a>  
@@ -9,11 +9,11 @@
               <cds-icon shape="calendar" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
               Agenda
               <clr-vertical-nav-group-children>
-                <a clrVerticalNavLink routerLink="./fire/charmander" routerLinkActive="active">Ver agenda</a>
-                <a clrVerticalNavLink routerLink="./fire/charizard" routerLinkActive="active">Agendar paciente</a>
+                <a clrVerticalNavLink routerLink="/schedule/scheduleview" routerLinkActive="active">Ver agenda</a>
+                <a clrVerticalNavLink routerLink="/schedule/newappointment" routerLinkActive="active">Agendar paciente</a>
               </clr-vertical-nav-group-children>
             </clr-vertical-nav-group>
-            <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">
+            <a clrVerticalNavLink routerLinkActive="active" routerLink="/reviews">
               <cds-icon shape="world" badge="info" solid="true" clrVerticalNavIcon></cds-icon>
               Opiniones
             </a> 
