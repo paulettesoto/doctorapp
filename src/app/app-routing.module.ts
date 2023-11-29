@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: "schedule", component: ScheduleComponent, pathMatch: "full" },
   { path: "search", component: SearchspecialistComponent, pathMatch: "full" },
   { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" },
-  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordComponent, pathMatch: "full" },
+  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent, pathMatch: "full" },
   { path: "favorites", component: FavoritesComponent, pathMatch: "full" },
 ];
 @NgModule({
