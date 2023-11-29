@@ -27,7 +27,7 @@ input{
    
     float:right;
     margin:7px;
-    border-radius: 25px;
+  
     width: 800px;
     height: 200px;
 }
@@ -50,7 +50,7 @@ input{
     border: none;
 }
 .doctordata{
-    background-color: #68A1B2;
+    background-color: #aadeee;
     margin-top: 100px;
     margin-left: 90px;
     width: 900px;

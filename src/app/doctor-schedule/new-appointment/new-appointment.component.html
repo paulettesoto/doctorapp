@@ -6,8 +6,103 @@
         <app-navbar></app-navbar>
     </div>
     <div class="contenido">
-        <p>new-appointment works!</p>
+        <div class="primerfila">
+            <clr-input-container>
+                <label class="clr-sr-only">Celular</label>
+                <input
+                  type="text"
+                  autocomplete="phonenumber"
+                  name="phonenumber"
+                  clrInput
+                  placeholder="Celular"
+                  [(ngModel)]="phonenumber"
+                />
+              </clr-input-container>
+              <clr-input-container>
+                <label class="clr-sr-only">Nombre(s)</label>
+                <input
+                  type="text"
+                  autocomplete="name"
+                  name="name"
+                  clrInput
+                  placeholder="Nombre(s)"
+                  [(ngModel)]="name"
+                />
+              </clr-input-container>
+              <clr-input-container>
+                <label class="clr-sr-only">Primer apellido</label>
+                <input
+                  type="text"
+                  autocomplete="lastname"
+                  name="lastname"
+                  clrInput
+                  placeholder="Primer apellido"
+                  [(ngModel)]="lastname"
+                />
+              </clr-input-container>
+              <clr-input-container>
+                <label class="clr-sr-only">Segundo apellido</label>
+                <input
+                  type="text"
+                  autocomplete="lastname2"
+                  name="lastname2"
+                  clrInput
+                  placeholder="Segundo apellido"
+                  [(ngModel)]="lastname2"
+                />
+              </clr-input-container>
+              <clr-input-container>
+                <label class="clr-sr-only">Tratamiento</label>
+                <input
+                  type="text"
+                 
+                  name="treatment"
+                  clrInput
+                  placeholder="Tratamiento"
+                  [(ngModel)]="treatment"
+                />
+              </clr-input-container>
+             
+        </div> 
+        <div class="segundafila">
+            <clr-input-container>
+                <label class="clr-sr-only">Correo</label>
+                <input
+                  type="text"
+                  autocomplete="email"
+                  name="email"
+                  clrInput
+                  placeholder="Correo"
+                  [(ngModel)]="email"
+                />
+              </clr-input-container>
+                
+              <clr-input-container>
+                <label class="clr-sr-only">Edad</label>
+                <input
+                  type="text"
+                
+                  name="age"
+                  clrInput
+                  placeholder="Edad"
+                  [(ngModel)]="age"
+                />
+              </clr-input-container>
+             
+              <clr-date-container>
+                <label>Fecha</label>
+                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
+              </clr-date-container>
+              <div class="horarios">
+              
+              
+              
+            </div>
+              <button type="submit" class="btnregis" (click)="agendar()">Registrarse</button>
+            </div>
+            
+        </div>
+   
     </div>
-</div>
 
 
