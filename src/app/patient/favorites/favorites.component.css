@@ -1,0 +1,35 @@
+
+.content{
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.grid{
+    display: flex;
+}
+.header{
+    background-color: #68A1B2;
+}
+.photo{
+    width: 5rem;
+    height: 5rem;
+    background: #D9D9D9;
+    position: absolute;
+    margin-left: 50%;
+}
+.search{
+   
+    float:right;
+    margin:7px;
+    border-radius: 25px;
+    width: 800px;
+    height: 200px;
+}
+.doctordata{
+    background-color: #68A1B2;
+  
+    margin-left: 90px;
+    width: 900px;
+    height: 300px;
+}

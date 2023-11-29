@@ -25,6 +25,7 @@ import { UpdatedataComponent } from './patient/perfilpatient/updatedata/updateda
 import { UpdatepasswordpatientComponent } from './patient/perfilpatient/updatepasswordpatient/updatepasswordpatient.component';
 import { FavoritesComponent } from './patient/favorites/favorites.component';
 
+
 const routes: Routes = [
   //{ path: "", component: AppComponent, pathMatch: "full" },
   { path: "", component: PageprincipalComponent, pathMatch: "full" },
