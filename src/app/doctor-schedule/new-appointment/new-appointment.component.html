@@ -5,8 +5,11 @@
     <div class="navbar">
         <app-navbar></app-navbar>
     </div>
+    
     <div class="contenido">
+      <h3>Agendar paciente</h3>
         <div class="primerfila">
+          
             <clr-input-container>
                 <label class="clr-sr-only">Celular</label>
                 <input
@@ -93,16 +96,22 @@
                 <label>Fecha</label>
                 <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
               </clr-date-container>
+              <p>Horarios disponibles</p>
               <div class="horarios">
               
               
               
             </div>
-              <button type="submit" class="btnregis" (click)="agendar()">Registrarse</button>
-            </div>
+            <div class="horarios2">
+              
+              
+              
+        
             
         </div>
-   
+      </div>
+      <button type="submit" class="btnregis" (click)="agendar()">Agendar</button>
+    </div>
     </div>
 
 

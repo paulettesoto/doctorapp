@@ -21,12 +21,14 @@ import { PatientModule } from './patient/patient.module';
 import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     PageprincipalComponent,
+    HistoryComponent,
 
   ],
   exports: [

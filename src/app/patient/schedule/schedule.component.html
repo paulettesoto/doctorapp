@@ -11,16 +11,26 @@
             <div clas="consultoriodata"><p>    f dafrwger  Dr. XXXX XXXX </p></div>
          
         </div>
-        
-        <div class="createdate"><input type="date" class="calendar"/></div>>
+        <form clrForm class="fecha">
+            <clr-date-container>
+              <label>Fecha</label>
+              <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="date" />
+            </clr-date-container>
+        </form>
         <p class="text">Horarios disponibles</p>
         <div class="availableschedules">
             <div class="hours">00:00</div>
             <div class="hours">01:00</div>
         </div>
         <div class="treatment">
-            <p>Tratamiento:</p>
-            <div class="options">Opciones</div>
+            <clr-select-container>
+                <label>Especialidad</label>
+                <select clrSelect name="treatment" [(ngModel)]="treatment">
+                  <option value="muela">Extracción de muela</option>
+                  <option value="limpieza">Limpieza dental</option>
+                  <option value="caries">Caries</option>
+                </select>
+              </clr-select-container>
         </div>
 
         <button type="submit" class="btnagendar" (click)="agendar()">Agendar</button>
