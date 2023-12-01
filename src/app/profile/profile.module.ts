@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
+import { ServicePanelComponent } from './service-panel/service-panel.component';
 
 
 
@@ -16,7 +17,8 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
 @NgModule({
   declarations: [
     EditProfileComponent,
-    UpdatepasswordComponent
+    UpdatepasswordComponent,
+    ServicePanelComponent
   ],
   imports: [
     CommonModule,

@@ -22,14 +22,13 @@ import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.modul
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PageprincipalComponent,
-    HistoryComponent,
-
+    PageprincipalComponent
   ],
   exports: [
   ],
@@ -44,7 +43,8 @@ import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.modul
     PatientModule,
     DoctorScheduleModule,
     PatientsModule,
-    ReviewsModule
+    ReviewsModule,
+    PerfilpatientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,12 +7,16 @@ import { ClarityModule } from "@clr/angular";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from '../shared/shared.module';
 import { PatientslistComponent } from './patientslist/patientslist.component';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { ClinicalRecordsComponent } from './clinical-records/clinical-records.component';
 
 
 
 @NgModule({
   declarations: [
-    PatientslistComponent
+    PatientslistComponent,
+    PatientDetailComponent,
+    ClinicalRecordsComponent
   ],
   imports: [
     CommonModule,
