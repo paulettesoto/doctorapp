@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { PageprincipalComponent } from "./pageprincipal/pageprincipal.component";
-
+import { AuthGuard } from './service/auth-guard.service';
 
 //doctor
 import { EditProfileComponent } from "./profile/edit-profile/edit-profile.component"
@@ -35,28 +35,29 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent, pathMatch: "full"},
   
   //doctor
-  { path: "profile/editprofile", component: EditProfileComponent, pathMatch: "full" },
-  { path: "profile/updatepassword", component: UpdatepasswordComponent, pathMatch: "full" },
-  { path: "schedule/newappointment", component: NewAppointmentComponent, pathMatch: "full" },
-  { path: "schedule/scheduleview", component: ScheduleViewComponent, pathMatch: "full" },
-  { path: "patients/patientslist", component: PatientslistComponent, pathMatch: "full" },
-  { path: "reviews", component: ReviewsComponent, pathMatch: "full" },
-  { path: "schedule/date-scheduler", component: DateSchedulerComponent, pathMatch: "full" },
-  { path: "patients/clinical-records", component: ClinicalRecordsComponent, pathMatch: "full" },
-  { path: "patients/patient-detail", component: PatientDetailComponent, pathMatch: "full" },
-  { path: "profile/service-panel", component: ServicePanelComponent, pathMatch: "full" },
+  { path: "profile/editprofile", component: EditProfileComponent, pathMatch: "full", canActivate: [AuthGuard]},
+  { path: "profile/updatepassword", component: UpdatepasswordComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "schedule/newappointment", component: NewAppointmentComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "schedule/scheduleview", component: ScheduleViewComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "patients/patientslist", component: PatientslistComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "reviews", component: ReviewsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "schedule/date-scheduler", component: DateSchedulerComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "patients/clinical-records", component: ClinicalRecordsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "patients/patient-detail", component: PatientDetailComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "profile/service-panel", component: ServicePanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},
 
   //patient
-  { path: "patient/patientpanel", component: PatientpanelComponent, pathMatch: "full" },
-  { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full" },
-  { path: "schedule", component: ScheduleComponent, pathMatch: "full" },
-  { path: "search", component: SearchspecialistComponent, pathMatch: "full" },
-  { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" },
-  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent, pathMatch: "full" },
-  { path: "favorites", component: FavoritesComponent, pathMatch: "full" },
+  { path: "patient/patientpanel", component: PatientpanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "schedule", component: ScheduleComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "search", component: SearchspecialistComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "favorites", component: FavoritesComponent, pathMatch: "full" , canActivate: [AuthGuard]},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
