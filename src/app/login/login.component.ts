@@ -33,7 +33,7 @@ export class LoginComponent {
         const usr = response;
         if(typeof usr === 'number'){
           localStorage.setItem("user",usr.toString());
-          this.route.navigate(['/schedule/scheduleview']);
+          this.route.navigate(['schedule/scheduleview']);
 
         }else {
          // spanElement.textContent = 'Usuario o contraseña incorrectos';
