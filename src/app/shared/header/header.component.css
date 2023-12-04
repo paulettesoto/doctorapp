@@ -1,5 +1,5 @@
 .custom-header {
-  background-color: #68A1B2;
+  background-color: var(--cds-alias-utility-blue-shade);
   color: #ffffff;
   padding: 10px;
   display: flex;

@@ -3,11 +3,13 @@
     <div class="navbar">
         <app-navbar></app-navbar>
     </div>
-    <div class="contenido"*ngFor="let patient of patients">
-        <div class="patient">
+    <div class="contenido">
+        <div class="patient"*ngFor="let patient of patients" (click)="patientdetail()">
             <div class="photo"></div>
             <div class="info">
-                <p>AQUI VA EL TEXTO</p>  
+                <p>Nombre: {{ patient.Nombre }} {{ patient.PrimerApe }} {{ patient.SegundoApe }}</p>
+                <p>Celular: {{ patient.celular }}</p>
+                <p>Edad: {{ patient.edad }}</p> 
             </div>
         </div>
         
