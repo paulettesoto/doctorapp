@@ -4,3 +4,19 @@
 .header{
     background-color: #68A1B2;
 }
+.cbox{
+    position: absolute;
+    margin-left: 11%;
+    margin-top: 8px;
+}
+.treatmentfin{
+    position: absolute;
+    margin-top: 5px;
+}
+.paciente{
+    position: absolute;
+  
+}
+.treatment{
+    position: absolute;
+}
