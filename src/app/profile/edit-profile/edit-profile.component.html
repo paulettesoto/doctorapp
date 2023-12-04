@@ -3,114 +3,111 @@
     <div class="navbar">
         <app-navbar></app-navbar>
     </div>
-    <div class="contenido">
-        <div class="content">
-            <div class="register">
-              <form class="registerGroup" >
-                <section class="title">
-                  <!-- These could be heading elements. -->
-                  <div class="welcome">
-                    <h1>Datos personales</h1>
-                  </div>
-                </section>
-                <div >
-                  <div class="photo"></div>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Nombre(s)</label>
-                    <input
-                      type="text"
-                      autocomplete="name"
-                      name="name"
-                      clrInput
-                      placeholder="Nombre(s)"
-                      [(ngModel)]="name"
-                    />
-                  </clr-input-container>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Primer apellido</label>
-                    <input
-                      type="text"
-                      autocomplete="lastname"
-                      name="lastname"
-                      clrInput
-                      placeholder="Primer apellido"
-                      [(ngModel)]="lastname"
-                    />
-                  </clr-input-container>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Segundo apellido</label>
-                    <input
-                      type="text"
-                      autocomplete="lastname2"
-                      name="lastname2"
-                      clrInput
-                      placeholder="Segundo apellido"
-                      [(ngModel)]="lastname2"
-                    />
-                  </clr-input-container>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Celular</label>
-                    <input
-                      type="text"
-                      autocomplete="phonenumber"
-                      name="phonenumber"
-                      clrInput
-                      placeholder="Celular"
-                      [(ngModel)]="phonenumber"
-                    />
-                  </clr-input-container>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Fecha de nacimiento</label>
-                    <input
-                      type="text"
-                      autocomplete="email"
-                      name="email"
-                      clrInput
-                      placeholder="Correo"
-                      [(ngModel)]="email"
-                    />
-                  </clr-input-container>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Correo</label>
-                    <input
-                      type="text"
-                      autocomplete="email"
-                      name="email"
-                      clrInput
-                      placeholder="Correo"
-                      [(ngModel)]="email"
-                    />
-                  </clr-input-container>
-                 
-                  <clr-password-container>
-                    <label class="clr-sr-only">Contraseña</label>
-                    <input
-                      type="password"
-                      autocomplete="current-password"
-                      name="password"
-                      clrPassword
-                      placeholder="Contraseña"
-                      [(ngModel)]="password"
-                    />
-                  </clr-password-container>
-                  <clr-password-container>
-                    <label class="clr-sr-only">Confirmar contraseña</label>
-                    <input
-                      type="confirmPassword"
-                      autocomplete="current-password"
-                      name="confirmPassword"
-                      clrPassword
-                      placeholder="Confirmar contraseña"
-                      [(ngModel)]="confirmPassword"
-                    />
-                  </clr-password-container>
-                  <button type="submit" class="btnregis" (click)="update()">Modificar</button>
-                </div>
-              </form>
-              
-            </div>  
-          
+    <div class="content">
+      <div class="register">
+        <form class="registerGroup" >
+          <section class="title">
+            <!-- These could be heading elements. -->
+            <div class="welcome">
+              <h1>Datos personales</h1>
+            </div>
+          </section>
+          <div >
+            <div class="photo"></div>
+            <clr-input-container>
+              <label class="clr-sr-only">Nombre(s)</label>
+              <input
+                type="text"
+                autocomplete="name"
+                name="name"
+                clrInput
+                placeholder="Nombre(s)"
+                [(ngModel)]="name"
+              />
+            </clr-input-container>
+            <clr-input-container>
+              <label class="clr-sr-only">Primer apellido</label>
+              <input
+                type="text"
+                autocomplete="lastname"
+                name="lastname"
+                clrInput
+                placeholder="Primer apellido"
+                [(ngModel)]="lastname"
+              />
+            </clr-input-container>
+            <clr-input-container>
+              <label class="clr-sr-only">Segundo apellido</label>
+              <input
+                type="text"
+                autocomplete="lastname2"
+                name="lastname2"
+                clrInput
+                placeholder="Segundo apellido"
+                [(ngModel)]="lastname2"
+              />
+            </clr-input-container>
+            <clr-input-container>
+              <label class="clr-sr-only">Celular</label>
+              <input
+                type="text"
+                autocomplete="phonenumber"
+                name="phonenumber"
+                clrInput
+                placeholder="Celular"
+                [(ngModel)]="phonenumber"
+              />
+            </clr-input-container>
+            <clr-input-container>
+              <label class="clr-sr-only">Fecha de nacimiento</label>
+              <input
+                type="text"
+                autocomplete="email"
+                name="email"
+                clrInput
+                placeholder="Correo"
+                [(ngModel)]="email"
+              />
+            </clr-input-container>
+            <clr-input-container>
+              <label class="clr-sr-only">Correo</label>
+              <input
+                type="text"
+                autocomplete="email"
+                name="email"
+                clrInput
+                placeholder="Correo"
+                [(ngModel)]="email"
+              />
+            </clr-input-container>
+           
+            <clr-password-container>
+              <label class="clr-sr-only">Contraseña</label>
+              <input
+                type="password"
+                autocomplete="current-password"
+                name="password"
+                clrPassword
+                placeholder="Contraseña"
+                [(ngModel)]="password"
+              />
+            </clr-password-container>
+            <clr-password-container>
+              <label class="clr-sr-only">Confirmar contraseña</label>
+              <input
+                type="confirmPassword"
+                autocomplete="current-password"
+                name="confirmPassword"
+                clrPassword
+                placeholder="Confirmar contraseña"
+                [(ngModel)]="confirmPassword"
+              />
+            </clr-password-container>
+            <button type="submit" class="btnregis" (click)="update()">Modificar</button>
           </div>
+        </form>
+        
+      </div>  
     </div>
 </div>
 

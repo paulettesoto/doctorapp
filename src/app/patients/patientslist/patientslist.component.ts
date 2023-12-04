@@ -27,11 +27,11 @@ export class PatientslistComponent implements OnInit {
           this.patients = response.patients;
           console.log(this.patients);
         } else {
-          console.error('Invalid response format:', response);
+          console.error('Error:', response);
         }
       },
       (error) => {
-        console.error('Error fetching patients:', error);
+        console.error('Error:', error);
       }
     );
   }

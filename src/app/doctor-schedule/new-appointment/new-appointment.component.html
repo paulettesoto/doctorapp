@@ -5,9 +5,11 @@
     </div>
     
     <div class="contenido">
-      <h3>Agendar paciente</h3>
+      <form class="appointmentGroup" >
+        <div class="title">
+            <h1>Agendar paciente</h1>
+        </div>
         <div class="primerfila">
-          
             <clr-input-container>
                 <label class="clr-sr-only">Celular</label>
                 <input
@@ -89,27 +91,27 @@
                   [(ngModel)]="age"
                 />
               </clr-input-container>
+              <clr-date-container>
+                <label>Fecha de nacimiento</label>
+                <input type="datebirth" autocomplete="off" clrDate name="datebirth" [(ngModel)]="datebirth " />
+              </clr-date-container>
              
               <clr-date-container>
                 <label>Fecha</label>
-                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
+                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date " />
               </clr-date-container>
-              <p>Horarios disponibles</p>
-              <div class="horarios">
-              
-              
-              
-            </div>
-            <div class="horarios2">
-              
-              
-              
-        
-            
-        </div>
-      </div>
-      <button type="submit" class="btnregis" (click)="agendar()">Agendar</button>
-    </div>
-    </div>
+              <button type="submit" class="btn btn-primary" (click)="disponibles()">Buscar</button>
+              <div class="horarios"*ngFor="let date of availableDates">
+                <button [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
+                  {{ formatHora(date.hora) }}
+                </button>
+              </div>   
+          </div>  
+
+            <button type="submit" class="btn btn-primary" (click)="agendar()">Agendar</button>
+      </form>
+  </div>
+</div>
+
 
 
