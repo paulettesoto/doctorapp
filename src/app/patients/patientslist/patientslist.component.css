@@ -2,9 +2,10 @@
     display: flex;
 }
 .header{
-    background-color: #68A1B2;
+    background-color: #d3e5eb;
+    width: 100% !important;
 }
-.doctordata{
+.patient{
     background-color: #68A1B2;
     margin-top: 50px;
     margin-left: 90px;

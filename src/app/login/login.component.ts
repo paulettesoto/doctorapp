@@ -48,24 +48,22 @@ export class LoginComponent {
           const apellido1 = response.PrimerApe;
           const apellido2 = response.SegundoApe;
 
-          console.log("localstorage ", this.type)
           localStorage.setItem("user", usr.toString());
           localStorage.setItem("nombre", nombre.toString());
           localStorage.setItem("apellido1", apellido1.toString());
           localStorage.setItem("apellido2", apellido2.toString());
 
-          console.log("entrada", this.type)
+
           if (this.type === 'doctor') {
             this.route.navigate(['/schedule/scheduleview']);
-            console.log("if:", this.type)
+
           }else if (this.type === 'patient') {
-            console.log("else:", this.type)
+
             this.route.navigate(['/patient/patientpanel']);
           }
-          console.log("sali", this.type)
+
         } else {
           // Manejar el caso en el que el usuario no es un número
-       
         }
       },
       (error) => {
