@@ -4,6 +4,16 @@
         <app-navbar></app-navbar>
     </div>
     <div class="content">
-        <p>schedule-view works!</p>
+        <clr-date-container>
+            <label>Filtrar por fecha</label>
+            <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
+           
+        </clr-date-container>
+        <button class="btn btn-primary" (click)="search()">Buscar</button>
+          <div class="cita">
+            <p>Hora:</p>
+            <p>Paciente:</p>
+        </div>
+       
     </div>
 </div>

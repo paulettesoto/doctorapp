@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./service-panel.component.css']
 })
 export class ServicePanelComponent {
+ 
+  treatment: string;
+precio: string;
+question:string;
 
+  constructor() {
+    this.treatment = '';
+   this.precio='';
+ this.question='';
+  }
+
+  add_treatments() {
+ 
+  }
+  add_question() {
+ 
+  }
 }

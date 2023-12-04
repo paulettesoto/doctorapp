@@ -4,6 +4,14 @@
         <app-navbar></app-navbar>
     </div>
     <div class="content">
-        <p>date-scheduler works!</p>
+        <h3>Agregar horarios de atención</h3>
+        <clr-date-container>
+            <label>Fecha</label>
+            <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="date" />
+          </clr-date-container>
+        <button class="btn btn-primary" id="buscar" (click)="search()">Buscar</button>
+       
+        <p>Hora <input class="addhora" type="time" name="eta"> 
+        <button class="btn btn-primary" id="buscar" (click)="agregar()">Agregar</button></p>
     </div>
 </div>

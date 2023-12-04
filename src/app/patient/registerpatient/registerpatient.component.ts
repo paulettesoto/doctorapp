@@ -13,7 +13,7 @@ export class RegisterpatientComponent {
   lastname: string;
   lastname2: string;
   phonenumber: string;
-  specialty: string;
+  fecha_nac: string;
   email: string;
   license: string;
   password: string;
@@ -24,7 +24,7 @@ export class RegisterpatientComponent {
     this.lastname = '';
     this.lastname2 = '';
     this.phonenumber = '';
-    this.specialty = '';
+    this.fecha_nac = '';
     this.email = '';
     this.license = '';
     this.password = '';
