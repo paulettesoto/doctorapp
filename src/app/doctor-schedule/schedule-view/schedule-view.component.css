@@ -4,3 +4,16 @@
 .header{
     background-color: #68A1B2;
 }
+.cita{
+    background-color: var(--cds-alias-utility-light-blue-tint);
+    margin-top: 50px;
+    margin-left: 90px;
+    width: 400px;
+    height: 150px;
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
+    -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
+    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
+}
+

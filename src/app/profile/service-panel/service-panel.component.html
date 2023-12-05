@@ -4,6 +4,37 @@
         <app-navbar></app-navbar>
     </div>
     <div class="content">
-        <p>service-panel works!</p>
+        <h3>Agregar información</h3>
+        <div class="treatments">
+            <input
+              type="text"
+              name="treatment"
+              clrInput
+              placeholder="Agregar tratamiento nuevo"
+              [(ngModel)]="treatment"
+            /> 
+            <input
+            class="precio"
+            type="text"           
+            name="precio"
+            clrInput
+            placeholder="Precio del tratamiento ($)"
+            [(ngModel)]="precio"
+          /> 
+          <button class="btn btn-primary" (click)="add_treatments()">Agregar tratamiento</button>
+        </div>
+
+        <div class="questions">
+            <input
+            class="renglon"
+              type="text"
+              name="question"
+              clrInput
+              placeholder="Agregar pregunta"
+              [(ngModel)]="question"
+            /> 
+          
+          <button class="btn btn-primary" id="btn_question" (click)="add_question()">Agregar pregunta</button>
+        </div>
     </div>
 </div>

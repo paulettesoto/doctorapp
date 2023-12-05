@@ -5,18 +5,29 @@
     background-color: #68A1B2;
 }
 .cbox{
-    position: absolute;
-    margin-left: 11%;
-    margin-top: 8px;
+
+   margin-left: 2%;
+
+   
 }
-.treatmentfin{
-    position: absolute;
-    margin-top: 5px;
-}
-.paciente{
-    position: absolute;
+
+.details{
+    background-color: var(--cds-alias-utility-light-blue-tint);
+    margin-top: 50px;
+    margin-left: 90px;
+    width: 400px;
+    height: 40%;
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
+    -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
+    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
   
 }
-.treatment{
-    position: absolute;
+p{
+    line-height: 5% !important;
+}
+.subir{
+ margin: 5% 0 0 20%;
+
 }

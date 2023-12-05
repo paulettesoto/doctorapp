@@ -12,28 +12,24 @@ input{
 .header{
     background-color: #68A1B2;
 }
-.btnnewdate{
-    width: 90px;
-height: 35px;
-flex-shrink: 0;
-border-radius: 25px;
-background: #7482CA;
-}
+
 .title{
+    display: flex;
+    flex-direction: row;
     align-items: center;
     margin-left: 400px;
   
 }
-.btnnewdate{
-    margin-left: 500px;
-    margin-top: 0px;
+#boton{
+    margin-bottom: -5%;
+    margin-left: 30%;
 }
 .datenew{
     border-radius: 10px;
     width: 1000px;
     height: 400px;
     border-radius: 25px;
-background: #917575;
+background: #ceddf3;
 margin-left: 50px;
 margin-top: 20px;
 }

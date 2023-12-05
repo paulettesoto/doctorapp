@@ -4,3 +4,32 @@
 .header{
     background-color: #68A1B2;
 }
+.treatments{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    margin-top: 1%;
+    width: 50%;
+    height: 11%;
+}
+.precio{
+    margin-left: 5%;
+    width: 90%;
+}
+.questions{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    margin-top: 1%;
+    width: 50%;
+    height: 11%;
+}
+.renglon{
+ 
+    width: 180%;
+}
+#btn_question{
+margin-left: 35%;
+}
