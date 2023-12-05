@@ -1,31 +1,27 @@
-
 .grid{
     display: flex;
     height: 100vh;
 }
-
 .navbar {
     top: 0;
     overflow: hidden;
 }
-.contenido {
-    top: 50px; 
+.content {
     overflow-y: auto; 
-    padding: 20px; 
-    margin: 2% 0 0 15%;
+    padding: 2%; 
+    margin: 3% 0 0 15%;
     overflow-x: hidden; 
 }
 .appointmentGroup{
     width: 100% !important;
     display: grid;
     grid-template-columns: repeat(2, 1fr) !important;
-    margin-left: 5%;
-    margin-top: 2%;
+    margin: 0 0 0 5%;
  
 }
 .title{
     grid-column: 1 / 3 !important ;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     height: 1rem !important;
 }
 
@@ -44,7 +40,7 @@ input{
     width: 15rem;
 }
 button{
-    margin: 15% auto 0 0;
+    margin: 5% auto 0 0;
 
 }
 select{

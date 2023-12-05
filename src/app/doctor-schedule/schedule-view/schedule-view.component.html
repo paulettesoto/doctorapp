@@ -4,19 +4,19 @@
         <app-navbar></app-navbar>
     </div>
     <div class="content">
-        <div class="alinear">
-            <clr-date-container>
-                <label>Filtrar por fecha</label>
-                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
-               
-            </clr-date-container>
-            <button class="btn btn-primary" (click)="search()">Buscar</button>
-        </div>
+        <button class="btn btn-primary" (click)="search()">Buscar</button>
+        <clr-date-container>
+            <label>Filtrar por fecha</label>
+            <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
+           
+        </clr-date-container>
+        
        
-          <div class="cita">
-            <p>Hora:</p>
-            <p>Paciente:</p>
-        </div>
-       
+      <div class="cita">
+        <button class="btn btn-danger-outline btn-sm">Cancelar</button>
+        <p>Hora:</p>
+        <p>Paciente:</p>
+        <p>Tratamiento:</p>   
     </div>
+       
 </div>
