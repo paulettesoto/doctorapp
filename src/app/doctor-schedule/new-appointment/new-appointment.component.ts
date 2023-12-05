@@ -112,7 +112,7 @@ export class NewAppointmentComponent implements OnInit {
   
   }
   agendar(){
-    const url = 'https://doctorappbackend-wpqd.onrender.com//setDate';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/setDate';
 
   // Configura los parámetros para la solicitud POST
   const params = {
