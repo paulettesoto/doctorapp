@@ -1,12 +1,19 @@
 .grid{
     display: flex;
+    height: 100vh;
 }
-.contenido{
+
+.navbar {
+    top: 0;
+    overflow: hidden;
+}
+.contenido {
+    top: 50px; 
+    padding: 20px; 
+    margin: 2% 0 0 15%;
+    overflow-x: hidden; 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-}
-.header{
-    width: 100% !important;
 }
 .patient{
     background-color: var(--cds-alias-utility-light-blue-tint);
@@ -27,6 +34,5 @@ p, .info{
     width: 5rem;
     height: 5rem;
     background: #D9D9D9;
-    position: absolute;
-    margin-left: 18%;
+    margin: 0 0 0 65%;
 }

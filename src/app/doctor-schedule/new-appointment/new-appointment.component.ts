@@ -18,6 +18,7 @@ export class NewAppointmentComponent implements OnInit {
   treatment:string;
   availableDates: any[] = [];
   selectedHour: number | null = null;
+  treatments: any[] = [];
 
   constructor(private http:HttpClient, private route:Router) {
     this.name = '';
@@ -32,7 +33,7 @@ export class NewAppointmentComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
+    this.tratamientos();
   }
   
   disponibles() {
@@ -89,6 +90,27 @@ export class NewAppointmentComponent implements OnInit {
     return this.selectedHour === date.hora ? 'btn btn-primary' : 'btn btn-outline';
   }
 
+  tratamientos() {
+
+    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+
+    const params = new HttpParams()
+      .set('idDoctor', localStorage.getItem('user') || "");
+      this.http.get(url, { params }).subscribe(
+        (response: any) => {
+          if (response && response.treatments) {
+            this.treatments = response.treatments;
+            console.log(response.treatments);
+          } else {
+            console.error('Error:', response);
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+  
+  }
   agendar(){
     const url = 'https://doctorappbackend-wpqd.onrender.com//setDate';
 

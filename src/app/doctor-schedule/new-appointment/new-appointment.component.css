@@ -1,6 +1,19 @@
 
 .grid{
     display: flex;
+    height: 100vh;
+}
+
+.navbar {
+    top: 0;
+    overflow: hidden;
+}
+.contenido {
+    top: 50px; 
+    overflow-y: auto; 
+    padding: 20px; 
+    margin: 2% 0 0 15%;
+    overflow-x: hidden; 
 }
 .appointmentGroup{
     width: 100% !important;
@@ -33,4 +46,7 @@ input{
 button{
     margin: 15% auto 0 0;
 
+}
+select{
+    width: 15rem;
 }

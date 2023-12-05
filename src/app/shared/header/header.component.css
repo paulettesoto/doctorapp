@@ -6,9 +6,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100% !important;
+  position: fixed;
+  z-index: 1000;
 }
 .main-container{
   width: 100%;
+
 }
 .text-container {
   display: flex;

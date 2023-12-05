@@ -54,18 +54,11 @@
                   [(ngModel)]="lastname2"
                 />
               </clr-input-container>
-              <clr-input-container>
-                <label class="clr-sr-only">Tratamiento</label>
-                <input
-                  type="text"
-                 
-                  name="treatment"
-                  clrInput
-                  placeholder="Tratamiento"
-                  [(ngModel)]="treatment"
-                />
-              </clr-input-container>
-             
+              <select clrSelect name="treatments" [(ngModel)]="treatment">
+                <option *ngFor="let treatment of treatments" value="{{ treatment.id }}">
+                  {{ treatment.tratamiento}}
+                </option>
+              </select>  
         </div> 
         <div class="segundafila">
             <clr-input-container>
