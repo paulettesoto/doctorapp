@@ -1,7 +1,8 @@
 
 .content{
     width: 100%;
-    margin: 0 auto;
+    margin-left: 18%;
+    margin-top: 5%;
 }
 input{
     width: 20rem;
@@ -33,3 +34,4 @@ background: #ceddf3;
 margin-left: 50px;
 margin-top: 20px;
 }
+

@@ -1,8 +1,15 @@
 .grid{
     display: flex;
 }
+
+
 .header{
     background-color: #68A1B2;
+}
+.content{
+    align-self: center;
+   margin-left: 20%;
+   margin-top: 5%;
 }
 .treatments{
     align-items: center;

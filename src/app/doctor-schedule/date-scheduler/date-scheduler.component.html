@@ -5,13 +5,14 @@
     </div>
     <div class="content">
         <h3>Agregar horarios de atención</h3>
-        <clr-date-container>
-            <label>Fecha</label>
-            <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="date" />
-          </clr-date-container>
-        <button class="btn btn-primary" id="buscar" (click)="search()">Buscar</button>
-       
+        <div class="fecha">
+            <clr-date-container>
+                <label>Fecha</label>
+                <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="date" />
+            </clr-date-container>
+            <button class="btn btn-primary" id="buscar" (click)="search()">Buscar</button>
+       </div>
         <p>Hora <input class="addhora" type="time" name="eta"> 
-        <button class="btn btn-primary" id="buscar" (click)="agregar()">Agregar</button></p>
+        <button class="btn btn-primary" id="add" (click)="agregar()">Agregar</button></p>
     </div>
 </div>
