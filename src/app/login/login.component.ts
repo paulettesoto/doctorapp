@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   user: string;
   password: string;
   type: string;
@@ -17,7 +17,11 @@ export class LoginComponent {
     this.user = '';
     this.password = '';
     this.type = '';
+    
 
+  }
+  ngOnInit(): void {
+    localStorage.clear();
   }
 
 
@@ -58,9 +62,7 @@ export class LoginComponent {
 
           if (this.type === 'doctor') {
             this.route.navigate(['/schedule/scheduleview']);
-
           }else if (this.type === 'patient') {
-
             this.route.navigate(['/patient/patientpanel']);
           }
 
