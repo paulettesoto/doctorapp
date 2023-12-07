@@ -1,2 +1,24 @@
-<!--<app-navbar></app-navbar>-->
-<router-outlet></router-outlet>
+
+<div class="container">
+  <!-- Header -->
+  <app-header></app-header>
+  
+  <!-- Contenedor principal -->
+  <div class="flex-container">
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+      <ng-container *ngIf="type === '1';">
+        <app-navbar></app-navbar>
+      </ng-container>
+      <ng-container *ngIf="type === '2';">
+        <app-navbarpatient></app-navbarpatient>
+      </ng-container>
+    </div>
+
+    <!-- Router Outlet -->
+    <div class="router-outlet-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

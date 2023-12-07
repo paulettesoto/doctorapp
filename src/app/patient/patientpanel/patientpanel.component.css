@@ -1,18 +1,9 @@
 
-.content{
-    width: 100%;
-    margin-left: 18%;
-    margin-top: 5%;
-}
+
 input{
     width: 20rem;
 }
-.grid{
-    display: flex;
-}
-.header{
-    background-color: #68A1B2;
-}
+
 
 .title{
     display: flex;

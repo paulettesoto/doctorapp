@@ -1,20 +1,4 @@
-.grid{
-    display: flex !important;
-    height: 100vh;
-}
 
-.navbar {
-    top: 0;
-    overflow: hidden;
-}
-.content {
-    top: 50px; 
-    padding: 20px; 
-    margin: 2% 0 0 15%;
-    overflow-x: hidden; 
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-}
 .cbox{
 
    margin-left: 2%;

@@ -1,17 +1,3 @@
-.grid{
-    display: flex;
-    height: 100vh;
-}
-.navbar {
-    top: 0;
-    overflow: hidden;
-}
-.content {
-    overflow-y: auto; 
-    padding: 2%; 
-    margin: 3% 0 0 18%;
-    overflow-x: hidden; 
-}
 .cita{
     background-color: var(--cds-alias-utility-light-blue-tint);
     margin-top: 50px;
@@ -24,9 +10,18 @@
     -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
 }
-button{
+#search{
     margin: 2% 0 0 20%;
     position: absolute;
+}
+#cancel{
+    width: 6rem;
+    margin: -38% 0 0 65%;
+}
+#message{
+
+    margin: -50% 0 0 65%;
+    width: 6rem;
 }
 p{
     margin: 0;

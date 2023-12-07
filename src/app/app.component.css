@@ -1,10 +1,31 @@
 @import '@clr/ui/clr-ui.css';
-
 html {
     box-sizing: border-box;
     font-size: 62.5%;
   }
+  .container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh; 
+  }
   
+  .flex-container {
+    display: flex;
+    height: 100%; 
+  }
+  
+  .navbar-container {
+    order: -1;
+    width: 200px;
+
+  }
+  
+  .router-outlet-container {
+    flex-grow: 1;
+    overflow: auto; 
+    margin: 0 0 0 10%;
+  }
+
   *, *::before, *::after {
     box-sizing: inherit;
   }
@@ -16,7 +37,6 @@ html {
     font-size: 1.6rem;
     line-height: 2;
     background-color: var(--cds-alias-status-neutral-shade) ;
-
   }
 
   /* globals */

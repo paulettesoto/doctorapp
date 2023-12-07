@@ -33,9 +33,11 @@ export class LoginComponent {
       if (this.type === 'doctor') {
         url = 'https://doctorappbackend-wpqd.onrender.com/login';
         localStorage.setItem("prefix", "Dr.");
+        localStorage.setItem("type", "1");
       }else if (this.type === 'patient') {
         url = 'https://doctorappbackend-wpqd.onrender.com/login_paciente';
         localStorage.setItem("prefix", "¡Hola!");
+        localStorage.setItem("type", "2");
       }
     
     this.http.get(url, { params }).subscribe(

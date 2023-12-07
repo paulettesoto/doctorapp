@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-schedule-view',
   templateUrl: './schedule-view.component.html',
@@ -16,7 +17,7 @@ export class ScheduleViewComponent implements OnInit {
     this.datelist();
   }
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private location: Location) {
     this.name = '';
     this.lastname = '';
     this.lastname2 = '';
@@ -70,7 +71,7 @@ export class ScheduleViewComponent implements OnInit {
   
       const params = new HttpParams()
         .set('idDoctor', localStorage.getItem('user') || "")
-        .set('fecha', formattedDate);
+        .set('fecha', "'"+formattedDate+"'");
         ;
         this.http.get(url, { params }).subscribe(
           (response: any) => {
@@ -85,6 +86,51 @@ export class ScheduleViewComponent implements OnInit {
             console.error('Error:', error);
           }
         );
+
+  }
+
+  canceldate(id: any){
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
+  
+      const params = new HttpParams()
+        .set('idCita', id);
+        ;
+        this.http.delete(url, { params }).subscribe(
+          (response: any) => {
+            if (response && response.success) {
+              console.log("Cita cancelada");
+              window.location.reload();
+            } else {
+              console.error('Error:', response);
+            }
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
+  
+
+  }
+  message(id: any){
+    const url = 'https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=6674747377&text=a%20dormirrrr';
+  
+      const params = new HttpParams()
+        .set('idCita', id);
+        ;
+        this.http.delete(url, { params }).subscribe(
+          (response: any) => {
+            if (response && response.success) {
+              console.log("Cita cancelada");
+              window.location.reload();
+            } else {
+              console.error('Error:', response);
+            }
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
+  
 
   }
 }

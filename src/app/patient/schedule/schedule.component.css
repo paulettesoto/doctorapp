@@ -1,17 +1,9 @@
 
-.content{
-    width: 100%;
-    margin: 0 auto;
-}
+
 input{
     width: 20rem;
 }
-.grid{
-    display: flex;
-}
-.header{
-    background-color: #68A1B2;
-}
+
 .photo{
     width: 3rem;
     height: 3rem;

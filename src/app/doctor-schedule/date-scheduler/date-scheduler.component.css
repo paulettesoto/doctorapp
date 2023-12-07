@@ -1,21 +1,5 @@
-.grid{
-    display: flex;
-    height: 100vh;
-}
-.navbar {
-    top: 0;
-    overflow: hidden;
-}
-.content {
-    overflow-y: auto; 
-    padding: 2%; 
-    margin: 3% 0 0 18%;
-    overflow-x: hidden; 
-}
 
-.header{
-    background-color: #68A1B2;
-}
+
 #buscar{
     
     height: 30px;
