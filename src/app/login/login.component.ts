@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { storageService } from '../storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,23 +10,19 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 
 export class LoginComponent implements OnInit{
-  user: string;
-  password: string;
-  type: string;
 
-  constructor(private http:HttpClient, private route:Router) {
-    this.user = '';
-    this.password = '';
-    this.type = '';
-    
 
-  }
+  constructor(private http:HttpClient, private route:Router,private storage: storageService) {}
+  user= '';
+  password= '';
+  type= '';
   ngOnInit(): void {
-    localStorage.clear();
+    
   }
 
 
   login() {
+    this.storage.clearAllDataItems();
     console.log(this.user);
     console.log(this.password);
     console.log(this.type);
@@ -36,12 +33,13 @@ export class LoginComponent implements OnInit{
 
       if (this.type === 'doctor') {
         url = 'https://doctorappbackend-wpqd.onrender.com/login';
-        localStorage.setItem("prefix", "Dr.");
-        localStorage.setItem("type", "1");
+        this.storage.setDataItem('prefix', 'Dr.');
+        this.storage.setDataItem('type','1');
+
       }else if (this.type === 'patient') {
         url = 'https://doctorappbackend-wpqd.onrender.com/login_paciente';
-        localStorage.setItem("prefix", "¡Hola!");
-        localStorage.setItem("type", "2");
+        this.storage.setDataItem('prefix', '¡Hola!');
+        this.storage.setDataItem('type','2');
       }
     
     this.http.get(url, { params }).subscribe(
@@ -54,16 +52,19 @@ export class LoginComponent implements OnInit{
           const apellido1 = response.PrimerApe;
           const apellido2 = response.SegundoApe;
 
-          localStorage.setItem("user", usr.toString());
-          localStorage.setItem("nombre", nombre.toString());
-          localStorage.setItem("apellido1", apellido1.toString());
-          localStorage.setItem("apellido2", apellido2.toString());
+          console.log(usr);
+          this.storage.setDataItem('user', usr.toString());
+          this.storage.setDataItem('nombre',nombre.toString());
+          this.storage.setDataItem('apellido1',apellido1.toString());
+          this.storage.setDataItem('apellido2',apellido2.toString());
 
-
+          
           if (this.type === 'doctor') {
             this.route.navigate(['/schedule/scheduleview']);
+            this.storage.setDataItem('actualizar','true');
           }else if (this.type === 'patient') {
             this.route.navigate(['/patient/patientpanel']);
+            this.storage.setDataItem('actualizar','true');
           }
 
         } else {

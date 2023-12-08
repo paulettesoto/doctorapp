@@ -1,5 +1,5 @@
 
-<div class="container" *ngIf="type !== null;">
+<div class="container" *ngIf="type !== null; else elseBlock">
   <!-- Header -->
   <app-header></app-header>
   
@@ -8,10 +8,10 @@
 
     <!-- Navbar -->
     <div class="navbar-container">
-      <ng-container *ngIf="type === '1';">
+      <ng-container *ngIf="type == '1';">
         <app-navbar></app-navbar>
       </ng-container>
-      <ng-container *ngIf="type === '2';">
+      <ng-container *ngIf="type == '2';">
         <app-navbarpatient></app-navbarpatient>
       </ng-container>
     </div>
@@ -22,5 +22,4 @@
     </div>
   </div>
 </div>
-
-<router-outlet></router-outlet>
+<ng-template #elseBlock> <router-outlet></router-outlet></ng-template>

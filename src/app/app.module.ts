@@ -20,7 +20,8 @@ import { ReviewsModule } from './reviews/reviews.module';
 //patient
 import { PatientModule } from './patient/patient.module';
 import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.module';
-
+import { storageService } from './storage.service';
+import { AuthGuard } from './auth-guard.service';
 
 
 
@@ -48,7 +49,10 @@ import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.modul
     PerfilpatientModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    storageService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent],
   
 })

@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { PageprincipalComponent } from "./pageprincipal/pageprincipal.component";
-import { AuthGuard } from './service/auth-guard.service';
+import { AuthGuard } from './auth-guard.service';
 
 //doctor
 import { EditProfileComponent } from "./profile/edit-profile/edit-profile.component"

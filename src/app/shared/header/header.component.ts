@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { storageService } from 'src/app/storage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,17 +12,23 @@ export class HeaderComponent implements OnInit {
   apellido2: string = "";
   prefix: string = "";
 
-  constructor(private route:Router) {  }
+  constructor(private route:Router, private storage : storageService) {  }
 
   ngOnInit(): void {
-    this.prefix = localStorage.getItem('prefix') || "";
-    this.nombre = localStorage.getItem('nombre') || "";
-    this.apellido1 = localStorage.getItem('apellido1') || "";
-    this.apellido2 = localStorage.getItem('apellido2') || "";
+    this.storage.logout$.subscribe((value) => {
+      // Realizar acciones necesarias cuando logoutTrigger cambie
+      this.prefix = this.storage.getDataItem('prefix');
+      this.nombre = this.storage.getDataItem('nombre');
+      this.apellido1 = this.storage.getDataItem('apellido1');
+      this.apellido2 = this.storage.getDataItem('apellido2');
+      // ... Otros procesos relacionados con la actualización de type
+    });
+
+
   }
   logout() {
     // Limpiar localStorage
-    localStorage.clear();
+    this.storage.clearAllDataItems();
     this.route.navigate(['/login']);
 
   }
