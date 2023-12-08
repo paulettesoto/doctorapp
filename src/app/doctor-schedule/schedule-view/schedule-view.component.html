@@ -12,8 +12,8 @@
             <p>{{date.fecha}} Hora: {{formatHora(date.hora)}}</p>
             <p>Paciente: {{date.Nombre}}</p>
             <p>Tratamiento:{{date.tratamiento}}</p> 
-            <button id="message"  class="btn btn-success-outline btn-sm"(click)="canceldate(date.id)">Recordatorio</button>  
-            <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="message(date.id)">Cancelar</button>
+            <button id="message"  class="btn btn-success-outline btn-sm"(click)="message(date.Nombre,date.fecha,date.hora, date.Doctor)">Recordatorio</button>  
+            <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="canceldate(date.id)">Cancelar</button>
             
         </div>
        

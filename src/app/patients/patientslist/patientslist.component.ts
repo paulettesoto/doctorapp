@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { storageService } from 'src/app/storage.service';
 @Component({
   selector: 'app-patientslist',
   templateUrl: './patientslist.component.html',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PatientslistComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route:Router) { }
+  constructor(private http: HttpClient, private route:Router, private storage: storageService) { }
   patients: any[] = [];
 
   ngOnInit(): void {
@@ -19,7 +20,7 @@ export class PatientslistComponent implements OnInit {
     const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientes';
 
     const params = new HttpParams()
-      .set('idDoctor', localStorage.getItem('user') || "");
+      .set('idDoctor', this.storage.getDataItem('user'));
 
     this.http.get(url, { params }).subscribe(
       (response: any) => {

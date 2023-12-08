@@ -1,6 +1,19 @@
 
-    <div class="contenido">
-        <h3> Comentarios de los pacientes</h3>
-        <div class="coments">Comentario </div>
+<div class="content">
+    <div class="comments"*ngFor="let comment of comments">
+        
+        <div class="info">
+            <p> {{ comment.estrellas }} 
+                <ng-container *ngFor="let i of [].constructor(comment.estrellas); let index = index">
+                    <cds-icon shape="star" solid="true"></cds-icon>
+                </ng-container>
+            </p>
+            <p>{{ comment.comentario }}</p>
+
+        </div>
+        
     </div>
+    
+     
+</div>
 

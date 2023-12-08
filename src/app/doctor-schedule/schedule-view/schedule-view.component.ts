@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { storageService } from 'src/app/storage.service';
+
 @Component({
   selector: 'app-schedule-view',
   templateUrl: './schedule-view.component.html',
@@ -17,7 +19,7 @@ export class ScheduleViewComponent implements OnInit {
     this.datelist();
   }
 
-  constructor(private http:HttpClient, private location: Location) {
+  constructor(private http:HttpClient, private location: Location, private storage:storageService) {
     this.name = '';
     this.lastname = '';
     this.lastname2 = '';
@@ -38,8 +40,8 @@ export class ScheduleViewComponent implements OnInit {
     const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
   
       const params = new HttpParams()
-        .set('idDoctor', localStorage.getItem('user') || "")
-        .set('fecha', "CURDATE()");
+        .set('idDoctor', this.storage.getDataItem('user'))
+        .set('fecha', "CURRENT_DATE()");
         ;
         this.http.get(url, { params }).subscribe(
           (response: any) => {
@@ -56,8 +58,8 @@ export class ScheduleViewComponent implements OnInit {
         );
   
   }
-  search(){
-    const dateObj = new Date(this.date);
+  formatdate(date:string ):string{
+    const dateObj = new Date(date);
 
     // Obtén los componentes de la fecha (año, mes, día)
     const year = dateObj.getFullYear();
@@ -65,16 +67,21 @@ export class ScheduleViewComponent implements OnInit {
     const day = dateObj.getDate().toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
     
     // Crea la cadena de fecha en el formato deseado (YYYY/MM/DD)
-    const formattedDate = `${year}-${month}-${day}`;
+    return `${year}-${month}-${day}`;
+  }
+  search(){
 
     const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
   
       const params = new HttpParams()
-        .set('idDoctor', localStorage.getItem('user') || "")
-        .set('fecha', "'"+formattedDate+"'");
+        .set('idDoctor', this.storage.getDataItem('user'))
+        .set('fecha',this.formatdate(this.date));
         ;
+        console.log(this.storage.getDataItem('user'));
+        console.log(this.formatdate(this.date));
         this.http.get(url, { params }).subscribe(
           (response: any) => {
+            console.log(response);
             if (response && response.dates) {
               this.dates = response.dates;
               console.log(response.dates);
@@ -111,26 +118,23 @@ export class ScheduleViewComponent implements OnInit {
   
 
   }
-  message(id: any){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=6674747377&text=a%20dormirrrr';
-  
-      const params = new HttpParams()
-        .set('idCita', id);
-        ;
-        this.http.delete(url, { params }).subscribe(
-          (response: any) => {
-            if (response && response.success) {
-              console.log("Cita cancelada");
-              window.location.reload();
-            } else {
-              console.error('Error:', response);
-            }
-          },
-          (error) => {
-            console.error('Error:', error);
-          }
-        );
-  
-
+  message(paciente:any, fecha:any, hora:any, dr:any){
+    const msg = `¡Hola ${paciente}! Te recuerdo tu cita el dia ${fecha} a las ${this.formatHora(hora)} con Dr. ${dr}. En caso de cancelacion o quieras reagendar tu cita, favor de contactarnos con anticipacion. Exelente dia. `;
+    const url = `https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=6674747377&text=${msg}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'accept': 'application/json'
+     });
+    // Realiza la solicitud POST
+    this.http.post(url, {headers}).subscribe(
+      (response: any) => {
+        console.log('Solicitud POST exitosa:', response);
+        // Manejar la respuesta según tus necesidades
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+    );
   }
+
 }
