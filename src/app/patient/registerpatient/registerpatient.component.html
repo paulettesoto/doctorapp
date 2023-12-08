@@ -48,7 +48,8 @@
                   <clr-input-container>
                     <label class="clr-sr-only">Celular</label>
                     <input
-                      type="text"
+                      type="tel"
+                   
                       autocomplete="phonenumber"
                       name="phonenumber"
                       clrInput
@@ -56,17 +57,12 @@
                       [(ngModel)]="phonenumber"
                     />
                   </clr-input-container>
-                  <clr-input-container>
-                    <label class="clr-sr-only">Fecha de nacimiento</label>
-                    <input
-                      type="text"
-                    
-                      name="fecha_nac"
-                      clrInput
-                     
-                      [(ngModel)]="fecha_nac"
-                    />
-                  </clr-input-container>
+           
+                    <clr-date-container>
+                      <label class="nac">Fecha de nacimiento</label>
+                      <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="fecha_nac" />
+                    </clr-date-container>
+         
                   <clr-input-container>
                     <label class="clr-sr-only">Correo</label>
                     <input
@@ -101,7 +97,7 @@
                       [(ngModel)]="confirmPassword"
                     />
                   </clr-password-container>
-                  <button type="submit" class="btnregis" (click)="register()">Registrarse</button>
+                  <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>
                 </div>
               </form>
               
