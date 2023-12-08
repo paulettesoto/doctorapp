@@ -54,7 +54,7 @@
     border-radius: 20px;
     border: 1px solid #7482CA;
   margin-top: 400PX;
-  margin-left: 100px;
+  margin-left: 35%;
   
 }
 .iniciarsesion:hover{
@@ -63,23 +63,32 @@
 .registrar{
  
         position: absolute;
-        width: 150px;
-        height: 37px;
-        flex-shrink: 0;color: #FFF;
+   
+        border-color:#78C5F0 ;
         background-color: #78C5F0;
         font-family: Nunito;
-        font-size: 25px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        border-radius: 20px;
-        border: 1px solid #7482CA;
-      margin-top: 400PX;
-      margin-left: 300px;
+        font-size: 20px;
+     
+      margin-top: 0%;
+      margin-left: 60%;
       
     
 }
 .registrar:hover{
+    background-color:rgb(158, 167, 241);
+}
+.registrarpac{
+    position: absolute;
+   
+    border-color:#78C5F0 ;
+    background-color: #78C5F0;
+    font-family: Nunito;
+    font-size: 20px;
+ 
+  margin-top: 0%;
+  margin-left: 80%;
+}
+.registrarpac:hover{
     background-color:rgb(158, 167, 241);
 }
 

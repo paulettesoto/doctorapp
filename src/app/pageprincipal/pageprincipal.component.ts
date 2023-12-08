@@ -15,4 +15,7 @@ export class PageprincipalComponent {
   click_regis(){
     this.router.navigate(['register'])
   }
+  click_regispac(){
+    this.router.navigate(['registerpatient'])
+  }
 }
