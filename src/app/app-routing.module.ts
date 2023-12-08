@@ -48,7 +48,7 @@ const routes: Routes = [
 
   //patient
   { path: "patient/patientpanel", component: PatientpanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full"},
   { path: "schedule", component: ScheduleComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "search", component: SearchspecialistComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" , canActivate: [AuthGuard]},
