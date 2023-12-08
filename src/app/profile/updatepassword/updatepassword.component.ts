@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { AppModule } from 'src/app/app.module';
-import { HeaderComponent } from 'src/app/shared/header/header.component';
-import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { storageService } from 'src/app/storage.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-updatepassword',
@@ -9,18 +8,34 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
   styleUrls: ['./updatepassword.component.css']
 })
 export class UpdatepasswordComponent {
-  currentpassword: string;
-  confirmpassword: string;
-  newpassword: string;
+  currentpassword: string = '';
+  confirmpassword: string = '';
+  newpassword: string = '';
 
-  constructor() {
-    this. currentpassword = '';
-    this.confirmpassword = '';
-    this.newpassword = '';
-  }
+  constructor(private storage: storageService, private http: HttpClient) {}
+
   updatepass() {
-    console.log(this. currentpassword);
-    console.log(this.confirmpassword);
-    console.log(this.newpassword);
+    // Validación básica de campos
+    if (!this.currentpassword || !this.confirmpassword || !this.newpassword) {
+      console.error('Todos los campos deben ser completados');
+      return;
+    }
+
+    const url = `https://doctorappbackend-wpqd.onrender.com/doctors/updatePswrd?idDoctor=${this.storage.getDataItem("user")}&Contrasena=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'accept': 'application/json'
+     });
+  // Realiza la solicitud POST
+      this.http.put(url, {headers}).subscribe(
+        (response: any) => {
+          console.log('Contraseña actualizada:', response);
+          // Manejar la respuesta si es necesario
+        },
+        (error) => {
+          console.error('Error al actualizar contraseña:', error);
+          // Manejar errores si es necesario
+        }
+      );
   }
 }
