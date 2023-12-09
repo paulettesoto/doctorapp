@@ -58,9 +58,13 @@
           <select clrSelect name="specialty" [(ngModel)]="specialty">
             <option value="Ginecologia">Ginecologia</option>
             <option value="General">General</option>
-            <option value="Odonto">Odontología</option>
+            <option value="Odonto">Odontologia</option>
           </select>
         </clr-select-container>
+        <clr-date-container>
+          <label class="nac">Fecha de nacimiento</label>
+          <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="fecha_nac" />
+        </clr-date-container>
         <clr-input-container>
           <label class="clr-sr-only">Correo</label>
           <input
@@ -80,7 +84,7 @@
             name="license"
             clrInput
             placeholder="Cedula profesional"
-            [(ngModel)]="license"
+            [(ngModel)]="cedula"
           />
         </clr-input-container>
         <clr-password-container>

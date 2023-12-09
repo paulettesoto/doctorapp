@@ -21,11 +21,13 @@ import { ServicePanelComponent } from './profile/service-panel/service-panel.com
 //patient
 import { PatientpanelComponent } from './patient/patientpanel/patientpanel.component';
 import { RegisterpatientComponent } from './patient/registerpatient/registerpatient.component';
+
 import { SearchspecialistComponent } from './patient/searchspecialist/searchspecialist.component';
 import { UpdatedataComponent } from './patient/perfilpatient/updatedata/updatedata.component';
 import { UpdatepasswordpatientComponent } from './patient/perfilpatient/updatepasswordpatient/updatepasswordpatient.component';
 import { FavoritesComponent } from './patient/favorites/favorites.component';
-
+import { NewdatpatientComponent } from './patient/newdatpatient/newdatpatient.component';
+import { HacercomentComponent } from './patient/hacercoment/hacercoment.component';
 
 const routes: Routes = [
   //{ path: "", component: AppComponent, pathMatch: "full" },
@@ -52,6 +54,8 @@ const routes: Routes = [
   { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "favorites", component: FavoritesComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "newdatepatient", component: NewdatpatientComponent, pathMatch: "full" , canActivate: [AuthGuard] },
+  { path: "hacercoment",component:HacercomentComponent,pathMatch: "full" , canActivate: [AuthGuard]}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

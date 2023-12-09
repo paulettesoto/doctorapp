@@ -19,9 +19,8 @@ export class UpdatepasswordComponent {
     if (!this.currentpassword || !this.confirmpassword || !this.newpassword) {
       console.error('Todos los campos deben ser completados');
       return;
-    }
-
-    const url = `https://doctorappbackend-wpqd.onrender.com/doctors/updatePswrd?idDoctor=${this.storage.getDataItem("user")}&Contrasena=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
+    }else{
+      const url = `https://doctorappbackend-wpqd.onrender.com/doctors/updatePswrd?idDoctor=${this.storage.getDataItem("user")}&Contrasena=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'
@@ -38,4 +37,7 @@ export class UpdatepasswordComponent {
         }
       );
   }
+    }
+
+    
 }
