@@ -37,34 +37,33 @@ export class UpdatedataComponent {
    if (!this.name || !this.lastname || !this.lastname2|| !this.phonenumber || !this.fecha_nac|| !this.email) {
     console.error('Todos los campos deben ser completados');
     return;
-  
-   
-  
+  }else{
+    const url = `https://doctorappbackend-wpqd.onrender.com/patient/update_paciente?idPaciente=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'accept': 'application/json'
+     
+    });
+  // Realiza la solicitud POST
+      this.http.put(url, {headers}).subscribe(
+        (response: any) => {
+          console.log('Datos actualizados:', response);
+          // Manejar la respuesta si es necesario
+        },
+        (error) => {
+          console.error('Error al actualizar datos:', error);
+          // Manejar errores si es necesario
+        }
+      );
+      console.log(this.storage.getDataItem("user"));
+      console.log(this.name);
+      console.log(this.lastname);
+      console.log(this.lastname2);
+      console.log(this.phonenumber);
+      console.log(this.fecha_nac);
+      console.log(this.email);
   }
-  const url = `https://doctorappbackend-wpqd.onrender.com/patient/update_paciente?idPaciente=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}`;
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'accept': 'application/json'
-   
-  });
-// Realiza la solicitud POST
-    this.http.put(url, {headers}).subscribe(
-      (response: any) => {
-        console.log('Datos actualizados:', response);
-        // Manejar la respuesta si es necesario
-      },
-      (error) => {
-        console.error('Error al actualizar datos:', error);
-        // Manejar errores si es necesario
-      }
-    );
-    console.log(this.storage.getDataItem("user"));
-    console.log(this.name);
-    console.log(this.lastname);
-    console.log(this.lastname2);
-    console.log(this.phonenumber);
-    console.log(this.fecha_nac);
-    console.log(this.email);
-}
+  }
+ 
 }
 

@@ -10,28 +10,24 @@
             <button id="search" class="btn btn-primary" (click)="search()">Buscar</button>
         </p>
        
-        <button id="search" class="btn btn-primary" (click)="search()">Buscar</button>
-        <clr-date-container>
-            <label>Filtrar por fecha</label>
-            <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
-           
-        </clr-date-container>
+       
         
       <div class="grid">
         <div class="cita" *ngFor="let date of dates" id="{{date.id}}" >
-            <p>{{date.fecha}} Hora: {{formatHora(date.hora)}}</p>
-            <p>Paciente: {{date.Nombre}}</p>
-            <p>Tratamiento:{{date.tratamiento}}</p>
-            <ng-container *ngIf="date.confirmada === 0; else confirmadaTemplate">
-              <p id="confirmacion">No Confirmada</p>
-              <button id="message" class="btn btn-success-outline btn-sm" (click)="message(date.Nombre,date.fecha,date.hora, date.Doctor,date.id)">Recordatorio</button>
-          </ng-container>
+               
+                <p>{{date.fecha}} Hora: {{formatHora(date.hora)}}</p>
+                <p>Paciente: {{date.Nombre}}</p>
+                <p>Tratamiento:{{date.tratamiento}}</p>
+                <ng-container *ngIf="date.confirmada === 0; else confirmadaTemplate">
+                    <p id="confirmacion">No Confirmada</p>
+                    <button id="message" class="btn btn-success-outline btn-sm" (click)="message(date.Nombre,date.fecha,date.hora, date.Doctor,date.id)">Recordatorio</button>
+                </ng-container>
 
-          <ng-template #confirmadaTemplate>
-              <p id="confirmacion">Confirmada</p>
-          </ng-template>
-            <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="canceldate(date.id)">Cancelar</button>
-            
+                <ng-template #confirmadaTemplate>
+                    <p id="confirmacion">Confirmada</p>
+                </ng-template>
+                    <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="canceldate(date.id)">Cancelar</button>
+                
         </div>
 
       </div> 
