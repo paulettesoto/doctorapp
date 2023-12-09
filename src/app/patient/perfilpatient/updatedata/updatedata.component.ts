@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { storageService } from 'src/app/storage.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-updatedata',
   templateUrl: './updatedata.component.html',
@@ -10,26 +11,60 @@ export class UpdatedataComponent {
   lastname: string;
   lastname2: string;
   phonenumber: string;
-  specialty: string;
+  fecha_nac: string;
   email: string;
-  license: string;
-  password: string;
-  confirmPassword: string;
-
-  constructor() {
+  constructor(private storage: storageService, private http: HttpClient) {
     this.name = '';
     this.lastname = '';
     this.lastname2 = '';
     this.phonenumber = '';
-    this.specialty = '';
+    this.fecha_nac='';
     this.email = '';
-    this.license = '';
-    this.password = '';
-    this.confirmPassword = '';
   }
+  formatdate(fecha_nac:string ):string{
+    const dateObj = new Date(fecha_nac);
 
-  update() {
-    console.log(this.email);
-    console.log(this.password);
+    // Obtén los componentes de la fecha (año, mes, día)
+    const year = dateObj.getFullYear();
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
+    const day = dateObj.getDate().toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
+    
+    // Crea la cadena de fecha en el formato deseado (YYYY/MM/DD)
+    return `${year}-${month}-${day}`;
   }
+  update() {
+   // Validación básica de campos
+   if (!this.name || !this.lastname || !this.lastname2|| !this.phonenumber || !this.fecha_nac|| !this.email) {
+    console.error('Todos los campos deben ser completados');
+    return;
+  
+   
+  
+  }
+  const url = `https://doctorappbackend-wpqd.onrender.com/patient/update_paciente?idPaciente=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}`;
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'accept': 'application/json'
+   
+  });
+// Realiza la solicitud POST
+    this.http.put(url, {headers}).subscribe(
+      (response: any) => {
+        console.log('Datos actualizados:', response);
+        // Manejar la respuesta si es necesario
+      },
+      (error) => {
+        console.error('Error al actualizar datos:', error);
+        // Manejar errores si es necesario
+      }
+    );
+    console.log(this.storage.getDataItem("user"));
+    console.log(this.name);
+    console.log(this.lastname);
+    console.log(this.lastname2);
+    console.log(this.phonenumber);
+    console.log(this.fecha_nac);
+    console.log(this.email);
 }
+}
+

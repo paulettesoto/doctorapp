@@ -1,7 +1,26 @@
     <div class="content">
 
         <div class="title">  <h2>Panel del paciente</h2> <button type="submit" class="btn btn-primary" id="boton" (click)="newdate()">Nueva cita</button></div>
-        <div class="datenew"></div>
+    
+       
+        <div class="datenew" *ngFor="let date of dates">
+            <table class="table">
+                <tbody>
+                  <tr>
+                    <th>
+                        <p>Doctor: {{ date.Doctor }} </p>
+                    </th>
+                    <th>
+                        <p> Tratamiento: {{ date.tratamiento }} </p>
+                    </th>  <th>
+                        <p> Fecha:  {{ date.fecha }} </p>
+                    </th>  <th>
+                        <p> Hora:   {{ formatHora(date.hora) }}</p>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
     </div>
 
 
