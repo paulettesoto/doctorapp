@@ -10,9 +10,6 @@ import { ScheduleViewComponent } from './schedule-view/schedule-view.component';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { DateSchedulerComponent } from './date-scheduler/date-scheduler.component';
 
-
-
-
 @NgModule({
   declarations: [
     ScheduleViewComponent,
