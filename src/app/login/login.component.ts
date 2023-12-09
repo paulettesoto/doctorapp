@@ -51,18 +51,26 @@ export class LoginComponent implements OnInit{
           const nombre = response.Nombre;
           const apellido1 = response.PrimerApe;
           const apellido2 = response.SegundoApe;
+          const correo=response.email;
+          const fecha_nac=response.FechaNac;
+          console.log(response.FechaNac);
 
           console.log(usr);
           this.storage.setDataItem('user', usr.toString());
           this.storage.setDataItem('nombre',nombre.toString());
           this.storage.setDataItem('apellido1',apellido1.toString());
           this.storage.setDataItem('apellido2',apellido2.toString());
+          this.storage.setDataItem('celular',this.user);
+          this.storage.setDataItem('email',correo.toString());
+          this.storage.setDataItem('fecha_nac',fecha_nac.toString());
+         
 
           
           if (this.type === 'doctor') {
             this.route.navigate(['/schedule/scheduleview']);
             this.storage.setDataItem('actualizar','true');
           }else if (this.type === 'patient') {
+        
             this.route.navigate(['/patient/patientpanel']);
             this.storage.setDataItem('actualizar','true');
           }

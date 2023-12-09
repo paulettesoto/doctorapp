@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { AppModule } from 'src/app/app.module';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -28,7 +29,18 @@ export class EditProfileComponent {
     this.email = '';
     this.foto='foto';
   }
- 
+  ngOnInit(): void {
+  
+      // Realizar acciones necesarias cuando logoutTrigger cambie
+    
+      this.name = this.storage.getDataItem('nombre');
+      this.lastname = this.storage.getDataItem('apellido1');
+      this.lastname2 = this.storage.getDataItem('apellido2');
+      this.phonenumber=this.storage.getDataItem('celular');
+      this.email=this.storage.getDataItem('email');
+      // ... Otros procesos relacionados con la actualización de type
+   
+  }
   update() {
     // Validación básica de campos
     if (!this.name || !this.lastname || !this.lastname2  || !this.phonenumber || !this.email || !this.email) {
