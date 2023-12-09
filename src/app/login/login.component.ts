@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit{
           this.storage.setDataItem('apellido2',apellido2.toString());
           this.storage.setDataItem('celular',this.user);
           this.storage.setDataItem('email',correo.toString());
-          this.storage.setDataItem('fecha_nac',fecha_nac.toString());
+         
          
 
           
@@ -70,8 +70,9 @@ export class LoginComponent implements OnInit{
             this.route.navigate(['/schedule/scheduleview']);
             this.storage.setDataItem('actualizar','true');
           }else if (this.type === 'patient') {
-        
+            this.storage.setDataItem('fecha_nac',fecha_nac.toString());
             this.route.navigate(['/patient/patientpanel']);
+     
             this.storage.setDataItem('actualizar','true');
           }
 
