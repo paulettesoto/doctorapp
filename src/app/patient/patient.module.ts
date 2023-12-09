@@ -20,7 +20,6 @@ import { HacercomentComponent } from './hacercoment/hacercoment.component';
     RegisterpatientComponent,
     PatientpanelComponent,
     SearchspecialistComponent,
-  
     NewdatpatientComponent,
     HacercomentComponent
   ],

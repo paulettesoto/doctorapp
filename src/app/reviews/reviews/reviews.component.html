@@ -1,16 +1,21 @@
 
 <div class="content">
-    <div class="comments"*ngFor="let comment of comments">
+    <h3>Comentarios</h3>
+    <div class="grid">
+        <div class="comments"*ngFor="let comment of comments">
         
-        <div class="info">
-            <p> {{ comment.estrellas }} 
-                <ng-container *ngFor="let i of [].constructor(comment.estrellas); let index = index">
-                    <cds-icon shape="star" solid="true"></cds-icon>
-                </ng-container>
-            </p>
-            <p>{{ comment.comentario }}</p>
+            <div class="info">
+                <p> {{ comment.estrellas }} 
+                    <ng-container *ngFor="let i of [].constructor(comment.estrellas); let index = index">
+                        <cds-icon shape="star" solid="true"></cds-icon>
+                    </ng-container>
+                </p>
+                <p>{{ comment.comentario }}</p>
+    
+            </div>
 
-        </div>
+    </div>
+    
         
     </div>
     
