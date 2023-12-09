@@ -1,12 +1,11 @@
 
-.content {
+.grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 .comments{
     background-color: var(--cds-alias-utility-light-blue-tint);
-    margin-top: 50px;
-    margin-left: 90px;
+    margin: 5% 0 2% 2%;
     width: 400px;
     height: 150px;
     border-radius: 2rem;
