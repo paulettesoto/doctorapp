@@ -56,7 +56,7 @@ export class ServicePanelComponent implements OnInit {
     (response: any) => {
       console.log('Solicitud POST exitosa:', response);
       // Manejar la respuesta según tus necesidades
-
+ 
      this.questionslist();
     },
     (error) => {
