@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-patientpanel',
   templateUrl: './patientpanel.component.html',
@@ -55,10 +57,27 @@ export class PatientpanelComponent implements OnInit {
       );
   
   }
-  newdate() {
-    console.log(this. especialidad);
-    console.log(this.doctorname);
-    console.log(this.date);
-    console.log(this.photo);
+//esto me lo traje del doc
+  canceldate(id: any){
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
+  
+      const params = new HttpParams()
+        .set('idCita', id);
+        ;
+        this.http.delete(url, { params }).subscribe(
+          (response: any) => {
+            if (response && response.success) {
+              console.log("Cita cancelada");
+              window.location.reload();
+            } else {
+              console.error('Error:', response);
+            }
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
+  
+
   }
 }

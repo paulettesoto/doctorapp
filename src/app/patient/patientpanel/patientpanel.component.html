@@ -1,6 +1,9 @@
     <div class="content">
 
-        <div class="title">  <h2>Panel del paciente</h2> <button type="submit" class="btn btn-primary" id="boton" (click)="newdate()">Nueva cita</button></div>
+        <div class="title">  <h2>Panel del paciente</h2>  
+            
+             <a class="btn btn-primary" href="./search" id="boton" >Nueva cita</a>
+        </div> 
     
        
         <div class="datenew" *ngFor="let date of dates">
@@ -16,6 +19,9 @@
                         <p> Fecha:  {{ date.fecha }} </p>
                     </th>  <th>
                         <p> Hora:   {{ formatHora(date.hora) }}</p>
+                    </th>
+                    <th>
+                        <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="canceldate(date.id)">Cancelar</button>
                     </th>
                   </tr>
                 </tbody>

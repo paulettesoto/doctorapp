@@ -11,14 +11,18 @@ import { SharedModule } from '../shared/shared.module';
 
 import { PatientpanelComponent } from './patientpanel/patientpanel.component';
 import { SearchspecialistComponent } from './searchspecialist/searchspecialist.component';
-import { ScheduleComponent } from './schedule/schedule.component';
+
+import { NewdatpatientComponent } from './newdatpatient/newdatpatient.component';
+import { HacercomentComponent } from './hacercoment/hacercoment.component';
 
 @NgModule({
   declarations: [
     RegisterpatientComponent,
     PatientpanelComponent,
     SearchspecialistComponent,
-    ScheduleComponent
+  
+    NewdatpatientComponent,
+    HacercomentComponent
   ],
   imports: [
     CommonModule,
