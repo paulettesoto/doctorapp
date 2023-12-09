@@ -8,15 +8,17 @@
 .search{
    
     float:right;
-    margin:7px;
+   
     border-radius: 25px;
     width: 600px;
     height: 100px;
 }
 .doctordata{
     background-color: #ceddf3;
-  
-    margin-left: 90px;
-    width: 900px;
-    height: 300px;
+    margin-left: -70%;
+    width: 70%;
+    height: 100%;
+}
+#calificar{
+    margin-left: 55%;
 }

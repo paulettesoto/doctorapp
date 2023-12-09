@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { storageService } from 'src/app/storage.service';
 @Component({
   selector: 'app-searchspecialist',
   templateUrl: './searchspecialist.component.html',
@@ -11,8 +13,12 @@ export class SearchspecialistComponent {
   doctorname: string;
   date: string;
   photo:string;//NO SE QUE TIPO
+  newdate() {
+    // Limpiar localStorage
+    this.route.navigate(['/newdatepatient']);
 
-  constructor() {
+  }
+  constructor(private http: HttpClient, private route:Router, private storage: storageService) {
     this. especialidad = '';
     this.doctorname='';
     this.date = '';
