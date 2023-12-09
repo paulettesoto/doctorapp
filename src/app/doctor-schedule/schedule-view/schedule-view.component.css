@@ -11,8 +11,9 @@
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
 }
 #search{
-    margin: 2% 0 0 20%;
-    position: absolute;
+ margin-top: 3%;
+ margin-left: 1%;
+  
 }
 #cancel{
     width: 6rem;
@@ -25,5 +26,9 @@
 }
 p{
     margin: 0;
+}
+.filtrado{
+    display: flex;
+    flex-direction: row;
 }
 

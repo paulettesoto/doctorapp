@@ -1,12 +1,14 @@
 
     <div class="content">
-        <button id="search" class="btn btn-primary" (click)="search()">Buscar</button>
-        <clr-date-container>
-            <label>Filtrar por fecha</label>
-            <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
-           
-        </clr-date-container>
-        
+        <p class="filtrado">
+          
+            <clr-date-container>
+                <label>Filtrar por fecha</label>
+                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
+            
+            </clr-date-container>
+            <button id="search" class="btn btn-primary" (click)="search()">Buscar</button>
+        </p>
        
         <div class="cita" *ngFor="let date of dates" id="{{date.id}}" >
             <p>{{date.fecha}} Hora: {{formatHora(date.hora)}}</p>
