@@ -8,27 +8,39 @@ import { storageService } from 'src/app/storage.service';
   styleUrls: ['./searchspecialist.component.css']
 })
 export class SearchspecialistComponent {
-  //NO ESTAN LAS VARIABLES QUE SON
+
   especialidad: string;
   doctorname: string;
-  date: string;
-  photo:string;//NO SE QUE TIPO
-  newdate() {
-    // Limpiar localStorage
-    this.route.navigate(['/newdatepatient']);
+  photo:string;
+  data: string;
+  doctors: any[] = [];
 
-  }
   constructor(private http: HttpClient, private route:Router, private storage: storageService) {
-    this. especialidad = '';
+    this.especialidad = '';
     this.doctorname='';
-    this.date = '';
+    this.data='';
     this.photo = '';
   
   }
   search() {
-    console.log(this. especialidad);
-    console.log(this.doctorname);
-    console.log(this.date);
-    console.log(this.photo);
+
+    const url = 'https://doctorappbackend-wpqd.onrender.com/patientdoctors/buscar_doctor';
+
+    const params = new HttpParams()
+      .set('especialidad', this.especialidad);
+      this.http.get(url, { params }).subscribe(
+        (response: any) => {
+          if (response && response.doctors) {
+            this.doctors = response.doctors;
+            console.log(response.doctors);
+          } else {
+            console.error('Error:', response);
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+  
   }
 }

@@ -98,7 +98,7 @@ export class NewAppointmentComponent implements OnInit {
     const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
 
     const params = new HttpParams()
-      .set('idDoctor', this.storage.getDataItem('user'));
+      .set('especialidad', this.storage.getDataItem('user'));
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.treatments) {

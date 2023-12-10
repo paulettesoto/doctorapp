@@ -8,9 +8,10 @@
                 <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date " />
             </clr-date-container>
             <button type="submit" id="buscarbtn" class="btn btn-primary" (click)="disponibles()">Buscar</button>
+          
             <div class="horarios"*ngFor="let date of availableDates">
-                <button [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
-                {{ formatHora(date.hora) }}
+                <button (click)="agendar()">
+                {{ date.hora }}
                 </button>
             </div>  
           <div class="segundafila">
