@@ -1,6 +1,7 @@
 
 .grid {
     display: grid;
+    width: 90%;
     grid-template-columns: repeat(2, 1fr);
 }
 .comments{
@@ -14,6 +15,15 @@
     -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
 }
-p, .info{
-    line-height: 5% !important;
+cds-icon{
+    margin: 1.18rem .5rem 0 .5rem ;
+}
+.star{
+    margin: 0;
+}
+.pages{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 1rem;
 }

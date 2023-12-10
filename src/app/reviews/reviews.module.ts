@@ -8,9 +8,10 @@ import { FormsModule } from "@angular/forms";
 import { SharedModule } from '../shared/shared.module';
 import { ReviewsComponent } from './reviews/reviews.component';
 import '@cds/core/icon/register.js';
-import { ClarityIcons, starIcon} from '@cds/core/icon';
+import { ClarityIcons, fastForwardIcon, rewindIcon, starIcon} from '@cds/core/icon';
 
-ClarityIcons.addIcons(starIcon);
+
+ClarityIcons.addIcons(starIcon,fastForwardIcon,rewindIcon);
 
 
 

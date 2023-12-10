@@ -11,8 +11,15 @@ export class HeaderComponent implements OnInit {
   apellido1: string = "";
   apellido2: string = "";
   prefix: string = "";
+  mod?:boolean;
+  mode?: string;
 
   constructor(private route:Router, private storage : storageService) {  }
+  togglemode(){
+    this.mod = !this.mod;
+    const mode = this.mod ? 'dark' : 'light';
+    this.storage.setDataItem('mode', mode);
+  }
 
   ngOnInit(): void {
     this.storage.logout$.subscribe((value) => {

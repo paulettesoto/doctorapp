@@ -3,10 +3,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:translate(-50%,-50%) ;
-    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
-    -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
-    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
+    transform:translate(-70%,-50%) ;
+    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-utility-gray) ;  
+    -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-utility-gray);
+    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-utility-gray) ;
     border-radius: 5rem;
     padding: 1rem;
     padding-left: 5rem;
@@ -21,6 +21,11 @@
 .content{
     width: 100%;
     margin: 0 auto;
+    height: 100vh;
+    background-image: url('../../assets/doctorsitos.jpg') ;
+    background-repeat: no-repeat ;
+    background-size: cover ;
+    background-position: center left ;
 }
 input{
     width: 20rem;

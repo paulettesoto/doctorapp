@@ -6,23 +6,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class storageService {
   private logoutSubject = new BehaviorSubject<boolean>(false);
-
   logout$ = this.logoutSubject.asObservable();
 
-
   constructor() {}
+
   setDataItem(key: string, value: any) {
-    if(key=='actualizar'){
+    if (key === 'actualizar' || key === 'mode') {
       this.logoutSubject.next(true); // Notifica el cambio a true
     }
     localStorage.setItem(key, JSON.stringify(value));
-    console.log('dato:', key, ' value:', value);
-    
+    console.log('dato:', key, ' valor:', value);
   }
 
   getDataItem(key: string): any | undefined {
     const item = localStorage.getItem(key);
-    console.log('llamas al dato: ', key);
+    console.log('llamando al dato: ', key);
     return item ? JSON.parse(item) : null;
   }
 
@@ -34,5 +32,4 @@ export class storageService {
     localStorage.clear();
     this.logoutSubject.next(true); // Notifica el cambio a true
   }
-
 }

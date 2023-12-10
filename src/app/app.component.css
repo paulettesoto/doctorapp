@@ -14,16 +14,12 @@ html {
     height: 100%; 
   }
   
-  .navbar-container {
-    order: -1;
-    width: 200px;
-
-  }
+ 
   
   .router-outlet-container {
-    flex-grow: 1;
+    width: 100%;
     overflow: auto; 
-    margin: 0 0 0 10%;
+    margin: 0 0 0 3rem;
   }
 
   *, *::before, *::after {
@@ -72,6 +68,6 @@ html {
   ::ng-deep ::-webkit-scrollbar {
   display: none;
 }
-  
+
  
   

@@ -1,24 +1,29 @@
-
 <div class="content">
-    <h3>Comentarios</h3>
-    <div class="grid">
-        <div class="comments"*ngFor="let comment of comments">
-        
-            <div class="info">
-                <p> {{ comment.estrellas }} 
-                    <ng-container *ngFor="let i of [].constructor(comment.estrellas); let index = index">
-                        <cds-icon shape="star" solid="true"></cds-icon>
-                    </ng-container>
-                </p>
-                <p>{{ comment.comentario }}</p>
-    
-            </div>
-
+  <h3>Comentarios</h3>
+  <div class="grid">
+    <div
+      class="comments"
+      *ngFor="let comment of comments.slice((page - 1) * paged, page * paged)"
+    >
+      <div class="info">
+        <div>
+          {{ comment.estrellas }}
+          <ng-container
+            *ngFor="
+              let i of [].constructor(comment.estrellas);
+              let index = index
+            "
+          >
+            <cds-icon class="star" shape="star" solid="true"></cds-icon>
+          </ng-container>
+        </div>
+        <p>{{ comment.comentario }}</p>
+      </div>
     </div>
-    
-        
-    </div>
-    
-     
+  </div>
+  <div class="pages">
+    <cds-icon shape="rewind" (click)="paginador(-1)"></cds-icon>
+    <p>{{ page }} de {{ pages }}</p>
+    <cds-icon shape="fast-forward" (click)="paginador(1)"></cds-icon>
+  </div>
 </div>
-
