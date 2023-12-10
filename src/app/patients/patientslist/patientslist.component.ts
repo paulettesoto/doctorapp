@@ -11,11 +11,24 @@ export class PatientslistComponent implements OnInit {
 
   constructor(private http: HttpClient, private route:Router, private storage: storageService) { }
   patients: any[] = [];
-
+  page=1;
+  pages=1;
+  paged=6;
   ngOnInit(): void {
     this.patientlist();
   }
+  paginador(i:number){
+    let r:Number;
+    this.page=this.page+i;
+    r=this.page;
+    if(r==0){
+      this.page=1;
+    }
+    if(r==(this.pages+1)){
+      this.page=(this.pages);
+    }
 
+  }
   patientlist() {
     const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientes';
 
@@ -26,6 +39,7 @@ export class PatientslistComponent implements OnInit {
       (response: any) => {
         if (response && response.patients) {
           this.patients = response.patients;
+          this.pages=Math.ceil(this.patients.length/this.paged);
           console.log(this.patients);
         } else {
           console.error('Error:', response);
