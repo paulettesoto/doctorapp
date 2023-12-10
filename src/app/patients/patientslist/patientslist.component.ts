@@ -13,7 +13,7 @@ export class PatientslistComponent implements OnInit {
   patients: any[] = [];
   page=1;
   pages=1;
-  paged=6;
+  paged=4;
   ngOnInit(): void {
     this.patientlist();
   }
