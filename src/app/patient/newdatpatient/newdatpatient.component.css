@@ -1,9 +1,9 @@
 
+
 .appointmentGroup{
     width: 100% !important;
     display: grid;
     grid-template-columns: repeat(2, 1fr) !important;
-    margin: 0 0 0 5%;
  
 }
 .title{
@@ -18,21 +18,28 @@
     width: fit-content;
 }
 .segundafila{
-    
+    margin-top: 0;
     padding: 0;
-    margin-left:100%;
+    margin-right: 30%;
 }
 
 input{
     width: 15rem;
 }
-button{
-    margin: 5% auto 0 0;
 
-}
 select{
     width: 15rem;
 }
-#buscarbtn{
-    margin-left:-30%;
+#agendar{
+    margin-left:100%
+}
+p{
+    display:flex;
+    flex-direction: row;
+
+}
+#buscar{
+   
+    margin-top: 5%;
+    margin-left: 1%;
 }

@@ -1,10 +1,14 @@
 
     <div class="content">
         <div class="search">
-            <div class="doctordata" (click)="abrirdoctor()"> <p>AQUI VA EL TEXTO</p> <div class="photo"></div>  
-            <button id="calificar" class="btn btn-primary" (click)="calificar()">Calificar doctor</button>
+            <div class="doctordata" *ngFor="let favorite of favorites" (click)="abrirdoctor()" >
+                <p>{{favorite.Nombre}} {{favorite.PrimerApe}} {{favorite.SegundoApe}}<br> 
+                {{favorite.especialidad}}<br>
+                {{favorite.cedula}}<br>
+                {{favorite.celular}}</p>
+                <div class="photo"></div>  
+                <button id="calificar" class="btn btn-primary" (click)="calificar(favorite.id)">Calificar doctor</button>
             </div>
-           
         </div>  
     </div>
 

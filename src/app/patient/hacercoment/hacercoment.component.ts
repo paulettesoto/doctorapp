@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+
 @Component({
   selector: 'app-hacercoment',
   templateUrl: './hacercoment.component.html',
@@ -10,7 +11,7 @@ import { storageService } from 'src/app/storage.service';
 export class HacercomentComponent {
   comentar:string;
   calificacion:number;
-  iddoctor:string; //CHECAR. NO ESTA BIEN. SOLO FALTA TRAERME ESTE DATO
+  idDoctor:string; //CHECAR. NO ESTA BIEN. SOLO FALTA TRAERME ESTE DATO
   //user:string;
   //idDoctor:string;
   constructor(private http:HttpClient, private route:Router, private storage:storageService){
@@ -18,10 +19,14 @@ export class HacercomentComponent {
    //this.idDoctor='';
    this.comentar='';
    this.calificacion=0;
-   this.iddoctor='';
+   this.idDoctor='';
+  }
+  ngOnInit(): void {
+   this.storage.getDataItem('idDoctor');
+
   }
   enviar(){
-    const url = `https://doctorappbackend-wpqd.onrender.com/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.iddoctor}}`;
+    const url = `https://doctorappbackend-wpqd.onrender.com/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

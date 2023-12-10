@@ -1,30 +1,36 @@
 <div class="content">
     <form class="appointmentGroup" >
-      <div class="title">
-          <h1>Agendar cita</h1>
-       </div>
+        <div class="title">
+            <h1>Agendar paciente</h1>
+        </div>
+        <div class="primerfila">
+         <p>
             <clr-date-container>
                 <label>Fecha</label>
-                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date " />
-            </clr-date-container>
-            <button type="submit" id="buscarbtn" class="btn btn-primary" (click)="disponibles()">Buscar</button>
-          
-            <div class="horarios"*ngFor="let date of availableDates">
-                <button (click)="agendar()">
-                {{ date.hora }}
-                </button>
-            </div>  
-          <div class="segundafila">
+                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
+              </clr-date-container>
+              <button type="submit" id="buscar" class="btn btn-primary" (click)="disponibles()">Buscar</button>
+         </p> 
+         <div class="horarios" *ngFor="let date of availableDates">
+            <button [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
+              {{ formatHora(date.hora) }}
+            </button>
+          </div>   
               
-                    <select clrSelect name="treatments" [(ngModel)]="treatment">
-                    <option *ngFor="let treatment of treatments" value="{{ treatment.id }}">
-                        {{ treatment.tratamiento}}
-                    </option>
-                    </select>  <br>
-        
             
-                <button type="submit" class="btn btn-primary" (click)="agendar()">Agendar</button>
-        </div>  
-    </form>
+        </div> 
+        <div class="segundafila">
+           
+            <select clrSelect name="treatments" [(ngModel)]="treatment">
+                <option *ngFor="let treatment of treatments" value="{{ treatment.id }}">
+                
+                  {{ treatment.tratamiento}}
+                </option>
+              </select>  
+
+          </div>  
+
+            <button type="submit" id="agendar" class="btn btn-primary" (click)="agendar()">Agendar</button>
+      </form>
 </div>
 

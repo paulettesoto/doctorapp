@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+
 @Component({
   selector: 'app-searchspecialist',
   templateUrl: './searchspecialist.component.html',
@@ -21,6 +22,12 @@ export class SearchspecialistComponent {
     this.data='';
     this.photo = '';
   
+  }
+  newdate(id:any){
+    this.storage.setDataItem('idDoctor',id);
+  
+    this.route.navigate(['/newdatepatient']);
+
   }
   search() {
 

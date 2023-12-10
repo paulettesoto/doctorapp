@@ -12,6 +12,7 @@
   }
   .div{
     background-color: var(--cds-alias-utility-light-blue-tint);
+
     width: 30%;
     height: 50%;
     border-radius: 2rem;

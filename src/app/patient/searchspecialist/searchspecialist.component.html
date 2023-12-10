@@ -14,16 +14,16 @@
                 </button>
             </form>
           <div class="formdata" >
-                <div class="doctordata" *ngFor="let data of doctors" id="{{data.id}}" onclick="newdate()"> 
-                    <a  href="./newdatepatient" >
+                <div class="doctordata" *ngFor="let data of doctors" id="{{data.id}}" (click)="newdate(data.id)"> 
+                  
                     <div class="texto">
                         <p>Doctor: {{data.Nombre}} {{data.PrimerApe}} {{data.SegundoApe}}<br>
                         Celular: {{data.Celular}}<br>
                         Especialidad: {{data.Especialidad}}<br>
                         Correo: {{data.Correo}}<br>
                         Cedula: {{data.Cedula}}</p>
-                        <div class="photo"></div>  
-                    </div></a>
+                        <div class="photo"></div>
+                    </div>
                 </div>
           </div>
           
