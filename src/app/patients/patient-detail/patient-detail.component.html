@@ -1,13 +1,28 @@
 
     <div class="content">
       
-            <button class="imprimir" (click)="descargar()"><img src="assets/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons 1.png"/></button>
+            <button class="imprimir" ><img src="assets/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons 1.png"/></button>
             <div class="details">
-                <p class="paciente">Paciente fulanito</p>
-                <p class="treatment">Tratamiento: ****</p>
-                <p class="treatmentfin">Tratamiento finalizado: <input type="checkbox" class="cbox" id="cbox" value="checkbox" />
+                <p class="paciente"> {{this.name}} {{this.lastname}} {{this.lastname2}}</p>
+                <clr-input-container>
+                    <label class="clr-sr-only">Tratamiento</label>
+                    <input
+                      type="text"
+                      autocomplete="treatment"
+                      name="treatment"
+                      clrInput
+                      placeholder="Tratamiento"
+                      [(ngModel)]="treatment"
+                    />
+                  </clr-input-container>
+
+                <div>
+                    <label for="fileInput">Seleccionar Archivo:</label>
+                    <input type="file" id="fileInput" (change)="subir($event)">
+                </div>
+
                 <br>
-                <button class="btn btn-primary" (click)="subir()">Subir imagen del progreso</button>
+                <button class="btn btn-primary" >Subir imagen</button>
             </div>
     
         <div class="datenew" >

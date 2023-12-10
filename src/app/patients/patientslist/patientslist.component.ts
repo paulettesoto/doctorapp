@@ -50,8 +50,11 @@ export class PatientslistComponent implements OnInit {
       }
     );
   }
-  patientdetail() {
+  patientdetail(patient:any) {
     // Limpiar localStorage
+    this.storage.setDataItem("NombrePaciente", patient.Nombre);
+    this.storage.setDataItem("Apellido1Paciente", patient.PrimerApe);
+    this.storage.setDataItem("Apellido2Paciente", patient.SegundoApe);
     this.route.navigate(['/patients/patient-detail']);
 
   }

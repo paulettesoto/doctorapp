@@ -4,7 +4,7 @@
     <div
       class="patient"
       *ngFor="let patient of patients.slice((page - 1) * paged, page * paged)"
-      (click)="patientdetail()"
+      (click)="patientdetail(patient)"
     >
       <div class="info">
         <p>
