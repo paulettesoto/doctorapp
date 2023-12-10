@@ -5,24 +5,26 @@
             <form action="#">
                 <input type="text"
                     placeholder="Buscar especialista"
-                    name="search" class="buscar">
-                <button class="boton">
+                    name="search" class="buscar" [(ngModel)]="especialidad">
+                <button class="boton" (click)="search()">
                     <i class="fa fa-search"
                         style="font-size: 18px;">
                     </i>
                     <img src="assets\buscador.jpg">
                 </button>
             </form>
-          <div class="formdata"> 
-                <div class="doctordata" (click)="newdate()"> 
-                
-                     <div class="photo"></div>  
+          <div class="formdata" >
+                <div class="doctordata" *ngFor="let data of doctors" id="{{data.id}}" onclick="newdate()"> 
+                    <a  href="./newdatepatient" >
+                    <div class="texto">
+                        <p>Doctor: {{data.Nombre}} {{data.PrimerApe}} {{data.SegundoApe}}<br>
+                        Celular: {{data.Celular}}<br>
+                        Especialidad: {{data.Especialidad}}<br>
+                        Correo: {{data.Correo}}<br>
+                        Cedula: {{data.Cedula}}</p>
+                        <div class="photo"></div>  
+                    </div></a>
                 </div>
-
-                <div class="doctordata" (click)="newdate()"> 
-                
-                    <div class="photo"></div>  
-               </div>
           </div>
           
         </div>  

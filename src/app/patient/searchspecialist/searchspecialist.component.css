@@ -16,7 +16,7 @@ input{
     margin-left: 5%;
 }
   .search{
-   
+ 
     float:right;
     margin:7px;
    
@@ -54,16 +54,22 @@ input{
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
 
 }
-
+.texto{
+    margin-top: -5%;
+}
 .photo{
     width: 4rem;
     height: 4rem;
     background: #D9D9D9;
     position: absolute;
-    margin-left: 28%;
+    margin-left: 20%;
+    margin-top: -7.5%;
 }
 .formdata{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-left:-35%
+}
+p{
+    margin-bottom: 5%;
 }

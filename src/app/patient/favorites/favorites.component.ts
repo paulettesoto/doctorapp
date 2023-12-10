@@ -8,8 +8,10 @@ import { storageService } from 'src/app/storage.service';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent {
-  constructor(private http: HttpClient, private route:Router, private storage: storageService){
-
+  doctors: any[] = [];
+  doctor:string;
+    constructor(private http: HttpClient, private route:Router, private storage: storageService){
+    this.doctor='';
   }
   abrirdoctor() {
     // Limpiar localStorage
@@ -19,4 +21,24 @@ export class FavoritesComponent {
   calificar(){
     this.route.navigate(['/hacercoment']);
   }
+  /*doctorlist() {
+    const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientes';
+
+    const params = new HttpParams()
+      .set('idDoctor', this.storage.getDataItem('user'));
+
+    this.http.get(url, { params }).subscribe(
+      (response: any) => {
+        if (response && response.coments) {
+          this.coments = response.coments;
+          console.log(this.coments);
+        } else {
+          console.error('Error:', response);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }*/
 }
