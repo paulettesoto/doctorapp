@@ -6,10 +6,10 @@
         </div> 
     
        
-        <div class="datenew" *ngFor="let date of dates">
+      
             <table class="table">
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let date of dateslist">
                     <th>
                         <p>Doctor: {{ date.Doctor }} </p>
                     </th>
@@ -21,12 +21,13 @@
                         <p> Hora:   {{ formatHora(date.hora) }}</p>
                     </th>
                     <th>
+                        <button id="historial" class="btn btn-primary" (click)="historial(date.idDoctor)">Historial clínico</button>
                         <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="canceldate(date.id)">Cancelar</button>
                     </th>
                   </tr>
                 </tbody>
               </table>
         </div>
-    </div>
+  
 
 

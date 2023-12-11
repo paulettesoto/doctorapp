@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 
@@ -10,19 +11,23 @@ import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
   styleUrls: ['./patientpanel.component.css']
 })
 export class PatientpanelComponent implements OnInit {
-  dates: any[] = [];
+  dateslist: any[] = [];
   especialidad: string;
   doctorname: string;
-  date: string;
+
   photo:string;//NO SE QUE TIPO
 
-  constructor(private storage: storageService, private http: HttpClient) {
+  constructor(private storage: storageService, private http: HttpClient, private route:Router,) {
     this. especialidad = '';
     this.doctorname='';
-    this.date = '';
+    
     this.photo = '';
 
   
+  }
+  historial(iddocpanel:any){
+    this.storage.setDataItem('idDoctor',iddocpanel);
+    this.route.navigate(['/respuestas']);
   }
   ngOnInit(){
     this.mostrar();
@@ -45,7 +50,7 @@ export class PatientpanelComponent implements OnInit {
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.dates) {
-            this.dates = response.dates;
+            this.dateslist = response.dates;
             console.log(response.dates);
           } else {
             console.error('Error:', response);
@@ -77,7 +82,7 @@ export class PatientpanelComponent implements OnInit {
             console.error('Error:', error);
           }
         );
-  
+ 
 
   }
 }
