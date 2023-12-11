@@ -23,3 +23,18 @@
     margin-left: 5px;
    
 }
+.horarios{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    width: 100%;
+}
+.horario{
+    width: fit-content;
+    height: fit-content;
+    margin: 0!important;
+    @media screen and (max-width: 768px) {
+        padding: 0;
+    }
+    
+    gap: 0;
+}
