@@ -121,10 +121,10 @@ export class ScheduleViewComponent implements OnInit {
   
 
   }
-  message(paciente:any, fecha:any, hora:any, dr:any, idcita:any){
+  message(paciente:any, fecha:any, hora:any, dr:any, idcita:any, celular:any){
     const encodeurl = encodeURI(`https://doctorappbackend-wpqd.onrender.com/dates/confirmAppointment?idCita=${idcita}`)
     const msg = `¡Hola ${paciente}! Te recuerdo tu cita el dia ${fecha} a las ${this.formatHora(hora)} con Dr. ${dr}. En caso de cancelacion o quieras reagendar tu cita, favor de contactarnos con anticipacion. Excelente dia. Confirma tu cita dando click al siguiente enlace ${encodeurl}`;
-    const url = `https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=6682104582&text=${msg}`;
+    const url = `https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

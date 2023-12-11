@@ -20,7 +20,7 @@
                 <p>Tratamiento:{{date.tratamiento}}</p>
                 <ng-container *ngIf="date.confirmada === 0; else confirmadaTemplate">
                     <p id="confirmacion">No Confirmada</p>
-                    <button id="message" class="btn btn-success-outline btn-sm" (click)="message(date.Nombre,date.fecha,date.hora, date.Doctor,date.id)">Recordatorio</button>
+                    <button id="message" class="btn btn-success-outline btn-sm" (click)="message(date.Nombre,date.fecha,date.hora, date.Doctor,date.id,date.Celular)">Recordatorio</button>
                 </ng-container>
 
                 <ng-template #confirmadaTemplate>

@@ -13,7 +13,6 @@ import * as jsPDF from 'jspdf';
   styleUrls: ['./respuestas.component.css']
 })
 export class RespuestasComponent {
-  
   clinicalRecords: any[] = [];
   idDoctor:string;
   comentar:string;
@@ -65,6 +64,23 @@ export class RespuestasComponent {
   
   }
 
-  
-
+  enviarRespuestas() {
+    this.clinicalRecords.forEach((record: any) => {
+    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'accept': 'application/json'
+     });
+      // Realiza la solicitud POST
+        this.http.post(url, {headers}).subscribe(
+          (response: any) => {
+        console.log('Solicitud POST exitosa:', response);
+        // Manejar la respuesta según tus necesidades
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+    );
+  });
+}
 }
