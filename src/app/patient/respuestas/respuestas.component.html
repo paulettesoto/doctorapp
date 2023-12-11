@@ -1,0 +1,11 @@
+<div class="content">
+    <div class="datenew" *ngFor="let record of clinicalRecords">
+     
+        <p>{{ record.pregunta }} </p>
+        <textarea clrTextarea [(ngModel)]="comentar" class="description" required placeholder="Respuesta"></textarea>
+    </div>
+    <button id="cuestionario" class="btn btn-primary">Terminar cuestionario</button>
+    
+    <button (click)="generatePDF()">Generar PDF</button>
+
+</div>

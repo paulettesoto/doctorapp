@@ -14,6 +14,7 @@ import { SearchspecialistComponent } from './searchspecialist/searchspecialist.c
 
 import { NewdatpatientComponent } from './newdatpatient/newdatpatient.component';
 import { HacercomentComponent } from './hacercoment/hacercoment.component';
+import { RespuestasComponent } from './respuestas/respuestas.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HacercomentComponent } from './hacercoment/hacercoment.component';
     PatientpanelComponent,
     SearchspecialistComponent,
     NewdatpatientComponent,
-    HacercomentComponent
+    HacercomentComponent,
+    RespuestasComponent
   ],
   imports: [
     CommonModule,

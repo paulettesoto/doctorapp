@@ -28,6 +28,7 @@ import { UpdatepasswordpatientComponent } from './patient/perfilpatient/updatepa
 import { FavoritesComponent } from './patient/favorites/favorites.component';
 import { NewdatpatientComponent } from './patient/newdatpatient/newdatpatient.component';
 import { HacercomentComponent } from './patient/hacercoment/hacercoment.component';
+import {RespuestasComponent} from './patient/respuestas/respuestas.component';
 
 const routes: Routes = [
   //{ path: "", component: AppComponent, pathMatch: "full" },
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "favorites", component: FavoritesComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "newdatepatient", component: NewdatpatientComponent, pathMatch: "full" , canActivate: [AuthGuard] },
-  { path: "hacercoment",component:HacercomentComponent,pathMatch: "full" , canActivate: [AuthGuard]}
+  { path: "hacercoment",component:HacercomentComponent,pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "respuestas", component:RespuestasComponent,pathMatch: "full" , canActivate: [AuthGuard]}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
