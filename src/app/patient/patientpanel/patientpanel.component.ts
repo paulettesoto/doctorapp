@@ -85,4 +85,7 @@ export class PatientpanelComponent implements OnInit {
  
 
   }
+  newappointment(){
+    this.route.navigate(['/search']);
+  }
 }

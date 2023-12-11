@@ -10,7 +10,7 @@ export class ReviewsComponent implements OnInit{
   comments: any[] = [];
   page=1;
   pages=1;
-  paged=6;
+  paged=4;
   constructor(private http:HttpClient, private storage:storageService ){
 
   }
