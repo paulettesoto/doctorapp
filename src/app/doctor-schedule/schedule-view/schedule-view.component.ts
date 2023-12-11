@@ -109,7 +109,7 @@ export class ScheduleViewComponent implements OnInit {
           (response: any) => {
             if (response && response.success) {
               console.log("Cita cancelada");
-              window.location.reload();
+              this.search();
             } else {
               console.error('Error:', response);
             }

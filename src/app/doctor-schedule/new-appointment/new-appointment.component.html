@@ -53,7 +53,8 @@
                 <option *ngFor="let treatment of treatments" value="{{ treatment.id }}">
                   {{ treatment.tratamiento}}
                 </option>
-              </select>  
+              </select>
+              <button type="submit" class="btn btn-primary" (click)="agendar()">Agendar</button>  
         </div> 
         <div class="segundafila">
             <clr-input-container>
@@ -88,15 +89,19 @@
                 <label>Fecha</label>
                 <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date " />
               </clr-date-container>
-              <button type="submit" class="btn btn-primary" (click)="disponibles()">Buscar</button>
-              <div class="horarios"*ngFor="let date of availableDates">
-                <button [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
-                  {{ formatHora(date.hora) }}
-                </button>
-              </div>   
+              <button type="submit" class="btn btn-primary buscar" (click)="disponibles()">Buscar</button>
+              
           </div>  
+          <div class="horarios">
+            <ng-container *ngFor="let date of availableDates">
+              <button type="button" class="btn btn-icon horario" aria-label="home" [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
+                {{ formatHora(date.hora) }}
+              </button>
+            </ng-container>
+            
+          </div>   
 
-            <button type="submit" class="btn btn-primary" (click)="agendar()">Agendar</button>
+           
       </form>
   </div>
 

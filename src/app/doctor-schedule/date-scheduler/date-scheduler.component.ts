@@ -39,6 +39,7 @@ export class DateSchedulerComponent {
 
     return `${this.agregarCero(horas)}:${this.agregarCero(minutos)}`;
   }
+
   agregarCero(valor: number): string {
     return valor < 10 ? `0${valor}` : `${valor}`;
   }
@@ -73,7 +74,7 @@ export class DateSchedulerComponent {
   }
   
   agregar() {
-    const hora = this.formatHora(parseInt(this.hour));
+    const hora = this.hour;
     const url = `https://doctorappbackend-wpqd.onrender.com/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -83,6 +84,7 @@ export class DateSchedulerComponent {
         this.http.post(url, {headers}).subscribe(
           (response: any) => {
         console.log('Solicitud POST exitosa:', response);
+        this.search();
         // Manejar la respuesta según tus necesidades
       },
       (error) => {
@@ -90,4 +92,27 @@ export class DateSchedulerComponent {
       }
   );
   }
+  deletehour(id:any){
+    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/deleteDates';
+  
+      const params = new HttpParams()
+        .set('idHorario', id);
+        ;
+        this.http.delete(url, { params }).subscribe(
+          (response: any) => {
+            if (response && response.success) {
+              console.log("horario cancelado");
+              this.search();
+            } else {
+              console.error('Error:', response);
+            }
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
+
+
+  }
+
 }
