@@ -44,9 +44,10 @@ const routes: Routes = [
   { path: "patients/patientslist", component: PatientslistComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "reviews", component: ReviewsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "schedule/date-scheduler", component: DateSchedulerComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "patients/clinical-records", component: ClinicalRecordsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "patients/patientdetail/clinical-records", component: ClinicalRecordsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "patients/patient-detail", component: PatientDetailComponent, pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "profile/service-panel", component: ServicePanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+
 
   //patient
   { path: "patient/patientpanel", component: PatientpanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},

@@ -12,29 +12,67 @@ import * as jsPDF from 'jspdf';
   templateUrl: './respuestas.component.html',
   styleUrls: ['./respuestas.component.css']
 })
-export class RespuestasComponent {
+export class RespuestasComponent implements OnInit {
+  clinicalRecordsAnswers:any[] = [];
   clinicalRecords: any[] = [];
   idDoctor:string;
   comentar:string;
-  constructor(private http:HttpClient, private route:Router,private storage:storageService){
-  this.idDoctor='';
-  this.comentar='';
+  nombre:string;
+  apellido1:string;
+  apellido2:string;
+    constructor(private http:HttpClient, private route:Router,private storage:storageService){
+    this.idDoctor='';
+    this.comentar='';
+    this.nombre = this.storage.getDataItem('nombre');
+    this.apellido1 = this.storage.getDataItem('apellido1');
+    this.apellido2 = this.storage.getDataItem('apellido2');
   
   }
 
 
   generatePDF() {
-    
-    // Crear una instancia de jsPDF
-    const doc = new jsPDF.jsPDF();
-  
-    // Agregar contenido al PDF
-    doc.text('Mi Reporte PDF', 10, 10);
-   
-    // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
-    doc.text('AIUDA',15,15);
-    doc.save('reporte.pdf');
+    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/clinicalRecords-answers';
+
+    const params = new HttpParams()
+      .set('idDoctor', this.storage.getDataItem('idDoctor'))
+      .set('idPaciente', this.storage.getDataItem('user'));
+
+    this.http.get(url, { params }).subscribe(
+      (response: any) => {
+        if (response && response.clinicalRecordsAnswers) {
+          this.clinicalRecordsAnswers = response.clinicalRecordsAnswers;
+          console.log(response.clinicalRecordsAnswers);
+
+          const doc = new jsPDF.jsPDF();
+
+          // Agregar contenido al PDF
+          doc.setFontSize(18);
+          doc.text('Reporte de Historial Clínico', 20, 10);
+
+          doc.setFontSize(12);
+          doc.text(`Paciente: ${this.nombre} ${this.apellido1} ${this.apellido2}`, 20, 20);
+
+          let yPosition = 30;
+
+          this.clinicalRecordsAnswers.forEach((recordA: any) => {
+            doc.text(`${recordA.pregunta}`, 20, yPosition);
+            yPosition += 10;
+            doc.text(`${recordA.respuesta}`, 20, yPosition);
+            yPosition += 15; // Ajusta el espaciado según tus necesidades
+          });
+
+          // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
+          doc.save('reporte.pdf');
+        } else {
+          console.error('Error:', response);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
+
   
 
 

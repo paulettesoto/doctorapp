@@ -52,6 +52,7 @@ export class PatientslistComponent implements OnInit {
   }
   patientdetail(patient:any) {
     // Limpiar localStorage
+    this.storage.setDataItem("idPaciente", patient.id);
     this.storage.setDataItem("NombrePaciente", patient.Nombre);
     this.storage.setDataItem("Apellido1Paciente", patient.PrimerApe);
     this.storage.setDataItem("Apellido2Paciente", patient.SegundoApe);

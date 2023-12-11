@@ -22,6 +22,7 @@ import { PatientModule } from './patient/patient.module';
 import { PerfilpatientModule } from './patient/perfilpatient/perfilpatient.module';
 import { storageService } from './storage.service';
 import { AuthGuard } from './auth-guard.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -30,7 +31,8 @@ import { AuthGuard } from './auth-guard.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PageprincipalComponent
+    PageprincipalComponent,
+    FooterComponent
   ],
   exports: [
   ],

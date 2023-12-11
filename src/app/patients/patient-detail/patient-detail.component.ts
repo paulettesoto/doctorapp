@@ -2,6 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 @Component({
   selector: 'app-patient-detail',
@@ -17,7 +18,7 @@ export class PatientDetailComponent implements OnInit{
   image: string; //no se que tipo
 
 
-  constructor(private http:HttpClient, private storage:storageService) {
+  constructor(private http:HttpClient, private storage:storageService, private route:Router) {
     this.name = '';
     this.lastname = '';
     this.lastname2 = '';
@@ -49,6 +50,10 @@ export class PatientDetailComponent implements OnInit{
     }
   );
  
+  }
+  clinicalrecords(){
+
+    this.route.navigate(['/patients/patientdetail/clinical-records']);
   }
 
   subir(fileInput: any): void {
