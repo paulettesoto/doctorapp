@@ -4,7 +4,7 @@ import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -21,7 +21,7 @@ export class EditProfileComponent {
   foto:string;
 
 
-  constructor(private storage: storageService, private http: HttpClient) {
+  constructor(private storage: storageService, private http: HttpClient, private route:Router) {
     this.name = '';
     this.lastname = '';
     this.lastname2 = '';
@@ -45,6 +45,7 @@ export class EditProfileComponent {
     // Validación básica de campos
     if (!this.name || !this.lastname || !this.lastname2  || !this.phonenumber || !this.email || !this.email) {
       console.error('Todos los campos deben ser completados');
+      alert("No se aceptan campos vacios");
       return;
     }else{
       const url = `https://doctorappbackend-wpqd.onrender.com/doctors/update?idDoctor=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Correo=${this.email}&Foto=${this.foto}}`;
@@ -56,6 +57,8 @@ export class EditProfileComponent {
       this.http.put(url, {headers}).subscribe(
         (response: any) => {
           console.log('Datos actualizados:', response);
+          alert("Datos actualizados");
+          this.route.navigate(['/patients/patientslist']);
           // Manejar la respuesta si es necesario
         },
         (error) => {

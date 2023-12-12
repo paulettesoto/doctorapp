@@ -15,10 +15,16 @@
     height: 100px;
 }
 .doctordata{
-    background-color: #ceddf3;
-    margin-left: -70%;
-    width: 60%;
-    height: 140%;
+    background-color: var(--cds-alias-utility-light-blue-tint);
+    margin-top: 1%;
+    margin-left:-70%;
+    width: 400px;
+    height: 200%;
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
+    -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
+    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
 }
 #calificar{
   

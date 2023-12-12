@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
+import { Router } from '@angular/router';
 
 import * as jsPDF from 'jspdf';
 
@@ -17,7 +18,7 @@ export class ClinicalRecordsComponent implements OnInit {
   apellido2:string;
   idPacient:string;
 
-  constructor(private http:HttpClient, private storage:storageService){
+  constructor(private http:HttpClient, private storage:storageService,private route:Router){
     this.idPacient=this.storage.getDataItem("idPaciente");
     this.nombre=this.storage.getDataItem("NombrePaciente");
     this.apellido1=this.storage.getDataItem("Apellido1Paciente");
@@ -60,6 +61,8 @@ export class ClinicalRecordsComponent implements OnInit {
         this.http.post(url, {headers}).subscribe(
           (response: any) => {
         console.log('Solicitud POST exitosa:', response);
+        alert("Respuestas enviadas");
+        this.route.navigate(['/patients/patientslist']);
         // Manejar la respuesta según tus necesidades
       },
       (error) => {

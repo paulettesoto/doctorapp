@@ -27,42 +27,54 @@ export class ServicePanelComponent implements OnInit {
     this.questionslist();
   }
   add_treatments() {
-    const url = `https://doctorappbackend-wpqd.onrender.com/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-  // Realiza la solicitud POST
-  this.http.post(url, {headers}).subscribe(
-    (response: any) => {
-      console.log('Solicitud POST exitosa:', response);
-      this.treatmentlist();
-      // Manejar la respuesta según tus necesidades
-    },
-    (error) => {
-      console.error('Error en la solicitud POST:', error);
-    }
-  );
+    if(!this.treatment||!this.precio){
+      alert("Faltan campos por agregar");
+    }else{
+      const url = `https://doctorappbackend-wpqd.onrender.com/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+       });
+    // Realiza la solicitud POST
+    this.http.post(url, {headers}).subscribe(
+      (response: any) => {
+        console.log('Solicitud POST exitosa:', response);
+        alert("Tratamiento exitoso");
+        this.treatment='';
+        this.precio=''
+        this.treatmentlist();
+        // Manejar la respuesta según tus necesidades
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+    );
+  }
   }
 
   add_question() {
-    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-  // Realiza la solicitud POST
-  this.http.post(url, {headers}).subscribe(
-    (response: any) => {
-      console.log('Solicitud POST exitosa:', response);
-      // Manejar la respuesta según tus necesidades
- 
-     this.questionslist();
-    },
-    (error) => {
-      console.error('Error en la solicitud POST:', error);
-    }
-  );
+    if(!this.question){
+      alert("No se ha agregado pregunta");
+    }else{
+      const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+       });
+    // Realiza la solicitud POST
+    this.http.post(url, {headers}).subscribe(
+      (response: any) => {
+        console.log('Solicitud POST exitosa:', response);
+        alert("Pregunta agregada");
+        // Manejar la respuesta según tus necesidades
+  
+      this.questionslist();
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+    );
+  }
   }
 
   treatmentlist(){
@@ -96,6 +108,7 @@ export class ServicePanelComponent implements OnInit {
           (response: any) => {
             if (response && response.success) {
               console.log("Tratamiento eliminado");
+              alert("Tratamiento eliminado");
               this.treatmentlist();
             } else {
               console.error('Error:', response);
@@ -138,6 +151,7 @@ export class ServicePanelComponent implements OnInit {
           (response: any) => {
             if (response && response.success) {
               console.log("pregunta eliminada");
+              alert("Pregunta eliminada");
               this.questionslist();
             } else {
               console.error('Error:', response);

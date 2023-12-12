@@ -116,7 +116,7 @@ export class RespuestasComponent implements OnInit {
           (response: any) => {
         console.log('Solicitud POST exitosa:', response);
         alert("Respuestas enviadas");
-        
+        this.route.navigate(['/patient/patientpanel']);
        
         // Manejar la respuesta según tus necesidades
       },

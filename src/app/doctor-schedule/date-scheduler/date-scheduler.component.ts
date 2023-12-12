@@ -45,52 +45,63 @@ export class DateSchedulerComponent {
   }
 
   search() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
-  
-    const idDoctor = this.storage.getDataItem('user');
-    const formattedDate = this.formatdate(this.date);
-  
-    // Construir los parámetros
-    const params = new HttpParams()
-      .set('idDoctor', idDoctor)
-      .set('fecha', formattedDate);
-  
-    // Hacer la solicitud GET con los parámetros
-    this.http.get(url, { params }).subscribe(
-      (response: any) => {
-        if (response && response.availableDates && Array.isArray(response.availableDates)) {
-          this.usagedDates = response.availableDates;
-          console.log(this.usagedDates);
-        } else {
-          console.error('Error:', response);
-          // Podrías manejar el error aquí si la respuesta no tiene la estructura esperada
+    if(!this.date){
+      alert("Campo de fecha vacio");
+    }else{
+
+    
+      const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
+    
+      const idDoctor = this.storage.getDataItem('user');
+      const formattedDate = this.formatdate(this.date);
+    
+      // Construir los parámetros
+      const params = new HttpParams()
+        .set('idDoctor', idDoctor)
+        .set('fecha', formattedDate);
+    
+      // Hacer la solicitud GET con los parámetros
+      this.http.get(url, { params }).subscribe(
+        (response: any) => {
+          if (response && response.availableDates && Array.isArray(response.availableDates)) {
+            this.usagedDates = response.availableDates;
+            console.log(this.usagedDates);
+          } else {
+            console.error('Error:', response);
+            // Podrías manejar el error aquí si la respuesta no tiene la estructura esperada
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+          // Aquí puedes manejar errores de la solicitud HTTP
         }
-      },
-      (error) => {
-        console.error('Error:', error);
-        // Aquí puedes manejar errores de la solicitud HTTP
-      }
-    );
+      );
+    }
   }
   
   agregar() {
-    const hora = this.hour;
-    const url = `https://doctorappbackend-wpqd.onrender.com/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-      // Realiza la solicitud POST
-        this.http.post(url, {headers}).subscribe(
-          (response: any) => {
-        console.log('Solicitud POST exitosa:', response);
-        this.search();
-        // Manejar la respuesta según tus necesidades
-      },
-      (error) => {
-        console.error('Error en la solicitud POST:', error);
-      }
-  );
+    if(!this.hour){
+      alert("Campo de hora vacio");
+    }else{
+      const hora = this.hour;
+      const url = `https://doctorappbackend-wpqd.onrender.com/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+       });
+        // Realiza la solicitud POST
+          this.http.post(url, {headers}).subscribe(
+            (response: any) => {
+          console.log('Solicitud POST exitosa:', response);
+          alert("Hora agregada");
+          this.search();
+          // Manejar la respuesta según tus necesidades
+        },
+        (error) => {
+          console.error('Error en la solicitud POST:', error);
+        }
+    );
+  }
   }
   deletehour(id:any){
     const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/deleteDates';
@@ -102,6 +113,7 @@ export class DateSchedulerComponent {
           (response: any) => {
             if (response && response.success) {
               console.log("horario cancelado");
+              alert("Hora eliminada");
               this.search();
             } else {
               console.error('Error:', response);

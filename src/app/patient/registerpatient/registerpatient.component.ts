@@ -35,22 +35,30 @@ export class RegisterpatientComponent {
   }
 
   register(){
-    const url = `https://doctorappbackend-wpqd.onrender.com/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-  // Realiza la solicitud POST
-  this.http.post(url, {headers}).subscribe(
-    (response: any) => {
-      console.log('Solicitud POST exitosa:', response);
-      // Manejar la respuesta según tus necesidades
-    },
-    (error) => {
-      console.error('Error en la solicitud POST:', error);
-    }
-  );
-
+    if( (!this.name|| !this.lastname || !this.lastname2 || !this.phonenumber || !this.fecha_nac || !this.email|| !this.password)|| !this.confirmPassword){
+      alert("Campos vacios");
+    }else if(this.password!=this.confirmPassword){
+      alert("Contraseñas no coinciden");
+    }else{
+      const url = `https://doctorappbackend-wpqd.onrender.com/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+       });
+    // Realiza la solicitud POST
+    this.http.post(url, {headers}).subscribe(
+      (response: any) => {
+        console.log('Solicitud POST exitosa:', response);
+        alert("Registro exitoso");
+        this.route.navigate(['/login'])
+        // Manejar la respuesta según tus necesidades
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+    
+    );
+}
   }
   formatdate(date:string ):string{
     const dateObj = new Date(date);

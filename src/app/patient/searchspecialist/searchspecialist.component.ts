@@ -42,6 +42,8 @@ export class SearchspecialistComponent {
             console.log(response.doctors);
           } else {
             console.error('Error:', response);
+            alert("Especialidad no existente");
+            
           }
         },
         (error) => {

@@ -2,19 +2,21 @@
     <div class="content">
         <h3>Agregar información</h3>
         <div class="treatments">
+          <p>Agregar tratamiento </p>
             <input
               type="text"
               name="treatment"
               clrInput
-              placeholder="Agregar tratamiento nuevo"
+           
               [(ngModel)]="treatment"
             /> 
+            <p>Precio </p>
             <input
             class="precio"
             type="text"           
             name="precio"
             clrInput
-            placeholder="Precio del tratamiento ($)"
+           
             [(ngModel)]="precio"
           /> 
           <button class="btn btn-primary" (click)="add_treatments()">Agregar tratamiento</button>
@@ -37,14 +39,15 @@
             </tbody>
           </table>
         </div>
-
+    
         <div class="questions">
+          <p>Agregar pregunta </p>
             <input
             class="renglon"
               type="text"
               name="question"
               clrInput
-              placeholder="Agregar pregunta"
+             
               [(ngModel)]="question"
             /> 
           

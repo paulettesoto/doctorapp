@@ -22,6 +22,11 @@ export class LoginComponent implements OnInit{
 
 
   login() {
+    if(!this.type||!this.user||!this.password){
+      alert("Faltan campos por llenar");
+    }else{
+
+    
     this.storage.clearAllDataItems();
     console.log(this.user);
     console.log(this.password);
@@ -78,13 +83,16 @@ export class LoginComponent implements OnInit{
 
         } else {
           // Manejar el caso en el que el usuario no es un número
+          alert("Contraseña o usuario incorectos");
         }
       },
       (error) => {
         console.error('Error al obtener los datos:', error);
+        
       }
     );
   }
+}
 
   
 }

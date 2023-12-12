@@ -25,24 +25,29 @@ export class HacercomentComponent {
    this.storage.getDataItem('idDoctor');
 
   }
+  
   enviar(){
-    const url = `https://doctorappbackend-wpqd.onrender.com/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-  // Realiza la solicitud POST
- this.http.post(url, {headers}).subscribe(
-    (response: any) => {
-      console.log('Solicitud POST exitosa:', response);
-      // Manejar la respuesta según tus necesidades
-    },
-    (error) => {
-      console.error('Error en la solicitud POST:', error);
-    }
- );
- this.comentar = '';
- this.calificacion = 0;
- alert("Comentario enviado");
+    if(!this.comentar|| !this.calificacion){
+      alert("Faltan campos por llenar");
+    }else{
+      const url = `https://doctorappbackend-wpqd.onrender.com/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+       });
+    // Realiza la solicitud POST
+  this.http.post(url, {headers}).subscribe(
+      (response: any) => {
+        console.log('Solicitud POST exitosa:', response);
+        alert("Comentario enviado");
+        // Manejar la respuesta según tus necesidades
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+  );
+  this.comentar = '';
+  this.calificacion = 0;
+}
 }
 }

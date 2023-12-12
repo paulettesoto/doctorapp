@@ -122,6 +122,8 @@ export class NewdatpatientComponent implements OnInit{
   this.http.post(url, {headers}).subscribe(
     (response: any) => {
       console.log('Solicitud POST exitosa:', response);
+      alert("Cita agendada");
+      this.route.navigate(['/favorites']);
       // Manejar la respuesta según tus necesidades
     },
     (error) => {
