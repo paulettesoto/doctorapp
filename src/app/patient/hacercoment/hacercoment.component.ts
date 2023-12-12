@@ -41,5 +41,8 @@ export class HacercomentComponent {
       console.error('Error en la solicitud POST:', error);
     }
  );
+ this.comentar = '';
+ this.calificacion = 0;
+ alert("Comentario enviado");
 }
 }
