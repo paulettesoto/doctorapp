@@ -182,11 +182,13 @@ export class ScheduleViewComponent implements OnInit {
 
           let yPosition = 30;
 
-          this.dates.forEach((date: any) => {
+          this.datesR.forEach((date: any) => {
             doc.text(`${date.fecha}  ${this.formatHora(date.hora)}` , 20, yPosition);
             yPosition += 10;
             doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
             yPosition += 10; // Ajusta el espaciado según tus necesidades
+            doc.text(`${date.tratamiento}  `, 20, yPosition);
+            yPosition += 30; // Ajusta el espaciado según tus necesidades
           });
 
           // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
@@ -224,13 +226,13 @@ export class ScheduleViewComponent implements OnInit {
 
           let yPosition = 30;
 
-          this.dates.forEach((date: any) => {
+          this.datesR.forEach((date: any) => {
             doc.text(`${date.fecha}  ${this.formatHora(date.hora)}` , 20, yPosition);
             yPosition += 10;
             doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
             yPosition += 10; // Ajusta el espaciado según tus necesidades
-            doc.text(`${date.confirmada} `, 20, yPosition);
-            yPosition += 10; // Ajusta el espaciado según tus necesidades
+            doc.text(`${date.tratamiento}  ${date.confirmada} `, 20, yPosition);
+            yPosition += 30; // Ajusta el espaciado según tus necesidades
           });
 
           // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)

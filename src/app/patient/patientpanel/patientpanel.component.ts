@@ -73,7 +73,7 @@ export class PatientpanelComponent implements OnInit {
           (response: any) => {
             if (response && response.success) {
               console.log("Cita cancelada");
-              window.location.reload();
+              this.mostrar();
             } else {
               console.error('Error:', response);
             }
