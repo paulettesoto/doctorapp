@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 import * as jsPDF from 'jspdf';
 
@@ -17,12 +18,13 @@ export class ClinicalRecordsComponent implements OnInit {
   apellido1:string;
   apellido2:string;
   idPacient:string;
-
+  flag:number;
   constructor(private http:HttpClient, private storage:storageService,private route:Router){
     this.idPacient=this.storage.getDataItem("idPaciente");
     this.nombre=this.storage.getDataItem("NombrePaciente");
     this.apellido1=this.storage.getDataItem("Apellido1Paciente");
     this.apellido2= this.storage.getDataItem("Apellido2Paciente");
+    this.flag=0;
 
   }
  
@@ -60,9 +62,7 @@ export class ClinicalRecordsComponent implements OnInit {
       // Realiza la solicitud POST
         this.http.post(url, {headers}).subscribe(
           (response: any) => {
-        console.log('Solicitud POST exitosa:', response);
-        alert("Respuestas enviadas");
-        this.route.navigate(['/patients/patientslist']);
+            this.flag=1;
         // Manejar la respuesta según tus necesidades
       },
       (error) => {
@@ -70,6 +70,10 @@ export class ClinicalRecordsComponent implements OnInit {
       }
     );
   });
+  if(this.flag===1){
+    alert("Respuestas enviadas");
+    this.route.navigate(['/patients/patientslist']);
+  }
 }
 
 generatePDF() {

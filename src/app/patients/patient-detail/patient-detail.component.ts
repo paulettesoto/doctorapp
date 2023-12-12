@@ -36,7 +36,7 @@ export class PatientDetailComponent implements OnInit{
   
 
   clinicalrecords(){
-
+    
     this.route.navigate(['/patients/patientdetail/clinical-records']);
   }
   tratamientos() {
