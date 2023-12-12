@@ -11,6 +11,7 @@ import { of } from 'rxjs';
 })
 export class PatientDetailComponent implements OnInit{
   resps: any[] = [];
+  treatments: any[] = [];
   name: string;
   lastname: string;
   lastname2: string;
@@ -30,61 +31,59 @@ export class PatientDetailComponent implements OnInit{
     this.name = this.storage.getDataItem("NombrePaciente");
     this.lastname = this.storage.getDataItem("Apellido1Paciente");
     this.lastname2 = this.storage.getDataItem("Apellido2Paciente");
+    this.tratamientos();
   }
   
 
-  xx() {
-    const url = `http://127.0.0.1:8000/uploadImages/image?Nombre=${this.name}&primerape=${this.lastname}&segundoape=${this.lastname2}&tratamiento=${this.lastname2}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-  // Realiza la solicitud POST
-  this.http.post(url, {headers}).subscribe(
-    (response: any) => {
-      console.log('Solicitud POST exitosa:', response);
-      // Manejar la respuesta según tus necesidades
-    },
-    (error) => {
-      console.error('Error en la solicitud POST:', error);
-    }
-  );
- 
-  }
   clinicalrecords(){
 
     this.route.navigate(['/patients/patientdetail/clinical-records']);
   }
+  tratamientos() {
 
-  subir(fileInput: any): void {
-    const file: File = fileInput.files[0];
-    if (file) {
-      // Construir la URL con parámetros de consulta
-      const url = `http://127.0.0.1:8000/uploadImages/image?Nombre=${this.name}&primerape=${this.lastname}&segundoape=${this.lastname2}&tratamiento=${this.lastname2}`;
-    
-      // Construir el formulario y agregar la imagen
-      const formData = new FormData();
-      formData.append('image', file);
-      formData.append('Nombre', this.name);
-      formData.append('primerape', this.lastname);
-      formData.append('segundoape', this.lastname2);
-      formData.append('tratamiento', this.lastname2);
+    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
 
-      // Configurar los encabezados (no es necesario Content-Type para FormData)
-      const headers = new HttpHeaders();
-
-      // Realizar la solicitud POST
-      this.http.post(url, formData, { headers }).subscribe(
+    const params = new HttpParams()
+      .set('idDoctor', this.storage.getDataItem('user'));
+      this.http.get(url, { params }).subscribe(
         (response: any) => {
-          console.log('Solicitud POST exitosa:', response);
-          // Manejar la respuesta según tus necesidades
+          if (response && response.treatments) {
+            this.treatments = response.treatments;
+            console.log(response.treatments);
+          } else {
+            console.error('Error:', response);
+          }
         },
         (error) => {
-          console.error('Error en la solicitud POST:', error);
+          console.error('Error:', error);
         }
       );
-    }
   
-}
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const Nombre = this.name; // Reemplaza con los valores reales
+    const primerape = this.lastname;
+    const segundoape = this.lastname2;
+    const tratamiento = this.treatment;
+  
+    const formData = new FormData();
+    formData.append('Nombre', Nombre);
+    formData.append('primerape', primerape);
+    formData.append('segundoape', segundoape);
+    formData.append('tratamiento', tratamiento);
+    formData.append('image', file, file.name);
+  
+  const url = 'http://127.0.0.1:8000/uploadImages/image'
+  this.http.post(`${url}`, formData)
+    .subscribe(response => {
+      console.log('Archivo subido con éxito', response);
+    }, error => {
+      console.error('Error al subir el archivo', error);
+      console.error('Detalles del error:', error.error); // Imprime detalles específicos del error
+    });
+  }
+  
   
 }

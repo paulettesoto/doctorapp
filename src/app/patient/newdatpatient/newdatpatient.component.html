@@ -15,16 +15,12 @@
             <button [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
               {{ formatHora(date.hora) }}
             </button>
-          </div>   
-              
-            
+          </div>    
         </div> 
         <div class="segundafila">
-           
             <select clrSelect name="treatments" [(ngModel)]="treatment">
                 <option *ngFor="let treatment of treatments" value="{{ treatment.id }}">
-                
-                  {{ treatment.tratamiento}}
+                  {{ treatment.tratamiento}} {{ treatment.costo}}
                 </option>
               </select>  
 

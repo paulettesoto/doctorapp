@@ -4,25 +4,27 @@
             <button class="imprimir" ><img src="assets/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons 1.png"/></button>
             <div class="details">
                 <p class="paciente"> {{this.name}} {{this.lastname}} {{this.lastname2}}</p>
-                <clr-input-container>
                     <label class="clr-sr-only">Tratamiento</label>
-                    <input
-                      type="text"
-                      autocomplete="treatment"
-                      name="treatment"
-                      clrInput
-                      placeholder="Tratamiento"
-                      [(ngModel)]="treatment"
-                    />
-                  </clr-input-container>
+                    <select clrSelect name="treatments" [(ngModel)]="treatment">
+                      <option *ngFor="let treatment of treatments" value="{{ treatment.tratamiento }}">
+                        {{ treatment.tratamiento}}
+                      </option>
+                    </select>
 
-                <div>
-                    <label for="fileInput">Seleccionar Archivo:</label>
-                    <input type="file" id="fileInput" (change)="subir($event)">
+                    <div class="file bod">
+                      <label for="fileInput">Seleccionar Archivo:</label>
+                      <input
+                        type="file"
+                        placeholder="Escriba aquí"
+                        name="fileInput"
+                        class="clr-input noTipe"
+                        (change)="onFileSelected($event)"
+                      />
+   
                 </div>
 
                 <br>
-                <button class="btn btn-primary" >Subir imagen</button>
+
             </div>
             <button class="btn btn-primary" (click)="clinicalrecords()">historia clinica</button>
     
