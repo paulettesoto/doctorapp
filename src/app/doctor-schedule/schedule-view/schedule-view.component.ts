@@ -91,7 +91,6 @@ export class ScheduleViewComponent implements OnInit {
   search(){
 
     const url = 'http://127.0.0.1:8000/dates/dates';
-  
       const params = new HttpParams()
         .set('idDoctor', this.storage.getDataItem('user'))
         .set('fecha',this.formatdate(this.date));
@@ -125,8 +124,7 @@ export class ScheduleViewComponent implements OnInit {
           (response: any) => {
             if (response && response.success) {
               console.log("Cita cancelada");
-              alert("Cita cancelada");
-              this.search();
+                this.search();
             } else {
               console.error('Error:', response);
             }
