@@ -20,7 +20,7 @@
 .segundafila{
     margin-top: 0;
     padding: 0;
-    margin-right: 30%;
+   
 }
 
 input{
@@ -42,4 +42,8 @@ p{
    
     margin-top: 5%;
     margin-left: 1%;
+}
+.horarios{
+    display: flex;
+    flex-direction: row;
 }
