@@ -92,7 +92,10 @@ generatePDF() {
         const doc = new jsPDF.jsPDF();
 
         // Agregar contenido al PDF
-        doc.setFontSize(18);
+        doc.setFont('Arial');
+       
+        
+        doc.setFontSize(15);
         doc.text('Reporte de Historial Clínico', 20, 10);
 
         doc.setFontSize(12);
