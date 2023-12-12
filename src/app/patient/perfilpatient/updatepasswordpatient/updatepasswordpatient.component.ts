@@ -19,25 +19,39 @@ export class UpdatepasswordpatientComponent {
     // Validación básica de campos
     if (!this.currentpassword || !this.confirmpassword || !this.newpassword) {
       console.error('Todos los campos deben ser completados');
+      alert("Debe de llenar todos los campos");
       return;
+    }else if(this.newpassword!=this.confirmpassword){
+      alert("No coinciden las contraseñas");
+ 
     }
+    else{
 
-    const url = `https://doctorappbackend-wpqd.onrender.com/patient/updatePswrd?idPaciente=${this.storage.getDataItem("user")}&Contrasena_actual=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-     });
-  // Realiza la solicitud POST
-      this.http.put(url, {headers}).subscribe(
-        (response: any) => {
-          console.log('Contraseña actualizada:', response);
-          // Manejar la respuesta si es necesario
-        },
-        (error) => {
-          console.error('Error al actualizar contraseña:', error);
-          // Manejar errores si es necesario
-        }
-      );
+      
+
+      const url = `https://doctorappbackend-wpqd.onrender.com/patient/updatePswrd?idPaciente=${this.storage.getDataItem("user")}&Contrasena_actual=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+       });
+    // Realiza la solicitud POST
+        this.http.put(url, {headers}).subscribe(
+          (response: any) => {
+            console.log('Contraseña actualizada:', response);
+            this.currentpassword = '';
+            this.newpassword = '';
+            this.confirmpassword='';
+            alert("Contraseña modificada");
+            // Manejar la respuesta si es necesario
+            
+          },
+          (error) => {
+            console.error('Error al actualizar contraseña:', error);
+            // Manejar errores si es necesario
+          }
+        );
+
+      }
   }
  
 }

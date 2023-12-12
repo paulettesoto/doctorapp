@@ -35,9 +35,8 @@ p{
     grid-template-columns: repeat(2, 1fr);
 }
 .filtrado{
-    display: flex; /*ghjsryg*/
+    display: flex;
 }
-
 .pages{
     display: flex;
     width: 100%;

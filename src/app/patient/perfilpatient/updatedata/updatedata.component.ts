@@ -79,6 +79,9 @@ export class UpdatedataComponent {
       this.http.put(url, {headers}).subscribe(
         (response: any) => {
           console.log('Datos actualizados:', response);
+          alert("Datos actualizados");
+         
+
           // Manejar la respuesta si es necesario
         },
         (error) => {

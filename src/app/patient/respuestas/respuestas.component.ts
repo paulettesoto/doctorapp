@@ -103,6 +103,7 @@ export class RespuestasComponent implements OnInit {
   }
 
   enviarRespuestas() {
+    
     this.clinicalRecords.forEach((record: any) => {
     const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}`;
     const headers = new HttpHeaders({
@@ -113,6 +114,9 @@ export class RespuestasComponent implements OnInit {
         this.http.post(url, {headers}).subscribe(
           (response: any) => {
         console.log('Solicitud POST exitosa:', response);
+        alert("Respuestas enviadas");
+        
+       
         // Manejar la respuesta según tus necesidades
       },
       (error) => {
