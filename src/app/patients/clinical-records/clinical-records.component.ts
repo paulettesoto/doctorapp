@@ -70,10 +70,9 @@ export class ClinicalRecordsComponent implements OnInit {
       }
     );
   });
-  if(this.flag===1){
     alert("Respuestas enviadas");
     this.route.navigate(['/patients/patientslist']);
-  }
+  
 }
 
 generatePDF() {
