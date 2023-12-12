@@ -17,7 +17,7 @@ export class PatientDetailComponent implements OnInit{
   lastname2: string;
   treatment:string;
   image: string; //no se que tipo
-
+  fileInput:string;
 
   constructor(private http:HttpClient, private storage:storageService, private route:Router) {
     this.name = '';
@@ -25,6 +25,7 @@ export class PatientDetailComponent implements OnInit{
     this.lastname2 = '';
     this.image = '';
     this.treatment='';
+    this.fileInput='';
  
   }
   ngOnInit(): void {
@@ -79,6 +80,8 @@ export class PatientDetailComponent implements OnInit{
   this.http.post(`${url}`, formData)
     .subscribe(response => {
       console.log('Archivo subido con éxito', response);
+      alert("Archivo subido exitosamente");
+     this.fileInput='';
     }, error => {
       console.error('Error al subir el archivo', error);
       console.error('Detalles del error:', error.error); // Imprime detalles específicos del error
