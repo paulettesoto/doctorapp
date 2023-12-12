@@ -35,6 +35,6 @@ p{
     grid-template-columns: repeat(2, 1fr);
 }
 .filtrado{
-    display: flex;
+    display: flex; /*ghjsryg*/
 }
 
