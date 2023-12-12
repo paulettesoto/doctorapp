@@ -39,8 +39,12 @@ export class RegisterComponent {
   register(){
     if ( this.confirmPassword !== this.password) {
       console.error('Las contraseñas no coinciden');
+      alert("Las contraseñas no coinciden");
       return;
-    }else{
+    }else if(!this.name||!this.lastname||!this.lastname2||!this.phonenumber||!this.specialty||!this.fecha_nac||!this.email||!this.cedula||!this.password||!this.confirmPassword){
+      alert("Faltan datos por agregar");
+    }
+    else{
 
    
       const url = `http://127.0.0.1:8000/signUp?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Especialidad=${this.specialty}&Correo=${this.email}.com&Cedula=${this.cedula}&HojaDoctor=${this.hoja}&Contrasena=${this.password}&Foto=${this.foto}`;
@@ -52,6 +56,8 @@ export class RegisterComponent {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
+        alert("Usuario registrado");
+        this.route.navigate(['/login']);
         // Manejar la respuesta según tus necesidades
       },
       (error) => {

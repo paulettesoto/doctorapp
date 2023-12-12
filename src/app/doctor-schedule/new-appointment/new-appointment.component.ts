@@ -129,6 +129,17 @@ export class NewAppointmentComponent implements OnInit {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
+        alert("Cita agregada");
+      
+        this.phonenumber='';
+        this.name='';
+        this.lastname='';
+        this.lastname2='';
+        this.treatment='';
+        this.email='';
+        this.age='';
+        this.datebirth='';
+        this.date='';
         // Manejar la respuesta según tus necesidades
       },
       (error) => {
