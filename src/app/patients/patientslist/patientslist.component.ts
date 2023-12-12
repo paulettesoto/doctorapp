@@ -11,11 +11,14 @@ export class PatientslistComponent implements OnInit {
 
   constructor(private http: HttpClient, private route:Router, private storage: storageService) { }
   patients: any[] = [];
+  patients2: any[] = [];
+  listaunida: any[] = [];
   page=1;
   pages=1;
   paged=4;
   ngOnInit(): void {
     this.patientlist();
+    this.patientlist2();
   }
   paginador(i:number){
     let r:Number;
@@ -50,6 +53,28 @@ export class PatientslistComponent implements OnInit {
       }
     );
   }
+  patientlist2() {
+    const url = 'http://127.0.0.1:8000/patientslist/listapacientescuenta';
+
+    const params = new HttpParams()
+      .set('idDoctor', this.storage.getDataItem('user'));
+
+    this.http.get(url, { params }).subscribe(
+      (response: any) => {
+        if (response && response.patientsc) {
+          this.patients2 = response.patientsc;
+          this.pages=Math.ceil(this.patients2.length/this.paged);
+          console.log(this.patients2);
+        } else {
+          console.error('Error:', response);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+  
   patientdetail(patient:any) {
     // Limpiar localStorage
     this.storage.setDataItem("idPaciente", patient.id);

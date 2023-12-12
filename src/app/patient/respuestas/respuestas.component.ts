@@ -35,7 +35,8 @@ export class RespuestasComponent implements OnInit {
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor'))
-      .set('idPaciente', this.storage.getDataItem('user'));
+      .set('idPaciente', this.storage.getDataItem('user'))
+      .set('cuenta', 1);
 
     this.http.get(url, { params }).subscribe(
       (response: any) => {
@@ -104,7 +105,7 @@ export class RespuestasComponent implements OnInit {
 
   enviarRespuestas() {
     this.clinicalRecords.forEach((record: any) => {
-    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}`;
+    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}&cuenta=${1}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

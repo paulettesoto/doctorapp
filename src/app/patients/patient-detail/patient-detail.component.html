@@ -1,7 +1,6 @@
 
     <div class="content">
-      
-            <button class="imprimir" ><img src="assets/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons 1.png"/></button>
+      <button class="btn btn-primary records" (click)="clinicalrecords()">historia clinica</button>
             <div class="details">
                 <p class="paciente"> {{this.name}} {{this.lastname}} {{this.lastname2}}</p>
                     <label class="clr-sr-only">Tratamiento</label>
@@ -12,7 +11,7 @@
                     </select>
 
                     <div class="file bod">
-                      <label for="fileInput">Seleccionar Archivo:</label>
+                      <label for="fileInput"></label>
                       <input
                         type="file"
                         placeholder="Escriba aquí"
@@ -26,6 +25,6 @@
                 <br>
 
             </div>
-            <button class="btn btn-primary" (click)="clinicalrecords()">historia clinica</button>
+
     
     </div>

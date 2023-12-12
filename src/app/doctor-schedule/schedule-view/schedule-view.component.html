@@ -9,8 +9,8 @@
             </clr-date-container>
             <button id="search" class="btn btn-primary" (click)="search()">Buscar</button>
         </p>
-       
-       
+       <button class="btn btn-primary print" (click)="generatePDFWeek()">Agenda semanal</button>
+       <button class="btn btn-primary print" (click)="generatePDFmonth()">Reporte mensual</button>
         
       <div class="grid">
         <div class="cita" *ngFor="let date of dates.slice((page - 1) * paged, page * paged)" id="{{date.id}}" >

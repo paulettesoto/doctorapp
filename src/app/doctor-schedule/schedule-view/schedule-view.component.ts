@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-schedule-view',
@@ -14,9 +15,10 @@ export class ScheduleViewComponent implements OnInit {
   lastname2: string;
   date: string;
   dates: any[] = [];
+  datesR: any[] = [];
   page=1;
   pages=1;
-  paged=4;
+  paged=2;
 
   ngOnInit(): void {
     this.datelist();
@@ -151,6 +153,94 @@ export class ScheduleViewComponent implements OnInit {
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);
+      }
+    );
+  }
+
+
+  generatePDFWeek() {
+    const url = 'http://127.0.0.1:8000/dates/reportWeek';
+
+    const params = new HttpParams()
+    .set('idDoctor', this.storage.getDataItem('user'))
+    .set('fecha', this.formatdate(this.currentDate.toDateString()));
+
+    this.http.get(url, { params }).subscribe(
+      (response: any) => {
+        if (response && response.dates) {
+          this.datesR = response.dates;
+          console.log(response.dates);
+
+          const doc = new jsPDF.jsPDF();
+
+          // Agregar contenido al PDF
+          doc.setFontSize(18);
+          doc.text('Citas de la semana', 20, 10);
+
+          doc.setFontSize(12);
+          doc.text(`Dr: ${this.storage.getDataItem("nombre")} ${this.storage.getDataItem("apellido1")} ${this.storage.getDataItem("apellido2")}`, 20, 20);
+
+          let yPosition = 30;
+
+          this.dates.forEach((date: any) => {
+            doc.text(`${date.fecha}  ${this.formatHora(date.hora)}` , 20, yPosition);
+            yPosition += 10;
+            doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
+            yPosition += 10; // Ajusta el espaciado según tus necesidades
+          });
+
+          // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
+          doc.save('reporte.pdf');
+        } else {
+          console.error('Error:', response);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  generatePDFmonth() {
+    const url = 'http://127.0.0.1:8000/dates/reportMonth';
+
+    const params = new HttpParams()
+    .set('idDoctor', this.storage.getDataItem('user'));
+
+    this.http.get(url, { params }).subscribe(
+      (response: any) => {
+        if (response && response.dates) {
+          this.datesR = response.dates;
+          console.log(response.dates);
+
+          const doc = new jsPDF.jsPDF();
+
+          // Agregar contenido al PDF
+          doc.setFontSize(18);
+          doc.text('Reporte mensual', 20, 10);
+
+          doc.setFontSize(12);
+          doc.text(`Dr: ${this.storage.getDataItem("nombre")} ${this.storage.getDataItem("apellido1")} ${this.storage.getDataItem("apellido2")}`, 20, 20);
+
+          let yPosition = 30;
+
+          this.dates.forEach((date: any) => {
+            doc.text(`${date.fecha}  ${this.formatHora(date.hora)}` , 20, yPosition);
+            yPosition += 10;
+            doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
+            yPosition += 10; // Ajusta el espaciado según tus necesidades
+            doc.text(`${date.confirmada} `, 20, yPosition);
+            yPosition += 10; // Ajusta el espaciado según tus necesidades
+          });
+
+          // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
+          doc.save('reporte.pdf');
+        } else {
+          console.error('Error:', response);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
       }
     );
   }

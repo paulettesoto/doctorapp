@@ -51,7 +51,7 @@ export class ClinicalRecordsComponent implements OnInit {
   }
   enviarRespuestas() {
     this.clinicalRecords.forEach((record: any) => {
-    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('user')}&Ans=${record.respuesta}&idPaciente=${this.idPacient}`;
+    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('user')}&Ans=${record.respuesta}&idPaciente=${this.idPacient}&cuenta=${0}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'
@@ -74,7 +74,8 @@ generatePDF() {
 
   const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'))
-    .set('idPaciente', this.idPacient);
+    .set('idPaciente', this.idPacient)
+    .set('cuenta', 0);
 
   this.http.get(url, { params }).subscribe(
     (response: any) => {
