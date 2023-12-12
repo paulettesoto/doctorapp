@@ -41,7 +41,7 @@ export class ServicePanelComponent implements OnInit {
         console.log('Solicitud POST exitosa:', response);
         alert("Tratamiento exitoso");
         this.treatment='';
-        this.precio=''
+        this.precio='';
         this.treatmentlist();
         // Manejar la respuesta según tus necesidades
       },
@@ -67,7 +67,7 @@ export class ServicePanelComponent implements OnInit {
         console.log('Solicitud POST exitosa:', response);
         alert("Pregunta agregada");
         // Manejar la respuesta según tus necesidades
-  
+      this.question='';
       this.questionslist();
       },
       (error) => {

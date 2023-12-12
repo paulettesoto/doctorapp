@@ -130,7 +130,7 @@ export class NewAppointmentComponent implements OnInit {
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
         alert("Cita agregada");
-        this.disponibles();
+        this.route.navigate(['/schedule/scheduleview']);
         this.phonenumber='';
         this.name='';
         this.lastname='';
