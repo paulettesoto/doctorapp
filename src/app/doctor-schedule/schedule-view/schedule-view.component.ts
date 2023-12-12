@@ -1,6 +1,5 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Location } from '@angular/common';
 import { storageService } from 'src/app/storage.service';
 
 @Component({
@@ -15,12 +14,27 @@ export class ScheduleViewComponent implements OnInit {
   lastname2: string;
   date: string;
   dates: any[] = [];
+  page=1;
+  pages=1;
+  paged=4;
 
   ngOnInit(): void {
     this.datelist();
   }
+  paginador(i:number){
+    let r:Number;
+    this.page=this.page+i;
+    r=this.page;
+    if(r==0){
+      this.page=1;
+    }
+    if(r==(this.pages+1)){
+      this.page=(this.pages);
+    }
 
-  constructor(private http:HttpClient, private location: Location, private storage:storageService) {
+  }
+
+  constructor(private http:HttpClient, private storage:storageService) {
     this.name = '';
     this.lastname = '';
     this.lastname2 = '';
