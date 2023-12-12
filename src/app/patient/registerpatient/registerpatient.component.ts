@@ -40,7 +40,7 @@ export class RegisterpatientComponent {
     }else if(this.password!=this.confirmPassword){
       alert("Contraseñas no coinciden");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
+      const url = `http://127.0.0.1:8000/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

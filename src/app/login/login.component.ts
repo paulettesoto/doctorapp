@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit{
       .set('pswrd', this.password);
 
       if (this.type === 'doctor') {
-        url = 'https://doctorappbackend-wpqd.onrender.com/login';
+        url = 'http://127.0.0.1:8000/login';
         this.storage.setDataItem('prefix', 'Dr.');
         this.storage.setDataItem('type','1');
 
       }else if (this.type === 'patient') {
-        url = 'https://doctorappbackend-wpqd.onrender.com/login_paciente';
+        url = 'http://127.0.0.1:8000/login_paciente';
         this.storage.setDataItem('prefix', '¡Hola!');
         this.storage.setDataItem('type','2');
       }

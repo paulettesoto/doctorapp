@@ -42,7 +42,7 @@ export class FavoritesComponent {
 
   }
   doctorlist() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/patientdoctors/favorites';
+    const url = 'hhttp://127.0.0.1:8000/patientdoctors/favorites';
 
     const params = new HttpParams()
       .set('idPaciente', this.storage.getDataItem('user'));

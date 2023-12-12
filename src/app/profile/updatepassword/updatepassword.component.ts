@@ -24,7 +24,7 @@ export class UpdatepasswordComponent {
       alert("La confirmacion de contraseña no coincide con la nueva");
     }
     else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/doctors/updatePswrd?idDoctor=${this.storage.getDataItem("user")}&Contrasena=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
+      const url = `http://127.0.0.1:8000/doctors/updatePswrd?idDoctor=${this.storage.getDataItem("user")}&Contrasena=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

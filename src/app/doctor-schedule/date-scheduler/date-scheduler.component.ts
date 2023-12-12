@@ -50,7 +50,7 @@ export class DateSchedulerComponent {
     }else{
 
     
-      const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
+      const url = 'http://127.0.0.1:8000/schedules/availableDates';
     
       const idDoctor = this.storage.getDataItem('user');
       const formattedDate = this.formatdate(this.date);
@@ -84,7 +84,7 @@ export class DateSchedulerComponent {
       alert("Campo de hora vacio");
     }else{
       const hora = this.hour;
-      const url = `https://doctorappbackend-wpqd.onrender.com/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
+      const url = `http://127.0.0.1:8000/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -104,7 +104,7 @@ export class DateSchedulerComponent {
   }
   }
   deletehour(id:any){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/deleteDates';
+    const url = 'http://127.0.0.1:8000/schedules/deleteDates';
   
       const params = new HttpParams()
         .set('idHorario', id);

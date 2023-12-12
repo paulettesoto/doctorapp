@@ -31,7 +31,7 @@ export class ClinicalRecordsComponent implements OnInit {
   }
   preguntas() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/clinicalRecords';
+    const url = 'http://127.0.0.1:8000/clinicalRecords/clinicalRecords';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -52,7 +52,7 @@ export class ClinicalRecordsComponent implements OnInit {
   }
   enviarRespuestas() {
     this.clinicalRecords.forEach((record: any) => {
-    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('user')}&Ans=${record.respuesta}&idPaciente=${this.idPacient}&cuenta=${0}`;
+    const url = `http://127.0.0.1:8000/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('user')}&Ans=${record.respuesta}&idPaciente=${this.idPacient}&cuenta=${0}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'
@@ -73,7 +73,7 @@ export class ClinicalRecordsComponent implements OnInit {
 }
 
 generatePDF() {
-  const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/clinicalRecords-answers';
+  const url = 'http://127.0.0.1:8000/clinicalRecords-answers/clinicalRecords-answers';
 
   const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'))

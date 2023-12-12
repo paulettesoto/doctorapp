@@ -41,7 +41,7 @@ export class PatientDetailComponent implements OnInit{
   }
   tratamientos() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+    const url = 'http://127.0.0.1:8000/treatments/treatments';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));

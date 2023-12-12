@@ -30,7 +30,7 @@ export class ServicePanelComponent implements OnInit {
     if(!this.treatment||!this.precio){
       alert("Faltan campos por agregar");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
+      const url = `http://127.0.0.1:8000/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -56,7 +56,7 @@ export class ServicePanelComponent implements OnInit {
     if(!this.question){
       alert("No se ha agregado pregunta");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
+      const url = `http://127.0.0.1:8000/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -78,7 +78,7 @@ export class ServicePanelComponent implements OnInit {
   }
 
   treatmentlist(){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+    const url = 'http://127.0.0.1:8000/treatments/treatments';
   
       const params = new HttpParams()
         .set('idDoctor', this.storage.getDataItem('user'));
@@ -99,7 +99,7 @@ export class ServicePanelComponent implements OnInit {
     }
 
     deletetreatment(id:any){
-      const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/deleteTreatment';
+      const url = 'http://127.0.0.1:8000/treatments/deleteTreatment';
   
       const params = new HttpParams()
         .set('idTratamiento', id);
@@ -121,7 +121,7 @@ export class ServicePanelComponent implements OnInit {
     }
 
     questionslist(){
-      const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/clinicalRecords';
+      const url = 'http://127.0.0.1:8000/clinicalRecords/clinicalRecords';
     
         const params = new HttpParams()
           .set('idDoctor', this.storage.getDataItem('user'));
@@ -142,7 +142,7 @@ export class ServicePanelComponent implements OnInit {
       }
 
       deletequestion(id:any){
-        const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/deleteQuestion';
+        const url = 'http://127.0.0.1:8000/clinicalRecords/deleteQuestion';
   
       const params = new HttpParams()
         .set('idHistoriaClinica', id);

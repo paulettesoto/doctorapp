@@ -55,7 +55,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 //CURDATE()
   datelist() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
+    const url = 'http://127.0.0.1:8000/dates/dates';
     console.log(this.formatdate(this.currentDate.toDateString()));
   
       const params = new HttpParams()
@@ -90,7 +90,7 @@ export class ScheduleViewComponent implements OnInit {
   }
   search(){
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
+    const url = 'http://127.0.0.1:8000/dates/dates';
   
       const params = new HttpParams()
         .set('idDoctor', this.storage.getDataItem('user'))
@@ -116,7 +116,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 
   canceldate(id: any){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
+    const url = 'http://127.0.0.1:8000/dates/cancelDate';
   
       const params = new HttpParams()
         .set('idCita', id);
@@ -138,9 +138,9 @@ export class ScheduleViewComponent implements OnInit {
 
   }
   message(paciente:any, fecha:any, hora:any, dr:any, idcita:any, celular:any){
-    const encodeurl = encodeURI(`https://doctorappbackend-wpqd.onrender.com/dates/confirmAppointment?idCita=${idcita}`)
+    const encodeurl = encodeURI(`http://127.0.0.1:8000/dates/confirmAppointment?idCita=${idcita}`)
     const msg = `¡Hola ${paciente}! Te recuerdo tu cita el dia ${fecha} a las ${this.formatHora(hora)} con Dr. ${dr}. En caso de cancelacion o quieras reagendar tu cita, favor de contactarnos con anticipacion. Excelente dia. Confirma tu cita dando click al siguiente enlace ${encodeurl}`;
-    const url = `https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
+    const url = `http://127.0.0.1:8000/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

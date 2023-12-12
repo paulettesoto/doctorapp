@@ -43,7 +43,7 @@ export class RegisterComponent {
     }else{
 
    
-      const url = `https://doctorappbackend-wpqd.onrender.com/signUp?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Especialidad=${this.specialty}&Correo=${this.email}.com&Cedula=${this.cedula}&HojaDoctor=${this.hoja}&Contrasena=${this.password}&Foto=${this.foto}`;
+      const url = `http://127.0.0.1:8000/signUp?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Especialidad=${this.specialty}&Correo=${this.email}.com&Cedula=${this.cedula}&HojaDoctor=${this.hoja}&Contrasena=${this.password}&Foto=${this.foto}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
