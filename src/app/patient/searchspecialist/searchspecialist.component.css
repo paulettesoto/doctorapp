@@ -68,7 +68,7 @@ input{
 .formdata{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-left:-35%
+    margin-left:-35%;
 }
 p{
     margin-bottom: 5%;

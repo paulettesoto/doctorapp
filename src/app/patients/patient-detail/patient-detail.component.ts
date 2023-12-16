@@ -42,7 +42,7 @@ export class PatientDetailComponent implements OnInit{
   }
   tratamientos() {
 
-    const url = 'http://127.0.0.1:8000/treatments/treatments';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -76,7 +76,7 @@ export class PatientDetailComponent implements OnInit{
     formData.append('tratamiento', tratamiento);
     formData.append('image', file, file.name);
   
-  const url = 'http://127.0.0.1:8000/uploadImages/image'
+  const url = 'https://doctorappbackend-wpqd.onrender.com/uploadImages/image'
   this.http.post(`${url}`, formData)
     .subscribe(response => {
       console.log('Archivo subido con éxito', response);

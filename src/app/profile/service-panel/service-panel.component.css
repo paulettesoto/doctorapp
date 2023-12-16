@@ -7,6 +7,12 @@
     width: 70%;
     height: 20%;
 }
+.treatments:first-of-type{
+    margin-top: 0;
+}
+h3{
+    margin: 0 auto;
+}
 .precio{
     margin-left: 5%;
     width: 90%;
@@ -25,4 +31,11 @@
 }
 #btn_question{
 margin-left: 35%;
+}
+
+.pages{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 1rem;
 }

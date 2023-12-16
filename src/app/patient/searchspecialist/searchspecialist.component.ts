@@ -31,7 +31,7 @@ export class SearchspecialistComponent {
   }
   search() {
 
-    const url = 'http://127.0.0.1:8000/patientdoctors/buscar_doctor';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/patientdoctors/buscar_doctor';
 
     const params = new HttpParams()
       .set('especialidad', this.especialidad);

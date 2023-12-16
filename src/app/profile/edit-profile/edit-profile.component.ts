@@ -48,7 +48,7 @@ export class EditProfileComponent {
       alert("No se aceptan campos vacios");
       return;
     }else{
-      const url = `http://127.0.0.1:8000/doctors/update?idDoctor=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Correo=${this.email}&Foto=${this.foto}}`;
+      const url = `https://doctorappbackend-wpqd.onrender.com/doctors/update?idDoctor=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Correo=${this.email}&Foto=${this.foto}}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

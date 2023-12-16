@@ -20,9 +20,7 @@ export class ScheduleViewComponent implements OnInit {
   pages=1;
   paged=2;
 
-  ngOnInit(): void {
-    this.datelist();
-  }
+  
   paginador(i:number){
     let r:Number;
     this.page=this.page+i;
@@ -35,7 +33,9 @@ export class ScheduleViewComponent implements OnInit {
     }
 
   }
-
+  ngOnInit(): void {
+    this.datelist();
+  }
   constructor(private http:HttpClient, private storage:storageService) {
     this.name = '';
     this.lastname = '';
@@ -55,7 +55,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 //CURDATE()
   datelist() {
-    const url = 'http://127.0.0.1:8000/dates/dates';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
     console.log(this.formatdate(this.currentDate.toDateString()));
   
       const params = new HttpParams()
@@ -90,7 +90,7 @@ export class ScheduleViewComponent implements OnInit {
   }
   search(){
 
-    const url = 'http://127.0.0.1:8000/dates/dates';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
       const params = new HttpParams()
         .set('idDoctor', this.storage.getDataItem('user'))
         .set('fecha',this.formatdate(this.date));
@@ -102,6 +102,7 @@ export class ScheduleViewComponent implements OnInit {
             console.log(response);
             if (response && response.dates) {
               this.dates = response.dates;
+              this.pages=Math.ceil(this.dates.length/this.paged);
               console.log(response.dates);
             } else {
               console.error('Error:', response);
@@ -115,7 +116,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 
   canceldate(id: any){
-    const url = 'http://127.0.0.1:8000/dates/cancelDate';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
   
       const params = new HttpParams()
         .set('idCita', id);
@@ -137,9 +138,9 @@ export class ScheduleViewComponent implements OnInit {
 
   }
   message(paciente:any, fecha:any, hora:any, dr:any, idcita:any, celular:any){
-    const encodeurl = encodeURI(`http://127.0.0.1:8000/dates/confirmAppointment?idCita=${idcita}`)
+    const encodeurl = encodeURI(`https://doctorappbackend-wpqd.onrender.com/dates/confirmAppointment?idCita=${idcita}`)
     const msg = `¡Hola ${paciente}! Te recuerdo tu cita el dia ${fecha} a las ${this.formatHora(hora)} con Dr. ${dr}. En caso de cancelacion o quieras reagendar tu cita, favor de contactarnos con anticipacion. Excelente dia. Confirma tu cita dando click al siguiente enlace ${encodeurl}`;
-    const url = `http://127.0.0.1:8000/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
+    const url = `https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'
@@ -158,7 +159,7 @@ export class ScheduleViewComponent implements OnInit {
 
 
   generatePDFWeek() {
-    const url = 'http://127.0.0.1:8000/dates/reportWeek';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/reportWeek';
 
     const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'))
@@ -187,7 +188,7 @@ export class ScheduleViewComponent implements OnInit {
             doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
             yPosition += 10; // Ajusta el espaciado según tus necesidades
             doc.text(`${date.tratamiento}  `, 20, yPosition);
-            yPosition += 30; // Ajusta el espaciado según tus necesidades
+            yPosition += 10; // Ajusta el espaciado según tus necesidades
           });
 
           // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
@@ -203,7 +204,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 
   generatePDFmonth() {
-    const url = 'http://127.0.0.1:8000/dates/reportMonth';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/reportMonth';
 
     const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'));

@@ -30,7 +30,7 @@ export class HacercomentComponent {
     if(!this.comentar|| !this.calificacion){
       alert("Faltan campos por llenar");
     }else{
-      const url = `http://127.0.0.1:8000/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
+      const url = `https://doctorappbackend-wpqd.onrender.com/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

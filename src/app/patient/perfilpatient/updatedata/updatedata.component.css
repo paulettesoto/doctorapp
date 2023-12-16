@@ -1,22 +1,17 @@
-.register{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%,-50%) ;
-   /* box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ; */ 
- /*   -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);*/
-    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
-    border-radius: 5rem;
-    padding: 1rem;
-    padding-left: 5rem;
-    padding-right: 10rem;
-  /*  background: linear-gradient(180deg, #78c4f049 0%, rgb(255, 255, 255) 100%);*/
+
+
+.title{
+    width: 100%;
+}
+h1{
+    width: 100%;
 }
 .registerGroup{
     text-align: center;
-    margin: auto 10rem auto 0;
-    width: 15rem;
+    margin: auto 0 auto 0;
+    width: 20rem;
 }
+
 input{
     width: 20rem;
 }

@@ -43,7 +43,7 @@ export class PatientpanelComponent implements OnInit {
   }
   mostrar() {
   
-    const url = 'http://127.0.0.1:8000/patientdates/dates';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/patientdates/dates';
 
     const params = new HttpParams()
       .set('idPaciente', this.storage.getDataItem('user'));
@@ -64,7 +64,7 @@ export class PatientpanelComponent implements OnInit {
   }
 //esto me lo traje del doc
   canceldate(id: any){
-    const url = 'http://127.0.0.1:8000/dates/cancelDate';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
   
       const params = new HttpParams()
         .set('idCita', id);

@@ -13,6 +13,15 @@
     padding-right: 10rem;
   /*  background: linear-gradient(180deg, #78c4f049 0%, rgb(255, 255, 255) 100%);*/
 }
+.contenido{
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+    background-image: url('../../../assets/doctorsitos.jpg') ;
+    background-repeat: no-repeat ;
+    background-size: cover ;
+    background-position: center left ;
+}
 .registerGroup{
     text-align: center;
     margin: auto 10rem auto 0;

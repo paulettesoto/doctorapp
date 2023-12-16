@@ -31,13 +31,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let treatment of treatments">
+              <tr *ngFor="let treatment of treatments.slice((page - 1) * paged, page * paged)">
                 <td>{{ treatment.tratamiento }}</td>
                 <td>${{ treatment.costo }}</td>
                 <td><cds-icon shape="trash" solid="true" (click)="deletetreatment(treatment.id)"></cds-icon></td>
               </tr>
+              
             </tbody>
+            
           </table>
+          <div class="pages">
+            <cds-icon shape="rewind" (click)="paginador(-1)"></cds-icon>
+            {{ page }} de {{ pages }}
+            <cds-icon shape="fast-forward" (click)="paginador(1)"></cds-icon>
+          </div> 
         </div>
     
         <div class="questions">
@@ -62,11 +69,18 @@
               </tr>
             </thead>
             <tbody >
-              <tr *ngFor="let question of questions">
+              <tr *ngFor="let question of questions.slice((page2 - 1) * paged, page2 * paged)">
                 <td>{{ question.pregunta }}</td>
                 <td><cds-icon shape="trash" solid="true" (click)="deletequestion(question.id)"></cds-icon></td>
               </tr>
             </tbody>
           </table>
+          <div class="pages">
+            <cds-icon shape="rewind" (click)="paginador2(-1)"></cds-icon>
+              {{ page2 }} de {{ pages2 }}
+            <cds-icon shape="fast-forward" (click)="paginador2(1)"></cds-icon>
+          </div> 
         </div>
+
+        
     </div>

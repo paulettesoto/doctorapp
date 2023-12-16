@@ -31,7 +31,7 @@ export class RespuestasComponent implements OnInit {
 
 
   generatePDF() {
-    const url = 'http://127.0.0.1:8000/clinicalRecords-answers/clinicalRecords-answers';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/clinicalRecords-answers';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor'))
@@ -83,7 +83,7 @@ export class RespuestasComponent implements OnInit {
    }
   preguntas() {
 
-    const url = 'http://127.0.0.1:8000/clinicalRecords/clinicalRecords';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/clinicalRecords';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor'));
@@ -106,7 +106,7 @@ export class RespuestasComponent implements OnInit {
   enviarRespuestas() {
     
     this.clinicalRecords.forEach((record: any) => {
-    const url = `http://127.0.0.1:8000/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}&cuenta=${1}`;
+    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}&cuenta=${1}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

@@ -29,7 +29,7 @@ export class UpdatepasswordpatientComponent {
 
       
 
-      const url = `http://127.0.0.1:8000/patient/updatePswrd?idPaciente=${this.storage.getDataItem("user")}&Contrasena_actual=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
+      const url = `https://doctorappbackend-wpqd.onrender.com/patient/updatePswrd?idPaciente=${this.storage.getDataItem("user")}&Contrasena_actual=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

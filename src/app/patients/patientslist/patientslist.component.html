@@ -15,14 +15,13 @@
         </p>
         <p>Celular: {{ patient.celular }}</p>
         <p>Celular: {{ patient.correo }}</p>
-        <div class="photo"></div>
       </div>
     </div>
   </div>
 
   <div class="pages">
     <cds-icon shape="rewind" (click)="paginador(-1)"></cds-icon>
-    <p>{{ page }} de {{ pages }}</p>
+    {{ page }} de {{ pages }}
     <cds-icon shape="fast-forward" (click)="paginador(1)"></cds-icon>
   </div>
 </div>

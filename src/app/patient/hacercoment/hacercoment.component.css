@@ -4,7 +4,7 @@
 
   #enviar{
  
-    margin-left: 30%;
+    margin-left: 15%;
   }
   .form{
    
@@ -13,8 +13,8 @@
   .div{
     background-color: var(--cds-alias-utility-light-blue-tint);
 
-    width: 30%;
-    height: 50%;
+    width: 27%;
+    height: 40%;
     border-radius: 2rem;
     padding: 1rem;
     box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  

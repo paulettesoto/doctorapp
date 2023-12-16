@@ -30,9 +30,6 @@ input{
 select{
     width: 15rem;
 }
-#agendar{
-    margin-left:100%
-}
 p{
     display:flex;
     flex-direction: row;
@@ -44,6 +41,17 @@ p{
     margin-left: 1%;
 }
 .horarios{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-column: 2 / 3 !important ;
+    grid-template-columns: repeat(5,1fr);
+    width: 100%;
+}
+.horario{
+    width: fit-content;
+    height: fit-content;
+    margin: 1rem 0 0 0;
+    @media screen and (max-width: 768px) {
+        padding: 0;
+    }
+    
 }

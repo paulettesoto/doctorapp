@@ -30,7 +30,7 @@ export class ReviewsComponent implements OnInit{
 
   }
   commentslist() {
-    const url = 'http://127.0.0.1:8000/comments/comments';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/comments/comments';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));

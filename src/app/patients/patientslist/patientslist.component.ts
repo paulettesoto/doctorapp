@@ -38,7 +38,7 @@ export class PatientslistComponent implements OnInit {
 
     // Llamar a la función correspondiente
     if (this.toggleValue) {
-      const url = 'http://127.0.0.1:8000/patientslist/listapacientes';
+      const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientes';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -58,7 +58,7 @@ export class PatientslistComponent implements OnInit {
       }
     );
     } else {
-      const url = 'http://127.0.0.1:8000/patientslist/listapacientescuenta';
+      const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientescuenta';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));

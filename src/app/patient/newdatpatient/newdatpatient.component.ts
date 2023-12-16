@@ -35,7 +35,7 @@ export class NewdatpatientComponent implements OnInit{
  
   
   disponibles() {
-    const url = 'http://127.0.0.1:8000/schedules/availableDates';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor')) //aqui poner el this iddoctor que es
@@ -91,7 +91,7 @@ export class NewdatpatientComponent implements OnInit{
 
   tratamientos() {
 
-    const url = 'http://127.0.0.1:8000/treatments/treatments';
+    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor')); 
@@ -112,8 +112,8 @@ export class NewdatpatientComponent implements OnInit{
   }
   agendar(){
    
-  //  http://127.0.0.1:8000/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}&idPaciente=1
-    const url = `http://127.0.0.1:8000/patientdates/setDate?idPaciente=${this.storage.getDataItem("user")}&idDoctor=${this.storage.getDataItem('idDoctor')}&idTratamiento=${this.treatment}&fecha=${this.formatdate(this.date)}&hora=${this.formatHora(this.selectedHour)}`;
+  //  https://doctorappbackend-wpqd.onrender.com/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}&idPaciente=1
+    const url = `https://doctorappbackend-wpqd.onrender.com/patientdates/setDate?idPaciente=${this.storage.getDataItem("user")}&idDoctor=${this.storage.getDataItem('idDoctor')}&idTratamiento=${this.treatment}&fecha=${this.formatdate(this.date)}&hora=${this.formatHora(this.selectedHour)}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

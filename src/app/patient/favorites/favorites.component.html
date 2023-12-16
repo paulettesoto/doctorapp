@@ -1,14 +1,17 @@
 
     <div class="content">
         <div class="search">
-            <div class="doctordata" *ngFor="let favorite of favorites" (click)="abrirdoctor()" >
-                <p>Nombre: {{favorite.Nombre}} {{favorite.PrimerApe}} {{favorite.SegundoApe}}<br> 
-                Especialidad: {{favorite.especialidad}}<br>
-                Cedula: {{favorite.cedula}}<br>
-                Celular: {{favorite.celular}}</p>
-                <div class="photo"></div>  
-                <button id="calificar" class="btn btn-primary" (click)="calificar(favorite.id)">Calificar doctor</button>
-            </div>
+            <ng-container *ngFor="let favorite of favorites" (click)="abrirdoctor()" >
+                <div class="doctordata" >
+                    <p>Nombre: {{favorite.Nombre}} {{favorite.PrimerApe}} {{favorite.SegundoApe}}<br> 
+                    Especialidad: {{favorite.especialidad}}<br>
+                    Cedula: {{favorite.cedula}}<br>
+                    Celular: {{favorite.celular}}</p> 
+                    <button id="calificar" class="btn btn-primary" (click)="calificar(favorite.id)">Calificar doctor</button>
+                </div>
+                
+            </ng-container>
+            
         </div>  
     </div>
 

@@ -15,9 +15,6 @@
     -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
 }
-cds-icon{
-    margin: 1.18rem .5rem 0 .5rem ;
-}
 .star{
     margin: 0;
 }
