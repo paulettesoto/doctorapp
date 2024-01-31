@@ -3,12 +3,13 @@
     display: grid;
     width: 90%;
     grid-template-columns: repeat(2, 1fr);
+    height: 500px;
 }
 .comments{
     background-color: var(--cds-alias-utility-light-blue-tint);
     margin: 5% 0 2% 2%;
     width: 400px;
-    height: 150px;
+    height: 130px;
     border-radius: 2rem;
     padding: 1rem;
     box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
@@ -17,10 +18,4 @@
 }
 .star{
     margin: 0;
-}
-.pages{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    height: 1rem;
 }
