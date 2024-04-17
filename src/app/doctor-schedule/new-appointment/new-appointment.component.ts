@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-new-appointment',
   templateUrl: './new-appointment.component.html',
@@ -39,7 +41,7 @@ export class NewAppointmentComponent implements OnInit {
   }
   
   disponibles() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
+    const url = `${environment.apiUrl}/schedules/availableDates`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'))
@@ -95,7 +97,7 @@ export class NewAppointmentComponent implements OnInit {
 
   tratamientos() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+    const url = `${environment.apiUrl}/treatments/treatments`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -120,7 +122,7 @@ export class NewAppointmentComponent implements OnInit {
     }else{
 
     
-      const url = `https://doctorappbackend-wpqd.onrender.com/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}`;
+      const url = `${environment.apiUrl}/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -140,7 +142,6 @@ export class NewAppointmentComponent implements OnInit {
         this.age='';
         this.datebirth='';
         this.date='';
-        // Manejar la respuesta según tus necesidades
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);

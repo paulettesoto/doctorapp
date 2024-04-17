@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-patientslist',
   templateUrl: './patientslist.component.html',
@@ -38,7 +39,7 @@ export class PatientslistComponent implements OnInit {
 
     // Llamar a la función correspondiente
     if (this.toggleValue) {
-      const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientes';
+      const url = `${environment.apiUrl}/patientslist/listapacientes`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -58,7 +59,7 @@ export class PatientslistComponent implements OnInit {
       }
     );
     } else {
-      const url = 'https://doctorappbackend-wpqd.onrender.com/patientslist/listapacientescuenta';
+      const url = `${environment.apiUrl}/patientslist/listapacientescuenta`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));

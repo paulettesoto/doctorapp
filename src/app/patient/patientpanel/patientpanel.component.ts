@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class PatientpanelComponent implements OnInit {
   }
   mostrar() {
   
-    const url = 'https://doctorappbackend-wpqd.onrender.com/patientdates/dates';
+    const url = `${environment.apiUrl}/patientdates/dates`;
 
     const params = new HttpParams()
       .set('idPaciente', this.storage.getDataItem('user'));
@@ -64,7 +64,7 @@ export class PatientpanelComponent implements OnInit {
   }
 //esto me lo traje del doc
   canceldate(id: any){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
+    const url = `${environment.apiUrl}/dates/cancelDate`;
   
       const params = new HttpParams()
         .set('idCita', id);

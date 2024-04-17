@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
 import { Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-date-scheduler',
   templateUrl: './date-scheduler.component.html',
@@ -50,7 +50,7 @@ export class DateSchedulerComponent {
     }else{
 
     
-      const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
+      const url = `${environment.apiUrl}/schedules/availableDates`;
     
       const idDoctor = this.storage.getDataItem('user');
       const formattedDate = this.formatdate(this.date);
@@ -84,7 +84,7 @@ export class DateSchedulerComponent {
       alert("Campo de hora vacio");
     }else{
       const hora = this.hour;
-      const url = `https://doctorappbackend-wpqd.onrender.com/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
+      const url = `${environment.apiUrl}/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -104,7 +104,7 @@ export class DateSchedulerComponent {
   }
   }
   deletehour(id:any){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/deleteDates';
+    const url = `${environment.apiUrl}/schedules/deleteDates`;
   
       const params = new HttpParams()
         .set('idHorario', id);

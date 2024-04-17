@@ -1,7 +1,6 @@
 {
     "/api": {
-      "target": "https://doctorappbackend-wpqd.onrender.com",
-      "secure": false
+        "target": "https://doctorappbackend-wpqd.onrender.com",
+        "secure": false
     }
-  }
-  
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-updatepasswordpatient',
   templateUrl: './updatepasswordpatient.component.html',
@@ -29,7 +30,7 @@ export class UpdatepasswordpatientComponent {
 
       
 
-      const url = `https://doctorappbackend-wpqd.onrender.com/patient/updatePswrd?idPaciente=${this.storage.getDataItem("user")}&Contrasena_actual=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
+      const url = `${environment.apiUrl}/patient/updatePswrd?idPaciente=${this.storage.getDataItem("user")}&Contrasena_actual=${this.currentpassword}&ContrasenaNueva=${this.newpassword}&verif_contra=${this.confirmpassword}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

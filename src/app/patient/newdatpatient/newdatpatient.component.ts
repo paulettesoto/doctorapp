@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Route,Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-newdatpatient',
@@ -35,7 +36,7 @@ export class NewdatpatientComponent implements OnInit{
  
   
   disponibles() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/schedules/availableDates';
+    const url = `${environment.apiUrl}/schedules/availableDates`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor')) //aqui poner el this iddoctor que es
@@ -91,7 +92,7 @@ export class NewdatpatientComponent implements OnInit{
 
   tratamientos() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+    const url = `${environment.apiUrl}/treatments/treatments`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor')); 
@@ -112,8 +113,8 @@ export class NewdatpatientComponent implements OnInit{
   }
   agendar(){
    
-  //  https://doctorappbackend-wpqd.onrender.com/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}&idPaciente=1
-    const url = `https://doctorappbackend-wpqd.onrender.com/patientdates/setDate?idPaciente=${this.storage.getDataItem("user")}&idDoctor=${this.storage.getDataItem('idDoctor')}&idTratamiento=${this.treatment}&fecha=${this.formatdate(this.date)}&hora=${this.formatHora(this.selectedHour)}`;
+  //  ${environment.apiUrl}/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}&idPaciente=1
+    const url = `${environment.apiUrl}/patientdates/setDate?idPaciente=${this.storage.getDataItem("user")}&idDoctor=${this.storage.getDataItem('idDoctor')}&idTratamiento=${this.treatment}&fecha=${this.formatdate(this.date)}&hora=${this.formatHora(this.selectedHour)}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

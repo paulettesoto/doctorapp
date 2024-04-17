@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { storageService } from '../storage.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -37,12 +38,12 @@ export class LoginComponent implements OnInit{
       .set('pswrd', this.password);
 
       if (this.type === 'doctor') {
-        url = 'https://doctorappbackend-wpqd.onrender.com/login';
+        url = `${environment.apiUrl}/login`;
         this.storage.setDataItem('prefix', 'Dr.');
         this.storage.setDataItem('type','1');
 
       }else if (this.type === 'patient') {
-        url = 'https://doctorappbackend-wpqd.onrender.com/login_paciente';
+        url = `${environment.apiUrl}/login_paciente`;
         this.storage.setDataItem('prefix', '¡Hola!');
         this.storage.setDataItem('type','2');
       }

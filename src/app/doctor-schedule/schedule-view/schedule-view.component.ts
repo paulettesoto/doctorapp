@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
 import * as jsPDF from 'jspdf';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-schedule-view',
@@ -55,7 +56,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 //CURDATE()
   datelist() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
+    const url = `${environment.apiUrl}/dates/dates`;
     console.log(this.formatdate(this.currentDate.toDateString()));
   
       const params = new HttpParams()
@@ -90,7 +91,7 @@ export class ScheduleViewComponent implements OnInit {
   }
   search(){
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/dates';
+    const url = `${environment.apiUrl}/dates/dates`;
       const params = new HttpParams()
         .set('idDoctor', this.storage.getDataItem('user'))
         .set('fecha',this.formatdate(this.date));
@@ -116,7 +117,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 
   canceldate(id: any){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/cancelDate';
+    const url = `${environment.apiUrl}/dates/cancelDate`;
   
       const params = new HttpParams()
         .set('idCita', id);
@@ -138,9 +139,9 @@ export class ScheduleViewComponent implements OnInit {
 
   }
   message(paciente:any, fecha:any, hora:any, dr:any, idcita:any, celular:any){
-    const encodeurl = encodeURI(`https://doctorappbackend-wpqd.onrender.com/dates/confirmAppointment?idCita=${idcita}`)
+    const encodeurl = encodeURI(`${environment.apiUrl}/dates/confirmAppointment?idCita=${idcita}`)
     const msg = `¡Hola ${paciente}! Te recuerdo tu cita el dia ${fecha} a las ${this.formatHora(hora)} con Dr. ${dr}. En caso de cancelacion o quieras reagendar tu cita, favor de contactarnos con anticipacion. Excelente dia. Confirma tu cita dando click al siguiente enlace ${encodeurl}`;
-    const url = `https://doctorappbackend-wpqd.onrender.com/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
+    const url = `${environment.apiUrl}/sendMessage/sendMessage?phoneN=${celular}&text=${msg}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'
@@ -159,7 +160,7 @@ export class ScheduleViewComponent implements OnInit {
 
 
   generatePDFWeek() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/reportWeek';
+    const url = `${environment.apiUrl}dates/reportWeek`;
 
     const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'))
@@ -204,7 +205,7 @@ export class ScheduleViewComponent implements OnInit {
   }
 
   generatePDFmonth() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/dates/reportMonth';
+    const url = `${environment.apiUrl}/dates/reportMonth`;
 
     const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'));

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
@@ -30,7 +31,7 @@ export class ReviewsComponent implements OnInit{
 
   }
   commentslist() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/comments/comments';
+    const url = `${environment.apiUrl}/comments/comments`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));

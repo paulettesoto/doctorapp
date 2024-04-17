@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hacercoment',
@@ -30,7 +31,7 @@ export class HacercomentComponent {
     if(!this.comentar|| !this.calificacion){
       alert("Faltan campos por llenar");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
+      const url = `${environment.apiUrl}/patientcomments/comentarios_paciente?comentario=${this.comentar}&calificacion=${this.calificacion}&idDoctor=${this.storage.getDataItem('idDoctor')}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

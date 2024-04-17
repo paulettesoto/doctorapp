@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 import * as jsPDF from 'jspdf';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-clinical-records',
@@ -33,7 +34,7 @@ export class ClinicalRecordsComponent implements OnInit {
   }
   preguntas() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/clinicalRecords';
+    const url = `${environment.apiUrl}/clinicalRecords/clinicalRecords`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -54,7 +55,7 @@ export class ClinicalRecordsComponent implements OnInit {
   }
   enviarRespuestas() {
     this.clinicalRecords.forEach((record: any) => {
-    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('user')}&Ans=${record.respuesta}&idPaciente=${this.idPacient}&cuenta=${0}`;
+    const url = `${environment.apiUrl}/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('user')}&Ans=${record.respuesta}&idPaciente=${this.idPacient}&cuenta=${0}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'
@@ -76,7 +77,7 @@ export class ClinicalRecordsComponent implements OnInit {
 }
 
 generatePDF() {
-  const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/clinicalRecords-answers';
+  const url = `${environment.apiUrl}/clinicalRecords-answers/clinicalRecords-answers`;
 
   const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'))

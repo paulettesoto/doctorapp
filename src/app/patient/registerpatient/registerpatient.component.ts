@@ -7,6 +7,9 @@ import { NavbarpatientComponent } from 'src/app/shared/navbarpatient/navbarpatie
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment
+  
+ } from 'src/environments/environment';
 @Component({
   selector: 'app-registerpatient',
   templateUrl: './registerpatient.component.html',
@@ -40,7 +43,7 @@ export class RegisterpatientComponent {
     }else if(this.password!=this.confirmPassword){
       alert("Contraseñas no coinciden");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
+      const url = `${environment.apiUrl}/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

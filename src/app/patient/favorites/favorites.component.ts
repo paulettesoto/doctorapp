@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class FavoritesComponent {
 
   }
   doctorlist() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/patientdoctors/favorites';
+    const url = `${environment.apiUrl}/patientdoctors/favorites`;
 
     const params = new HttpParams()
       .set('idPaciente', this.storage.getDataItem('user'));

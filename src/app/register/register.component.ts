@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -47,7 +48,7 @@ export class RegisterComponent {
     else{
 
    
-      const url = `https://doctorappbackend-wpqd.onrender.com/signUp?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Especialidad=${this.specialty}&Correo=${this.email}&Cedula=${this.cedula}&HojaDoctor=${this.hoja}&Contrasena=${this.password}&Foto=${this.foto}`;
+      const url = `${environment.apiUrl}/signUp?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Especialidad=${this.specialty}&Correo=${this.email}&Cedula=${this.cedula}&HojaDoctor=${this.hoja}&Contrasena=${this.password}&Foto=${this.foto}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'

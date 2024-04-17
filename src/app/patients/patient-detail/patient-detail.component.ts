@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-patient-detail',
   templateUrl: './patient-detail.component.html',
@@ -42,7 +43,7 @@ export class PatientDetailComponent implements OnInit{
   }
   tratamientos() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+    const url = `${environment.apiUrl}/treatments/treatments`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'));
@@ -76,7 +77,7 @@ export class PatientDetailComponent implements OnInit{
     formData.append('tratamiento', tratamiento);
     formData.append('image', file, file.name);
   
-  const url = 'https://doctorappbackend-wpqd.onrender.com/uploadImages/image'
+  const url = `${environment.apiUrl}/uploadImages/image`;
   this.http.post(`${url}`, formData)
     .subscribe(response => {
       console.log('Archivo subido con éxito', response);

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
 
 import * as jsPDF from 'jspdf';
-
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class RespuestasComponent implements OnInit {
 
 
   generatePDF() {
-    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/clinicalRecords-answers';
+    const url = `${environment.apiUrl}/clinicalRecords-answers/clinicalRecords-answers`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor'))
@@ -83,7 +83,7 @@ export class RespuestasComponent implements OnInit {
    }
   preguntas() {
 
-    const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/clinicalRecords';
+    const url = `${environment.apiUrl}/clinicalRecords/clinicalRecords`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor'));
@@ -106,7 +106,7 @@ export class RespuestasComponent implements OnInit {
   enviarRespuestas() {
     
     this.clinicalRecords.forEach((record: any) => {
-    const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}&cuenta=${1}`;
+    const url = `${environment.apiUrl}/clinicalRecords-answers/addAnswer?idQ=${record.id}&idDoctor=${this.storage.getDataItem('idDoctor')}&Ans=${record.respuesta}&idPaciente=${this.storage.getDataItem('user')}&cuenta=${1}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'accept': 'application/json'

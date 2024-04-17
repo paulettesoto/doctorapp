@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-service-panel',
   templateUrl: './service-panel.component.html',
@@ -60,7 +60,7 @@ export class ServicePanelComponent implements OnInit {
     if(!this.treatment||!this.precio){
       alert("Faltan campos por agregar");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
+      const url = `${environment.apiUrl}/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -86,7 +86,7 @@ export class ServicePanelComponent implements OnInit {
     if(!this.question){
       alert("No se ha agregado pregunta");
     }else{
-      const url = `https://doctorappbackend-wpqd.onrender.com/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
+      const url = `${environment.apiUrl}/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -108,7 +108,7 @@ export class ServicePanelComponent implements OnInit {
   }
 
   treatmentlist(){
-    const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/treatments';
+    const url = `${environment.apiUrl}/treatments/treatments`;
   
       const params = new HttpParams()
         .set('idDoctor', this.storage.getDataItem('user'));
@@ -130,7 +130,7 @@ export class ServicePanelComponent implements OnInit {
     }
 
     deletetreatment(id:any){
-      const url = 'https://doctorappbackend-wpqd.onrender.com/treatments/deleteTreatment';
+      const url = `${environment.apiUrl}/treatments/deleteTreatment`;
   
       const params = new HttpParams()
         .set('idTratamiento', id);
@@ -152,7 +152,7 @@ export class ServicePanelComponent implements OnInit {
     }
 
     questionslist(){
-      const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/clinicalRecords';
+      const url = `${environment.apiUrl}/clinicalRecords/clinicalRecords`;
     
         const params = new HttpParams()
           .set('idDoctor', this.storage.getDataItem('user'));
@@ -174,7 +174,7 @@ export class ServicePanelComponent implements OnInit {
       }
 
       deletequestion(id:any){
-        const url = 'https://doctorappbackend-wpqd.onrender.com/clinicalRecords/deleteQuestion';
+        const url = `${environment.apiUrl}/clinicalRecords/deleteQuestion`;
   
       const params = new HttpParams()
         .set('idHistoriaClinica', id);
