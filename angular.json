@@ -27,7 +27,16 @@
                         "styles": [
                             "src/styles.css"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "allowedCommonJsDependencies": [
+                            "canvg",
+                            "jspdf",
+                            "sweetalert2",
+                            "dompurify",
+                            "html2canvas",
+                            "raf",
+                            "rgbcolor"
+                        ]
                     },
                     "configurations": {
                         "production": {

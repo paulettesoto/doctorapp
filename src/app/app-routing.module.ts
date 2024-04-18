@@ -31,37 +31,37 @@ import { HacercomentComponent } from './patient/hacercoment/hacercoment.componen
 import {RespuestasComponent} from './patient/respuestas/respuestas.component';
 
 const routes: Routes = [
-  //{ path: "", component: AppComponent, pathMatch: "full" },
-  { path: "", component: PageprincipalComponent, pathMatch: "full" },
-  { path: "login", component: LoginComponent, pathMatch: "full"},
-  { path: "register", component: RegisterComponent, pathMatch: "full"},
+  //{ path: "", component: AppComponent },
+  { path: "", component: PageprincipalComponent },
+  { path: "login", component: LoginComponent},
+  { path: "register", component: RegisterComponent},
   
   //doctor
-  { path: "profile/editprofile", component: EditProfileComponent, pathMatch: "full", canActivate: [AuthGuard]},
-  { path: "profile/updatepassword", component: UpdatepasswordComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "schedule/newappointment", component: NewAppointmentComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "schedule/scheduleview", component: ScheduleViewComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "patients/patientslist", component: PatientslistComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "reviews", component: ReviewsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "schedule/date-scheduler", component: DateSchedulerComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "patients/patientdetail/clinical-records", component: ClinicalRecordsComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "patients/patient-detail", component: PatientDetailComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "profile/service-panel", component: ServicePanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},
+  { path: "profile/editprofile", component: EditProfileComponent, canActivate: [AuthGuard]},
+  { path: "profile/updatepassword", component: UpdatepasswordComponent , canActivate: [AuthGuard]},
+  { path: "schedule/newappointment", component: NewAppointmentComponent , canActivate: [AuthGuard]},
+  { path: "schedule/scheduleview", component: ScheduleViewComponent , canActivate: [AuthGuard]},
+  { path: "patients/patientslist", component: PatientslistComponent , canActivate: [AuthGuard]},
+  { path: "reviews", component: ReviewsComponent , canActivate: [AuthGuard]},
+  { path: "schedule/date-scheduler", component: DateSchedulerComponent , canActivate: [AuthGuard]},
+  { path: "patients/patientdetail/clinical-records", component: ClinicalRecordsComponent , canActivate: [AuthGuard]},
+  { path: "patients/patient-detail", component: PatientDetailComponent , canActivate: [AuthGuard]},
+  { path: "profile/service-panel", component: ServicePanelComponent , canActivate: [AuthGuard]},
 
 
   //patient
-  { path: "patient/patientpanel", component: PatientpanelComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "registerpatient", component: RegisterpatientComponent, pathMatch: "full"},
-  { path: "search", component: SearchspecialistComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "perfilpatient/updatedata", component: UpdatedataComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "favorites", component: FavoritesComponent, pathMatch: "full" , canActivate: [AuthGuard]},
-  { path: "newdatepatient", component: NewdatpatientComponent, pathMatch: "full" , canActivate: [AuthGuard] },
+  { path: "patient/patientpanel", component: PatientpanelComponent , canActivate: [AuthGuard]},
+  { path: "registerpatient", component: RegisterpatientComponent},
+  { path: "search", component: SearchspecialistComponent , canActivate: [AuthGuard]},
+  { path: "perfilpatient/updatedata", component: UpdatedataComponent , canActivate: [AuthGuard]},
+  { path: "perfilpatient/updatepasswordpatient", component: UpdatepasswordpatientComponent , canActivate: [AuthGuard]},
+  { path: "favorites", component: FavoritesComponent , canActivate: [AuthGuard]},
+  { path: "newdatepatient", component: NewdatpatientComponent , canActivate: [AuthGuard] },
   { path: "hacercoment",component:HacercomentComponent,pathMatch: "full" , canActivate: [AuthGuard]},
   { path: "respuestas", component:RespuestasComponent,pathMatch: "full" , canActivate: [AuthGuard]}
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
   providers: [AuthGuard]
 })
