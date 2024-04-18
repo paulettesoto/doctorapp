@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit {
   mode?: string;
 
   constructor(private route:Router, private storage : storageService) {  }
-  //togglemode(){
-  //  this.mod = !this.mod;
-  //  const mode = this.mod ? 'dark' : 'light';
-  //  this.storage.setDataItem('mode', mode);
+  //*togglemode(){
+  //! this.mod = !this.mod;
+  // ? const mode = this.mod ? 'dark' : 'light';
+  // *TODO: this.storage.setDataItem('mode', mode);
   //}
 
   ngOnInit(): void {
