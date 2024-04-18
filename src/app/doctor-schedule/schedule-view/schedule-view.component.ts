@@ -78,6 +78,33 @@ export class ScheduleViewComponent implements OnInit {
         );
   
   }
+  verificarFechaPasada(fechaAComparar:any, hour:any): boolean {
+    const fechaActual: Date = new Date();
+    const year = fechaActual.getFullYear(); // Obtener el año
+    const month = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // Obtener el mes (se suma 1 porque los meses comienzan desde 0)
+    const day = fechaActual.getDate().toString().padStart(2, '0'); // Obtener el día
+
+    const fechaEnFormatoAAAAMMDD = `${year}-${month}-${day}`;
+    const hours = fechaActual.getHours().toString().padStart(2, '0'); // Obtener la hora (asegurando que tenga dos dígitos)
+    const minutes = fechaActual.getMinutes().toString().padStart(2, '0'); // Obtener los minutos (asegurando que tenga dos dígitos)
+
+    const horaEnFormatoHHMM = `${hours}:${minutes}`;
+    console.log(fechaAComparar)
+    console.log(fechaEnFormatoAAAAMMDD)
+    console.log(hour)
+      console.log(horaEnFormatoHHMM)
+    if (fechaAComparar < fechaEnFormatoAAAAMMDD) {
+      console.log(fechaAComparar)
+      console.log(fechaEnFormatoAAAAMMDD)
+      return true;
+    } else if (hour< horaEnFormatoHHMM) {
+      console.log(hours)
+      console.log(horaEnFormatoHHMM)
+      return true;
+    } else {
+      return false;
+    }
+  }
   formatdate(date:string ):string{
     const dateObj = new Date(date);
 
@@ -173,23 +200,40 @@ export class ScheduleViewComponent implements OnInit {
           console.log(response.dates);
 
           const doc = new jsPDF.jsPDF();
-
+          //membrete
+          const imagePath = '';
+          const xCoordinate = 80;
+          const yCoordinate = 10;
+          const imageWidth = 60;  // Ancho de la imagen en mm
+          const imageHeight = 30;  // Alto de la imagen en mm
+          doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
+         
           // Agregar contenido al PDF
+          doc.setFont('bold');
           doc.setFontSize(18);
-          doc.text('Citas de la semana', 20, 10);
+          doc.text('Agenda semanal', 90, 50);
 
+          doc.setFont('normal');
           doc.setFontSize(12);
-          doc.text(`Dr: ${this.storage.getDataItem("nombre")} ${this.storage.getDataItem("apellido1")} ${this.storage.getDataItem("apellido2")}`, 20, 20);
+          doc.text(`Dr: ${this.storage.getDataItem("nombre")} ${this.storage.getDataItem("apellido1")} ${this.storage.getDataItem("apellido2")}`, 90, 60);
 
-          let yPosition = 30;
+          let yPosition = 60;
 
           this.datesR.forEach((date: any) => {
-            doc.text(`${date.fecha}  ${this.formatHora(date.hora)}` , 20, yPosition);
-            yPosition += 10;
-            doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
-            yPosition += 10; // Ajusta el espaciado según tus necesidades
-            doc.text(`${date.tratamiento}  `, 20, yPosition);
-            yPosition += 10; // Ajusta el espaciado según tus necesidades
+            // Calcular la altura del bloque de texto
+            const blockHeight = 22; // Ajusta la altura del bloque según tus necesidades
+
+            // Dibujar el borde
+            doc.rect(20, yPosition, 170, blockHeight); // 20: posición x, yPosition: posición y, 150: ancho del bloque, blockHeight: altura del bloque
+
+            // Agregar el texto dentro del borde
+            doc.text(`Fecha y hora: ${date.fecha}  ${this.formatHora(date.hora)}`, 25, yPosition + 5);
+            doc.text(`Paciente: ${date.Nombre} `, 25, yPosition + 10);
+            doc.text(`Celular: ${date.Celular}  `, 25, yPosition + 15);
+            doc.text(`Tratamiento: ${date.tratamiento}  `, 25, yPosition + 20);
+
+            // Incrementar la posición vertical para el siguiente bloque de texto
+            yPosition += blockHeight + 5; // Ajusta el espaciado según tus necesidades
           });
 
           // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)
@@ -219,21 +263,47 @@ export class ScheduleViewComponent implements OnInit {
           const doc = new jsPDF.jsPDF();
 
           // Agregar contenido al PDF
+               //membrete
+          const imagePath = '../../assets/logo-removebg.png';
+          const xCoordinate = 80;
+          const yCoordinate = 10;
+          const imageWidth = 60;  // Ancho de la imagen en mm
+          const imageHeight = 30;  // Alto de la imagen en mm
+          doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
+          doc.setFont('bold');
           doc.setFontSize(18);
           doc.text('Reporte mensual', 20, 10);
+          doc.text('Agenda mensual', 90, 50);
+          doc.setFont('normal');
 
           doc.setFontSize(12);
-          doc.text(`Dr: ${this.storage.getDataItem("nombre")} ${this.storage.getDataItem("apellido1")} ${this.storage.getDataItem("apellido2")}`, 20, 20);
+          doc.text(`Dr: ${this.storage.getDataItem("nombre")} ${this.storage.getDataItem("apellido1")} ${this.storage.getDataItem("apellido2")}`, 90, 60);
 
-          let yPosition = 30;
+          let yPosition = 60;
+          let status="";
 
           this.datesR.forEach((date: any) => {
-            doc.text(`${date.fecha}  ${this.formatHora(date.hora)}` , 20, yPosition);
-            yPosition += 10;
-            doc.text(`${date.Nombre}   ${date.Celular}`, 20, yPosition);
-            yPosition += 10; // Ajusta el espaciado según tus necesidades
-            doc.text(`${date.tratamiento}  ${date.confirmada} `, 20, yPosition);
-            yPosition += 30; // Ajusta el espaciado según tus necesidades
+            const blockHeight = 28; // Ajusta la altura del bloque según tus necesidades
+
+            // Dibujar el borde
+            doc.rect(20, yPosition, 170, blockHeight); // 20: posición x, yPosition: posición y, 150: ancho del bloque, blockHeight: altura del bloque
+
+            // Agregar el texto dentro del borde
+            doc.text(`Fecha y hora: ${date.fecha}  ${this.formatHora(date.hora)}`, 25, yPosition + 5);
+            doc.text(`Paciente: ${date.Nombre} `, 25, yPosition + 10);
+            doc.text(`Celular: ${date.Celular}  `, 25, yPosition + 15);
+            doc.text(`Tratamiento: ${date.tratamiento}  `, 25, yPosition + 20);
+            if (date.confirmada === "Cumplida") {
+              status = "Confirmada";
+            }else{
+              status = "No confirmada";
+            }
+
+            // Agregar el estado al texto
+            doc.text(`Estado: ${status} `, 25, yPosition + 25);
+            // Incrementar la posición vertical para el siguiente bloque de texto
+            yPosition += blockHeight + 5; // Ajusta el espaciado según tus necesidades
+
           });
 
           // Guardar o mostrar el PDF (puedes personalizar esto según tus necesidades)

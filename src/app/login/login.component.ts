@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { storageService } from '../storage.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,13 +20,18 @@ export class LoginComponent implements OnInit{
   password= '';
   type= '';
   ngOnInit(): void {
-    
+    // Limpiar localStorage
+    this.storage.clearAllDataItems();
   }
 
 
   login() {
     if(!this.type||!this.user||!this.password){
-      alert("Faltan campos por llenar");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }else{
 
     
@@ -84,7 +91,12 @@ export class LoginComponent implements OnInit{
 
         } else {
           // Manejar el caso en el que el usuario no es un número
-          alert("Contraseña o usuario incorectos");
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Contraseña o usuario incorectos"
+          });
+
         }
       },
       (error) => {

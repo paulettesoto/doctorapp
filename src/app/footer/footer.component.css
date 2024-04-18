@@ -1,6 +1,6 @@
-.footer{
+.footer {
     background-color: var(--cds-alias-object-container-background-shade);
-  color: white;
-  padding: 10px;
-  text-align: center;
+    color: white;
+    padding: 30px;
+    text-align: center;
 }

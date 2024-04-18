@@ -86,6 +86,10 @@ export class PatientslistComponent implements OnInit {
     this.storage.setDataItem("NombrePaciente", patient.Nombre);
     this.storage.setDataItem("Apellido1Paciente", patient.PrimerApe);
     this.storage.setDataItem("Apellido2Paciente", patient.SegundoApe);
+    console.log(patient.edad);
+    this.storage.setDataItem("fechaNac", patient.fechaNac);
+    this.storage.setDataItem("celular", patient.celular);
+    this.storage.setDataItem("edad", patient.edad);
     this.route.navigate(['/patients/patient-detail']);
 
   }
