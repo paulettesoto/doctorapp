@@ -5,6 +5,7 @@ import { storageService } from 'src/app/storage.service';
 
 import * as jsPDF from 'jspdf';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -115,7 +116,10 @@ export class RespuestasComponent implements OnInit {
         this.http.post(url, {headers}).subscribe(
           (response: any) => {
         console.log('Solicitud POST exitosa:', response);
-        alert("Respuestas enviadas");
+        Swal.fire({
+          icon: "success",
+          text: "Respuestas enviadas",
+        });
         this.route.navigate(['/patient/patientpanel']);
        
         // Manejar la respuesta según tus necesidades

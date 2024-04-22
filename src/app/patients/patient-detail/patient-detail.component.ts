@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-patient-detail',
   templateUrl: './patient-detail.component.html',
@@ -80,12 +81,18 @@ export class PatientDetailComponent implements OnInit{
   const url = `${environment.apiUrl}/uploadImages/image`;
   this.http.post(`${url}`, formData)
     .subscribe(response => {
-      console.log('Archivo subido con éxito', response);
-      alert("Archivo subido exitosamente");
+      Swal.fire({
+        icon: "success",
+        text: "Archivo subido exitosamente"
+      });
      this.fileInput='';
     }, error => {
-      console.error('Error al subir el archivo', error);
-      console.error('Detalles del error:', error.error); // Imprime detalles específicos del error
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Error al subir el archivo",
+      });
+      console.error('Detalles del error:', error.error); 
     });
   }
   

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-service-panel',
   templateUrl: './service-panel.component.html',
@@ -58,7 +59,11 @@ export class ServicePanelComponent implements OnInit {
   }
   add_treatments() {
     if(!this.treatment||!this.precio){
-      alert("Faltan campos por agregar");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }else{
       const url = `${environment.apiUrl}/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
       const headers = new HttpHeaders({
@@ -69,7 +74,10 @@ export class ServicePanelComponent implements OnInit {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
-        alert("Tratamiento exitoso");
+        Swal.fire({
+          icon: "success",
+          text: "Tratamiento agregado"
+        });
         this.treatment='';
         this.precio='';
         this.treatmentlist();
@@ -84,7 +92,11 @@ export class ServicePanelComponent implements OnInit {
 
   add_question() {
     if(!this.question){
-      alert("No se ha agregado pregunta");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }else{
       const url = `${environment.apiUrl}/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
       const headers = new HttpHeaders({
@@ -95,7 +107,10 @@ export class ServicePanelComponent implements OnInit {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
-        alert("Pregunta agregada");
+        Swal.fire({
+          icon: "success",
+          text: "Pregunta agregada"
+        });
         // Manejar la respuesta según tus necesidades
       this.question='';
       this.questionslist();
@@ -138,8 +153,10 @@ export class ServicePanelComponent implements OnInit {
         this.http.delete(url, { params }).subscribe(
           (response: any) => {
             if (response && response.success) {
-              console.log("Tratamiento eliminado");
-              alert("Tratamiento eliminado");
+              Swal.fire({
+                icon: "success",
+                text: "Tratamiento eliminado"
+              });
               this.treatmentlist();
             } else {
               console.error('Error:', response);
@@ -182,8 +199,10 @@ export class ServicePanelComponent implements OnInit {
         this.http.delete(url, { params }).subscribe(
           (response: any) => {
             if (response && response.success) {
-              console.log("pregunta eliminada");
-              alert("Pregunta eliminada");
+              Swal.fire({
+                icon: "success",
+                text: "Pregunta eliminada"
+              });
               this.questionslist();
             } else {
               console.error('Error:', response);

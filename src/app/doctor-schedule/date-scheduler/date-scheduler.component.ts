@@ -3,6 +3,7 @@ import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-date-scheduler',
   templateUrl: './date-scheduler.component.html',
@@ -46,7 +47,11 @@ export class DateSchedulerComponent {
 
   search() {
     if(!this.date){
-      alert("Campo de fecha vacio");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }else{
 
     
@@ -81,7 +86,11 @@ export class DateSchedulerComponent {
   
   agregar() {
     if(!this.hour){
-      alert("Campo de hora vacio");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }else{
       const hora = this.hour;
       const url = `${environment.apiUrl}/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
@@ -93,7 +102,10 @@ export class DateSchedulerComponent {
           this.http.post(url, {headers}).subscribe(
             (response: any) => {
           console.log('Solicitud POST exitosa:', response);
-          alert("Hora agregada");
+          Swal.fire({
+            icon: "success",
+            text: "Agregado con exito"
+          });
           this.search();
           // Manejar la respuesta según tus necesidades
         },
@@ -113,7 +125,10 @@ export class DateSchedulerComponent {
           (response: any) => {
             if (response && response.success) {
               console.log("horario cancelado");
-              alert("Hora eliminada");
+              Swal.fire({
+                icon: "success",
+                text: "Eliminado con exito"
+              });
               this.search();
             } else {
               console.error('Error:', response);

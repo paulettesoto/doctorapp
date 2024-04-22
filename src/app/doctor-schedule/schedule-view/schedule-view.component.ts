@@ -201,12 +201,12 @@ export class ScheduleViewComponent implements OnInit {
 
           const doc = new jsPDF.jsPDF();
           //membrete
-          const imagePath = '';
+          //const imagePath = '';
           const xCoordinate = 80;
           const yCoordinate = 10;
           const imageWidth = 60;  // Ancho de la imagen en mm
           const imageHeight = 30;  // Alto de la imagen en mm
-          doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
+          //doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
          
           // Agregar contenido al PDF
           doc.setFont('bold');
@@ -264,12 +264,12 @@ export class ScheduleViewComponent implements OnInit {
 
           // Agregar contenido al PDF
                //membrete
-          const imagePath = '../../assets/logo-removebg.png';
+          //const imagePath = '../../assets/logo-removebg.png';
           const xCoordinate = 80;
           const yCoordinate = 10;
           const imageWidth = 60;  // Ancho de la imagen en mm
           const imageHeight = 30;  // Alto de la imagen en mm
-          doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
+          //doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
           doc.setFont('bold');
           doc.setFontSize(18);
           doc.text('Reporte mensual', 20, 10);

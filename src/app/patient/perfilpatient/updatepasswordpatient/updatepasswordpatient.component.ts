@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-updatepasswordpatient',
   templateUrl: './updatepasswordpatient.component.html',
@@ -19,11 +20,18 @@ export class UpdatepasswordpatientComponent {
   updatepass() {
     // Validación básica de campos
     if (!this.currentpassword || !this.confirmpassword || !this.newpassword) {
-      console.error('Todos los campos deben ser completados');
-      alert("Debe de llenar todos los campos");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
       return;
     }else if(this.newpassword!=this.confirmpassword){
-      alert("No coinciden las contraseñas");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No coinciden las contraseñas"
+      });
  
     }
     else{
@@ -42,8 +50,10 @@ export class UpdatepasswordpatientComponent {
             this.currentpassword = '';
             this.newpassword = '';
             this.confirmpassword='';
-            alert("Contraseña modificada");
-            // Manejar la respuesta si es necesario
+            Swal.fire({
+              icon: "success",
+              text: "Contraseña actualizada"
+            });
             
           },
           (error) => {

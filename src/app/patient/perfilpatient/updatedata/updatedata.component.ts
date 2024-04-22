@@ -2,6 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-updatedata',
   templateUrl: './updatedata.component.html',
@@ -79,8 +80,10 @@ export class UpdatedataComponent {
   // Realiza la solicitud POST
       this.http.put(url, {headers}).subscribe(
         (response: any) => {
-          console.log('Datos actualizados:', response);
-          alert("Datos actualizados");
+          Swal.fire({
+            icon: "success",
+            text: "Datos actualizados"
+          });
          
 
           // Manejar la respuesta si es necesario

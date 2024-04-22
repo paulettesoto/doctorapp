@@ -3,6 +3,7 @@ import { storageService } from 'src/app/storage.service';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -72,8 +73,10 @@ export class PatientpanelComponent implements OnInit {
         this.http.delete(url, { params }).subscribe(
           (response: any) => {
             if (response && response.success) {
-              console.log("Cita cancelada");
-              alert("Cita cancelada");
+              Swal.fire({
+                icon: "success",
+                text: "Cita cancelada"
+              });
               this.route.navigate(['/']);
             } else {
               console.error('Error:', response);

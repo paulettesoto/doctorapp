@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-searchspecialist',
@@ -40,10 +41,13 @@ export class SearchspecialistComponent {
         (response: any) => {
           if (response && response.doctors) {
             this.doctors = response.doctors;
-            console.log(response.doctors);
           } else {
             console.error('Error:', response);
-            alert("Especialidad no existente");
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Especialidad no existente"
+            });
             
           }
         },

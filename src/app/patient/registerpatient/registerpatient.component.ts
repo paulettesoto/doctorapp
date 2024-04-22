@@ -10,6 +10,7 @@ import { storageService } from 'src/app/storage.service';
 import { environment
   
  } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registerpatient',
   templateUrl: './registerpatient.component.html',
@@ -39,9 +40,17 @@ export class RegisterpatientComponent {
 
   register(){
     if( (!this.name|| !this.lastname || !this.lastname2 || !this.phonenumber || !this.fecha_nac || !this.email|| !this.password)|| !this.confirmPassword){
-      alert("Campos vacios");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }else if(this.password!=this.confirmPassword){
-      alert("Contraseñas no coinciden");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Contraseñas no coinciden"
+      });
     }else{
       const url = `${environment.apiUrl}/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
       const headers = new HttpHeaders({
@@ -52,7 +61,10 @@ export class RegisterpatientComponent {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
-        alert("Registro exitoso");
+        Swal.fire({
+          icon: "success",
+          text: "Registro exitoso"
+        });
         this.route.navigate(['/login'])
         // Manejar la respuesta según tus necesidades
       },

@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { storageService } from '../storage.service';
+
 @Component({
   selector: 'app-pageprincipal',
   templateUrl: './pageprincipal.component.html',
   styleUrls: ['./pageprincipal.component.css']
 })
-export class PageprincipalComponent {
-  constructor(private router: Router){
-    
+export class PageprincipalComponent implements OnInit {
+  constructor(private router: Router, private storage: storageService){}
+  ngOnInit(): void {
+    // Limpiar localStorage
+    this.storage.clearAllDataItems();
   }
   click(){
     this.router.navigate(['login'])

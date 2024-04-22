@@ -130,7 +130,7 @@ generatePDF() {
         const yCoordinate = 10;
         const imageWidth = 60;  // Ancho de la imagen en mm
         const imageHeight = 30;  // Alto de la imagen en mm
-        doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
+        //doc.addImage(imagePath, 'PNG', xCoordinate, yCoordinate, imageWidth, imageHeight);
 
         // Agregar contenido al PDF
         doc.setFont('bold');

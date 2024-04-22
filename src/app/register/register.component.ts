@@ -3,6 +3,7 @@ import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -39,11 +40,18 @@ export class RegisterComponent {
  
   register(){
     if ( this.confirmPassword !== this.password) {
-      console.error('Las contraseñas no coinciden');
-      alert("Las contraseñas no coinciden");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Las contraseñas no coinciden"
+      });
       return;
     }else if(!this.name||!this.lastname||!this.lastname2||!this.phonenumber||!this.specialty||!this.fecha_nac||!this.email||!this.cedula||!this.password||!this.confirmPassword){
-      alert("Faltan datos por agregar");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Faltan campos por llenar"
+      });
     }
     else{
 
@@ -57,7 +65,10 @@ export class RegisterComponent {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
-        alert("Usuario registrado");
+        Swal.fire({
+          icon: "success",
+          text: "Usuario registrado"
+        });
         this.route.navigate(['/login']);
         // Manejar la respuesta según tus necesidades
       },

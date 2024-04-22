@@ -3,6 +3,7 @@ import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Route,Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-newdatpatient',
@@ -122,8 +123,10 @@ export class NewdatpatientComponent implements OnInit{
   // Realiza la solicitud POST
   this.http.post(url, {headers}).subscribe(
     (response: any) => {
-      console.log('Solicitud POST exitosa:', response);
-      alert("Cita agendada");
+      Swal.fire({
+        icon: "success",
+        text: "Cita agendada"
+      });
       this.route.navigate(['/favorites']);
       // Manejar la respuesta según tus necesidades
     },
