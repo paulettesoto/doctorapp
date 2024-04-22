@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit{
           const apellido2 = response.SegundoApe;
           const correo=response.email;
           const fecha_nac=response.FechaNac;
+          const celular=response.celular;
           console.log(response.FechaNac);
 
           console.log(usr);
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit{
           this.storage.setDataItem('nombre',nombre.toString());
           this.storage.setDataItem('apellido1',apellido1.toString());
           this.storage.setDataItem('apellido2',apellido2.toString());
-          this.storage.setDataItem('celular',this.user);
+          this.storage.setDataItem('celular',celular.toString());
           this.storage.setDataItem('email',correo.toString());
          
          
