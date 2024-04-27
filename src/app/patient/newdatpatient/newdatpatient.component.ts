@@ -49,6 +49,7 @@ export class NewdatpatientComponent implements OnInit{
             console.log(this.availableDates);
           } else {
             console.error('Error:', response);
+            this.availableDates=[];
           }
         },
         (error) => {
@@ -121,19 +122,29 @@ export class NewdatpatientComponent implements OnInit{
       'accept': 'application/json'
      });
   // Realiza la solicitud POST
-  this.http.post(url, {headers}).subscribe(
-    (response: any) => {
-      Swal.fire({
-        icon: "success",
-        text: "Cita agendada"
-      });
-      this.route.navigate(['/favorites']);
-      // Manejar la respuesta según tus necesidades
-    },
-    (error) => {
-      console.error('Error en la solicitud POST:', error);
-    }
-  );
+  if (!this.treatment || !this.date || !this.selectedHour) { //AGREGUE ESTO 
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Faltan campos por llenar"
+    });
+    return;
+  }else{
+    this.http.post(url, {headers}).subscribe(
+      (response: any) => {
+        Swal.fire({
+          icon: "success",
+          text: "Cita agendada"
+        });
+        this.route.navigate(['/favorites']);
+        // Manejar la respuesta según tus necesidades
+      },
+      (error) => {
+        console.error('Error en la solicitud POST:', error);
+      }
+    );
+  }
+ 
 
   }
 }

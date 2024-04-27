@@ -4,7 +4,10 @@ input{
     width: 20rem;
 }
 
-
+.nocitas{
+    font-weight: bold;
+    font-size: 20;
+}
 .title{
     display: flex;
     flex-direction: row;
