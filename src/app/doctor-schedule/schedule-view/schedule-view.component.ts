@@ -187,7 +187,7 @@ export class ScheduleViewComponent implements OnInit {
 
 
   generatePDFWeek() {
-    const url = `${environment.apiUrl}dates/reportWeek`;
+    const url = `${environment.apiUrl}/dates/reportWeek`;
 
     const params = new HttpParams()
     .set('idDoctor', this.storage.getDataItem('user'))

@@ -69,6 +69,12 @@ export class UpdatedataComponent {
    // Validación básica de campos
    if (!this.name || !this.lastname || !this.lastname2|| !this.phonenumber || !this.fecha_nac|| !this.email) {
     console.error('Todos los campos deben ser completados');
+    Swal.fire({
+      icon: "error",
+      text: "Todos los campos deben ser completados"
+    });
+   
+    
     return;
   }else{
     const url = `${environment.apiUrl}/patient/update_paciente?idPaciente=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}`;

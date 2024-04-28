@@ -69,10 +69,12 @@ export class DateSchedulerComponent {
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.availableDates && Array.isArray(response.availableDates)) {
+          
             this.usagedDates = response.availableDates;
             console.log(this.usagedDates);
           } else {
             console.error('Error:', response);
+            this.usagedDates = [];//AGREGUE ESTO PARA QUE SALGA QUE ESTA LIMPIO Y MUESTRE MENSAJE DE QUE NO HAY HORARIOS
             // Podrías manejar el error aquí si la respuesta no tiene la estructura esperada
           }
         },
