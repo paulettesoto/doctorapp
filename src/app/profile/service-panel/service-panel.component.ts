@@ -25,7 +25,8 @@ export class ServicePanelComponent implements OnInit {
   paged=2;
   page2=1;
   pages2=1;
-
+  isDisabled=false;
+  isDisabled2=false;
   
   paginador(i:number){
     let r:Number;
@@ -58,12 +59,16 @@ export class ServicePanelComponent implements OnInit {
     this.questionslist();
   }
   add_treatments() {
+    this.isDisabled=true;
+    document.body.style.cursor = 'wait';
     if(!this.treatment||!this.precio){
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled=false;
+      document.body.style.cursor = 'default';  
     }else{
       const url = `${environment.apiUrl}/treatments/addTreatment?tratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem("user")}&costo=${this.precio}`;
       const headers = new HttpHeaders({
@@ -73,6 +78,8 @@ export class ServicePanelComponent implements OnInit {
     // Realiza la solicitud POST
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
+        this.isDisabled=false;
+        document.body.style.cursor = 'default';    
         console.log('Solicitud POST exitosa:', response);
         Swal.fire({
           icon: "success",
@@ -85,18 +92,24 @@ export class ServicePanelComponent implements OnInit {
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);
+        this.isDisabled=false;
+        document.body.style.cursor = 'default';    
       }
     );
   }
   }
 
   add_question() {
+    this.isDisabled2= true;
+    document.body.style.cursor = 'await';  
     if(!this.question){
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled2=false;
+      document.body.style.cursor = 'default';  
     }else{
       const url = `${environment.apiUrl}/clinicalRecords/addQuestion?pregunta=${this.question}&idDoctor=${this.storage.getDataItem("user")}`;
       const headers = new HttpHeaders({
@@ -106,6 +119,8 @@ export class ServicePanelComponent implements OnInit {
     // Realiza la solicitud POST
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
+        this.isDisabled2=false;
+        document.body.style.cursor = 'default';    
         console.log('Solicitud POST exitosa:', response);
         Swal.fire({
           icon: "success",
@@ -117,6 +132,8 @@ export class ServicePanelComponent implements OnInit {
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);
+        this.isDisabled2=false;
+        document.body.style.cursor = 'default';    
       }
     );
   }

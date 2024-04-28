@@ -12,12 +12,15 @@ export class UpdatepasswordpatientComponent {
   currentpassword: string = '';
   confirmpassword: string = '';
   newpassword: string = '';
+  isDisabled: boolean = false;
 
   constructor(private storage: storageService, private http: HttpClient) {
 
   }
 
   updatepass() {
+    this.isDisabled=true;
+    document.body.style.cursor = 'wait';
     // Validación básica de campos
     if (!this.currentpassword || !this.confirmpassword || !this.newpassword) {
       Swal.fire({
@@ -25,6 +28,8 @@ export class UpdatepasswordpatientComponent {
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled=false;
+      document.body.style.cursor = 'default';
       return;
     }else if(this.newpassword!=this.confirmpassword){
       Swal.fire({
@@ -46,6 +51,8 @@ export class UpdatepasswordpatientComponent {
     // Realiza la solicitud POST
         this.http.put(url, {headers}).subscribe(
           (response: any) => {
+            this.isDisabled = false;
+            document.body.style.cursor = 'default';
             console.log('Contraseña actualizada:', response);
             this.currentpassword = '';
             this.newpassword = '';
@@ -59,6 +66,9 @@ export class UpdatepasswordpatientComponent {
           (error) => {
             console.error('Error al actualizar contraseña:', error);
             // Manejar errores si es necesario
+            document.body.style.cursor = 'default';
+
+            this.isDisabled = false;
           }
         );
 

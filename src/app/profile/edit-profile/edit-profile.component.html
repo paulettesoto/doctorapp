@@ -28,7 +28,7 @@
                     <label class="clr-sr-only">Correo</label>
                     <input type="text" autocomplete="email" name="email" clrInput placeholder="Correo" [(ngModel)]="email" />
                 </clr-input-container>
-                <button type="submit" class="btn btn-primary" (click)="update()">
+                <button type="submit" [disabled]="isDisabled" class="btn btn-primary" (click)="update()">
           Modificar
         </button>
             </div>

@@ -54,7 +54,7 @@
                   {{ treatment.tratamiento}}
                 </option>
               </select>
-              <button type="submit" class="btn btn-primary" (click)="agendar()">Agendar</button>  
+              <button type="submit" class="btn btn-primary" [disabled]="isDisabled" (click)="agendar()">Agendar</button>  
         </div> 
         <div class="segundafila">
             <clr-input-container>
