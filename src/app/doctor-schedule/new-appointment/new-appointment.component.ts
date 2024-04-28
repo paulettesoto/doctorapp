@@ -23,6 +23,7 @@ export class NewAppointmentComponent implements OnInit {
   availableDates: any[] = [];
   selectedHour: number;
   treatments: any[] = [];
+  isDisabled: boolean = false;
 
   constructor(private http:HttpClient, private route:Router, private storage:storageService) {
     this.name = '';
@@ -118,12 +119,16 @@ export class NewAppointmentComponent implements OnInit {
   
   }
   agendar(){
+    this.isDisabled=true;
+    document.body.style.cursor = 'wait';
     if(!this.phonenumber||!this.name||!this.lastname||!this.lastname2||!this.age||!this.email||!this.date||!this.datebirth){
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled=false;
+      document.body.style.cursor = 'default';
     }else{
 
     
@@ -135,6 +140,8 @@ export class NewAppointmentComponent implements OnInit {
     // Realiza la solicitud POST
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
+        this.isDisabled=false;
+        document.body.style.cursor = 'default';  
         console.log('Solicitud POST exitosa:', response);
         Swal.fire({
           icon: "success",
@@ -153,6 +160,8 @@ export class NewAppointmentComponent implements OnInit {
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);
+        this.isDisabled=false;
+        document.body.style.cursor = 'default';  
       }
     );
 

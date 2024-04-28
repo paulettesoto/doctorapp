@@ -21,7 +21,7 @@
     Hora 
     <input class="addhora" type="time" name="eta" [(ngModel)]="hour" />
     
-    <button class="btn btn-primary" id="add" (click)="agregar()">
+    <button class="btn btn-primary" id="add" [disabled]="isDisabled" (click)="agregar()">
       Agregar
     </button>
   </p>

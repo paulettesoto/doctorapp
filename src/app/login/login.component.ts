@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit{
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           console.log(response);
-
+          document.body.style.cursor = 'default';
           if (response && response.id){
             const usr = response.id;
             const nombre = response.Nombre;
@@ -94,7 +94,6 @@ export class LoginComponent implements OnInit{
       
               this.storage.setDataItem('actualizar','true');
             }
-
           } else {
             // Manejar el caso en el que el usuario no es un número
             Swal.fire({
@@ -103,13 +102,12 @@ export class LoginComponent implements OnInit{
               text: "Contraseña o usuario incorectos"
             });
             this.isDisabled = false;
-            document.body.style.cursor = 'default';
           }
         },
         (error) => {
           console.error('Error al obtener los datos:', error);
-          this.isDisabled = false;
           document.body.style.cursor = 'default';
+          this.isDisabled = false;
         }
       );
   }

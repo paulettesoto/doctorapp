@@ -21,7 +21,7 @@ export class EditProfileComponent {
   phonenumber: string;
   email: string;
   foto:string;
-
+  isDisabled: boolean=false;
 
   constructor(private storage: storageService, private http: HttpClient, private route:Router) {
     this.name = '';
@@ -44,6 +44,8 @@ export class EditProfileComponent {
    
   }
   update() {
+    this.isDisabled=true;
+    document.body.style.cursor = 'wait';
     // Validación básica de campos
     if (!this.name || !this.lastname || !this.lastname2  || !this.phonenumber || !this.email || !this.email) {
       Swal.fire({
@@ -51,6 +53,8 @@ export class EditProfileComponent {
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled=false;
+      document.body.style.cursor = 'default';  
       return;
     }else{
       const url = `${environment.apiUrl}/doctors/update?idDoctor=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&Correo=${this.email}&Foto=${this.foto}}`;
@@ -61,6 +65,8 @@ export class EditProfileComponent {
   // Realiza la solicitud POST
       this.http.put(url, {headers}).subscribe(
         (response: any) => {
+          this.isDisabled=false;
+          document.body.style.cursor = 'default';      
           console.log('Datos actualizados:', response);
           Swal.fire({
             icon: "success",
@@ -72,6 +78,8 @@ export class EditProfileComponent {
         (error) => {
           console.error('Error al actualizar datos:', error);
           // Manejar errores si es necesario
+          this.isDisabled=false;
+          document.body.style.cursor = 'default';      
         }
       );
   }

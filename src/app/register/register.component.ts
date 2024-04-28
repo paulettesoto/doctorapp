@@ -23,6 +23,7 @@ export class RegisterComponent {
   foto:string;
   hoja:string;
 
+  isDisabled: boolean = false;
   constructor(private http:HttpClient, private route:Router, private storage:storageService) {
     this.name = '';
     this.lastname = '';
