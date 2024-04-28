@@ -27,7 +27,9 @@
   </p>
 </div>
   <div class="horarios">
+   
     <ng-container *ngFor="let date of usagedDates">
+     
       <a role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs">
         <button id="deletehour" type="button" class="btn btn-icon horario" aria-label="home" (click)="deletehour(date.id)">
           {{ formatHora(date.hora) }}
@@ -36,5 +38,9 @@
       </a>
       
     </ng-container>
+
+  </div>
+  <div *ngIf="usagedDates.length === 0">
+    <p  class="nohora">No hay horarios disponibles para este día.</p>
   </div>
 </div>

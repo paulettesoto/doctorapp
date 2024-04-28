@@ -65,29 +65,43 @@ export class PatientpanelComponent implements OnInit {
   }
 //esto me lo traje del doc
   canceldate(id: any){
-    const url = `${environment.apiUrl}/dates/cancelDate`;
-  
-      const params = new HttpParams()
-        .set('idCita', id);
-        ;
-        this.http.delete(url, { params }).subscribe(
-          (response: any) => {
-            if (response && response.success) {
-              Swal.fire({
-                icon: "success",
-                text: "Cita cancelada"
-              });
-              this.route.navigate(['/']);
-            } else {
-              console.error('Error:', response);
-            }
-          },
-          (error) => {
-            console.error('Error:', error);
-          }
-        );
- 
-
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Realmente quieres cancelar esta cita?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, cancelar cita',
+      cancelButtonText: 'No, mantener cita'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `${environment.apiUrl}/dates/cancelDate`;
+      
+          const params = new HttpParams()
+            .set('idCita', id);
+            ;
+            this.http.delete(url, { params }).subscribe(
+              (response: any) => {
+                if (response && response.success) {
+                  Swal.fire({
+                    icon: "success",
+                    text: "Cita cancelada"
+                  });
+                //  this.route.navigate(['/']);
+                window.location.reload();
+                } else {
+                  console.error('Error:', response);
+                  
+                }
+              },
+              (error) => {
+                console.error('Error:', error);
+              }
+            );
+        }
+      });
+    
   }
   newappointment(){
     this.route.navigate(['/search']);

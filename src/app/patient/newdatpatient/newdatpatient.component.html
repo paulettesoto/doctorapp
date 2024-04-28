@@ -11,6 +11,9 @@
               </clr-date-container>
               <button type="submit" id="buscar" class="btn btn-primary" (click)="disponibles()">Buscar</button>
          </p> 
+         <div *ngIf="availableDates.length === 0">
+          <p class="nohora">No hay horarios disponibles para este día.</p>
+        </div>
           <div class="horarios">
             <ng-container *ngFor="let date of availableDates">
               <button type="button" class="btn btn-icon horario" aria-label="home" [ngClass]="getButtonClass(date)" (click)="onSelect(date)">
@@ -19,6 +22,7 @@
             </ng-container>
             
           </div>   
+
           <label>Tratamiento </label>
             <select clrSelect name="treatments" [(ngModel)]="treatment">
                 <option *ngFor="let treatment of treatments" value="{{ treatment.id }}">

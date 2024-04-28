@@ -74,15 +74,15 @@ export class LoginComponent implements OnInit{
             const celular=response.celular;
             console.log(response.FechaNac);
 
-            console.log(usr);
-            this.storage.setDataItem('user', usr.toString());
-            this.storage.setDataItem('nombre',nombre.toString());
-            this.storage.setDataItem('apellido1',apellido1.toString());
-            this.storage.setDataItem('apellido2',apellido2.toString());
-            this.storage.setDataItem('celular',celular.toString());
-            this.storage.setDataItem('email',correo.toString());
-          
-          
+          console.log(usr);
+          this.storage.setDataItem('user', usr.toString());
+          this.storage.setDataItem('nombre',nombre.toString());
+          this.storage.setDataItem('apellido1',apellido1.toString());
+          this.storage.setDataItem('apellido2',apellido2.toString());
+          this.storage.setDataItem('celular',celular);
+          this.storage.setDataItem('email',correo.toString());
+         
+         
 
             
             if (this.type === 'doctor') {
