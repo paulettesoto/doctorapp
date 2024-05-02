@@ -16,6 +16,7 @@ export class DateSchedulerComponent {
   date: string;
   hour:string;
   usagedDates: any[] = [];
+  isDisabled: boolean = false;
   constructor(private http:HttpClient, private route:Router, private storage:storageService) {
     this.name = '';
     this.lastname = '';
@@ -69,10 +70,12 @@ export class DateSchedulerComponent {
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.availableDates && Array.isArray(response.availableDates)) {
+          
             this.usagedDates = response.availableDates;
             console.log(this.usagedDates);
           } else {
             console.error('Error:', response);
+            this.usagedDates = [];//AGREGUE ESTO PARA QUE SALGA QUE ESTA LIMPIO Y MUESTRE MENSAJE DE QUE NO HAY HORARIOS
             // Podrías manejar el error aquí si la respuesta no tiene la estructura esperada
           }
         },
@@ -85,12 +88,16 @@ export class DateSchedulerComponent {
   }
   
   agregar() {
+    this.isDisabled=true;
+    document.body.style.cursor = 'wait';
     if(!this.hour){
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled=false;
+      document.body.style.cursor = 'default';  
     }else{
       const hora = this.hour;
       const url = `${environment.apiUrl}/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
@@ -101,6 +108,8 @@ export class DateSchedulerComponent {
         // Realiza la solicitud POST
           this.http.post(url, {headers}).subscribe(
             (response: any) => {
+              this.isDisabled=false;
+              document.body.style.cursor = 'default';          
           console.log('Solicitud POST exitosa:', response);
           Swal.fire({
             icon: "success",
@@ -111,6 +120,8 @@ export class DateSchedulerComponent {
         },
         (error) => {
           console.error('Error en la solicitud POST:', error);
+          this.isDisabled=false;
+          document.body.style.cursor = 'default';    
         }
     );
   }

@@ -33,7 +33,7 @@
           [(ngModel)]="password"
         />
       </clr-password-container>
-      <button type="submit" class="btn btn-primary" (click)="login()">Log in</button>
+      <button type="submit" [disabled]="isDisabled" class="btn btn-primary" (click)="login()">Log in</button>
       <a routerLink="/"  class="signup">Sign up for an account</a>
     </div>
   </form>

@@ -25,8 +25,12 @@
                         <button id="cancel" class="btn btn-danger-outline btn-sm"(click)="canceldate(date.id)">Cancelar</button>
                     </th>
                   </tr>
+                 
                 </tbody>
               </table>
+              <div *ngIf="dateslist.length === 0">
+                    <p class="nocitas">No hay citas agendadas</p>
+              </div>
         </div>
   
 

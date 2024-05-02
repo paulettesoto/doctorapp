@@ -16,6 +16,7 @@ export class UpdatedataComponent {
   fecha_nac: string;
   email: string;
   formatofecha:string;
+  isDisabled: boolean = false;
   constructor(private storage: storageService, private http: HttpClient) {
     this.name = '';
     this.lastname = '';
@@ -67,8 +68,17 @@ export class UpdatedataComponent {
   }
   update() {
    // Validación básica de campos
+   this.isDisabled=true;
+   document.body.style.cursor = 'wait';
    if (!this.name || !this.lastname || !this.lastname2|| !this.phonenumber || !this.fecha_nac|| !this.email) {
     console.error('Todos los campos deben ser completados');
+    Swal.fire({
+      icon: "error",
+      text: "Todos los campos deben ser completados"
+    });
+   
+    this.isDisabled = false;
+    document.body.style.cursor = 'default';
     return;
   }else{
     const url = `${environment.apiUrl}/patient/update_paciente?idPaciente=${this.storage.getDataItem("user")}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}`;
@@ -80,17 +90,17 @@ export class UpdatedataComponent {
   // Realiza la solicitud POST
       this.http.put(url, {headers}).subscribe(
         (response: any) => {
+          document.body.style.cursor = 'default';
           Swal.fire({
             icon: "success",
             text: "Datos actualizados"
           });
-         
-
           // Manejar la respuesta si es necesario
         },
         (error) => {
           console.error('Error al actualizar datos:', error);
           // Manejar errores si es necesario
+          this.isDisabled = false;
         }
       );
       
