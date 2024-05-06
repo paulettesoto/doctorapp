@@ -1,12 +1,69 @@
+.content{
+  width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+    background-image: url('../../assets/doctorsitos.jpg') ;
+    background-repeat: no-repeat ;
+    background-size: cover ;
+    background-position: center left ;
+}
 .login{
     position: absolute;
     top: 50%;
     left: 50%;
     transform:translate(-50%,-50%) ;
-    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;  
+    box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
     -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);
     -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
     border-radius: 10%;
     padding: 2rem;
-    background-color: var(--cds-alias-status-neutral-tint) ;
+    width: 30%;
+    height: 50%;
+    background-color: #ffffff;
+}
+.login-group{
+  margin: 0 auto;
+  align-content: center;
+  width: 75%;
+  flex-direction: column;
+  display: flex;
+}
+
+.login-group clr-select-container label{
+  font-size: 20px;
+}
+.login-group clr-select-container select{
+  width: 250px;
+  margin-top: 5px;
+  font-size: 18px;
+  border-bottom: 1px solid #041f26;
+}
+.login-group clr-input-container input{
+  margin-top: 5px;
+  width: 250px;
+  font-size: 18px;
+}
+.login-group clr-password-container input{
+  width: 215px;
+  font-size: 18px;
+}
+.welcome{
+  font-size: 30px;
+  font-weight: 400;
+}
+.login-group button{
+  margin-top: 10px;
+}
+.login-group button:hover{
+  transform: scale(1.1);
+  transition: .2s ease-in;
+}
+.signup_data{
+  margin-top: 10px;
+  font-size: 16px;
+}
+.signup_data .signup:hover{
+  border-bottom: 1px solid blue;
+  font-weight: 500;
+  transition: .2s;
 }
