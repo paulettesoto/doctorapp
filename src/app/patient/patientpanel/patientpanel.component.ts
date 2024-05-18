@@ -88,7 +88,7 @@ export class PatientpanelComponent implements OnInit {
                     icon: "success",
                     text: "Cita cancelada"
                   });
-                //  this.route.navigate(['/']);
+                //this.route.navigate(['/patient/patientpanel']);
                 window.location.reload();
                 } else {
                   console.error('Error:', response);
