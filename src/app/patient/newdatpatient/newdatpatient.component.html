@@ -5,10 +5,10 @@
         </div>
         <div class="primerfila">
          <p>
-            <clr-date-container>
-                <label>Fecha</label>
-                <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" />
-              </clr-date-container>
+          <clr-date-container>
+            <label>Fecha</label>
+            <input type="date" autocomplete="off" clrDate name="date" [(ngModel)]="date" [min]="minDate" [max]="maxDate" />
+        </clr-date-container>
               <button type="submit" id="buscar" class="btn btn-primary" (click)="disponibles()">Buscar</button>
          </p> 
          <div *ngIf="availableDates.length === 0">

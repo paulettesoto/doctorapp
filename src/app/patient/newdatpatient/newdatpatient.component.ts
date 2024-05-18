@@ -11,24 +11,32 @@ import Swal from 'sweetalert2';
   styleUrls: ['./newdatpatient.component.css']
 })
 
-export class NewdatpatientComponent implements OnInit{
-
-  date:string;
- especialidad:string;
- idDoctor:string;
-  treatment:string;
+export class NewdatpatientComponent implements OnInit {
+  date: string;
+  especialidad: string;
+  idDoctor: string;
+  treatment: string;
   availableDates: any[] = [];
   selectedHour: number;
   treatments: any[] = [];
+  minDate: string;
+  maxDate: string;
 
-  constructor(private http:HttpClient, private route:Router, private storage:storageService) {
-    
-    this.date='';
-    this.especialidad='';
-    this.treatment='';
-    this.selectedHour=0;
-    this.idDoctor='';
-   }
+  constructor(private http: HttpClient, private route: Router, private storage: storageService) {
+    this.date = '';
+    this.especialidad = '';
+    this.treatment = '';
+    this.selectedHour = 0;
+    this.idDoctor = '';
+
+    const currentDate = new Date();
+    this.minDate = this.formatdate(currentDate.toISOString().split('T')[0]);
+
+    // Sumar tres meses a la fecha actual
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 3);
+    this.maxDate = this.formatdate(maxDate.toISOString().split('T')[0]);
+  }
   ngOnInit(): void {
   
 
