@@ -1,17 +1,17 @@
 
 .register{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%,-50%) ;
-   /* box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ; */ 
- /*   -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info);*/
-    -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-status-info) ;
-    border-radius: 5rem;
-    padding: 1rem;
-    padding-left: 5rem;
-    padding-right: 10rem;
-  /*  background: linear-gradient(180deg, #78c4f049 0%, rgb(255, 255, 255) 100%);*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-70%,-50%) ;
+  box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-utility-gray) ;
+  -webkit-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-utility-gray);
+  -moz-box-shadow: .2rem .2rem .5rem 0rem var(--cds-alias-utility-gray) ;
+  border-radius: 5rem;
+  padding: 1rem;
+  padding-left: 5rem;
+  padding-right: 10rem;
+  background: linear-gradient(180deg, #78c4f049 0%, rgb(255, 255, 255) 100%);
 }
 .contenido{
     width: 100%;
@@ -39,6 +39,6 @@ input{
 }
 
 .nac{
-   
+
     margin-top: 0%;
 }

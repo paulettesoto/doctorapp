@@ -27,6 +27,7 @@ export class RegisterpatientComponent {
   password: string;
   confirmPassword: string;
 
+  isDisabled: boolean = false;
   constructor(private http:HttpClient, private route:Router, private storage:storageService) {
     this.name = '';
     this.lastname = '';
@@ -39,18 +40,24 @@ export class RegisterpatientComponent {
   }
 
   register(){
+    this.isDisabled =true;
+    document.body.style.cursor = 'wait';
     if( (!this.name|| !this.lastname || !this.lastname2 || !this.phonenumber || !this.fecha_nac || !this.email|| !this.password)|| !this.confirmPassword){
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Faltan campos por llenar"
       });
+      this.isDisabled = false;
+      document.body.style.cursor = 'default';
     }else if(this.password!=this.confirmPassword){
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Contraseñas no coinciden"
       });
+      this.isDisabled = false;
+      document.body.style.cursor = 'default';
     }else{
       const url = `${environment.apiUrl}/signUp_paciente?Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&Celular=${this.phonenumber}&fecha_nac=${this.formatdate(this.fecha_nac)}&Correo=${this.email}&Contrasena=${this.password}&confirmar_contra=${this.confirmPassword}`;
       const headers = new HttpHeaders({
@@ -60,6 +67,7 @@ export class RegisterpatientComponent {
     // Realiza la solicitud POST
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
+        document.body.style.cursor = 'default';
         console.log('Solicitud POST exitosa:', response);
         Swal.fire({
           icon: "success",
@@ -70,6 +78,9 @@ export class RegisterpatientComponent {
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);
+        document.body.style.cursor = 'default';
+        this.isDisabled = false;
+
       }
     
     );

@@ -97,7 +97,7 @@
                       [(ngModel)]="confirmPassword"
                     />
                   </clr-password-container>
-                  <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="isDisabled" (click)="register()">Registrarse</button>
                 </div>
               </form>
               
