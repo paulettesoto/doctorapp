@@ -1,33 +1,36 @@
 
     <div class="content">
-
         <div class="search">
-            <form action="#">
-                <input type="text"
-                    placeholder="Buscar especialista"
-                    name="search" class="buscar" [(ngModel)]="especialidad">
-                <button class="boton" (click)="search()">
-                    <i class="fa fa-search"
-                        style="font-size: 18px;">
-                    </i>
-                    <img src="assets\buscador.jpg">
-                </button>
-            </form>
-          <div class="formdata" >
-                <div class="doctordata" *ngFor="let data of doctors" id="{{data.id}}" (click)="newdate(data.id)"> 
-                  
-                    <div class="texto">
-                        <p>Doctor: {{data.Nombre}} {{data.PrimerApe}} {{data.SegundoApe}}<br>
-                        Celular: {{data.Celular}}<br>
-                        Especialidad: {{data.Especialidad}}<br>
-                        Correo: {{data.Correo}}<br>
-                        Cedula: {{data.Cedula}}</p>
-                        <div class="photo"></div>
-                    </div>
-                </div>
+          <div class="searchbar">
+            <div class="placeholderdown" >
+              <div class="content-especiality" (click)="isdropdown=true" >
+                <span class="text-title" >{{especialidad?.name||"Selecciona una especialidad"}}</span>
+                <i class='bx bx-chevron-down icon_chevron'></i>
+              </div>
+              <div class="dropdown" [ngClass]="{active:isdropdown}" (mouseleave)="isdropdown=false">
+                <ul>
+                  <li *ngFor="let dato of Especiality">
+                    <span class="option" (click)="especialidad= dato; isdropdown=false; $event.stopImmediatePropagation();">{{dato.name}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <button class="botondata" (click)="search()">
+              Buscar
+              <i class='bx bx-search-alt-2' ></i>
+            </button>
           </div>
-          
-        </div>  
+        </div>
+        <div class="formdata" >
+          <div class="doctordata" *ngFor="let data of doctors" id="{{data.id}}" (click)="newdate(data.id)">
+            <img class="photo">
+            <span class="title-card">Dr. {{data.Nombre}} {{data.PrimerApe}} {{data.SegundoApe}}</span>
+            <span class="telf-Doctor"><i class='bx bxs-phone'></i> {{data.Celular}}</span>
+            <span class="especiality-Doctor"> Especialidad: {{data.Especialidad}}</span>
+            <span class="Email-Doctor"><i class='bx bx-envelope'></i> {{data.Correo}}</span>
+            <span class="Cedula-Doctor">Cedula: {{data.Cedula}}</span>
+          </div>
+        </div>
     </div>
 
 
