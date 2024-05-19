@@ -2,9 +2,9 @@
   <h3>Agregar horarios de atención</h3>
 <div class="flex">
   <div class="fecha">
-    
+
     <clr-date-container>
-      <label>Fecha</label>
+      <label>Fecha inicio</label>
       <input
         type="date"
         autocomplete="off"
@@ -13,34 +13,42 @@
         [(ngModel)]="date"
       />
     </clr-date-container>
-    <button class="btn btn-primary" id="buscar" (click)="search()">
-      Buscar
-    </button>
+    <clr-date-container>
+      <label>Fecha final</label>
+      <input
+        type="date"
+        autocomplete="off"
+        clrDate
+        name="demo"
+        [(ngModel)]="date_final"
+      />
+    </clr-date-container>
   </div>
   <p>
-    Hora 
+    Hora
     <input class="addhora" type="time" name="eta" [(ngModel)]="hour" />
-    
+    <input class="addhora" type="time" name="eta" [(ngModel)]="hour_final" />
     <button class="btn btn-primary" id="add" [disabled]="isDisabled" (click)="agregar()">
       Agregar
     </button>
   </p>
 </div>
   <div class="horarios">
-   
-    <ng-container *ngFor="let date of usagedDates">
-     
-      <a role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs">
-        <button id="deletehour" type="button" class="btn btn-icon horario" aria-label="home" (click)="deletehour(date.id)">
-          {{ formatHora(date.hora) }}
-        </button>
-        <span class="tooltip-content">Eliminar</span>
-      </a>
-      
+
+    <ng-container *ngFor="let dateL of getDates()">
+      <span>{{dateL}}</span>
+      <ng-container *ngFor="let time of usagedDates[dateL]">
+
+        <a role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs">
+          <button id="deletehour" type="button" class="btn btn-icon horario" aria-label="home" (click)="deletehour(time.id)">
+            {{ formatHora(time.hora) }}
+          </button>
+          <span class="tooltip-content">Eliminar</span>
+        </a>
+
+      </ng-container>
+
     </ng-container>
 
-  </div>
-  <div *ngIf="usagedDates.length === 0">
-    <p  class="nohora">No hay horarios disponibles para este día.</p>
   </div>
 </div>
