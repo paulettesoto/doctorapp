@@ -99,7 +99,7 @@
   flex-wrap: wrap;
 }
 .formdata .doctordata{
-  background-color: rgba(54, 228, 255, 0.2);
+  background-color: var(--cds-alias-utility-light-blue-tint);
   position: relative;
   padding: .5rem;
   border: 1px solid #7f7f7f;
