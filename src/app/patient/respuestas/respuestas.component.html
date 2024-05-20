@@ -3,7 +3,10 @@
     <button class="btn btn-primary pdf" (click)="generatePDF()">Generar PDF</button>
     <div class="records" *ngFor="let record of clinicalRecords">
         <label>{{ record.pregunta }}</label>
-        <textarea clrTextarea [(ngModel)]="record.respuesta" name="respuesta" required></textarea>
+        <div class="flex">
+            <p>R:</p>
+            <input clrInput [(ngModel)]="record.respuesta" name="respuesta" required>
+        </div>
     </div>
     <button class="btn btn-primary" (click)="enviarRespuestas()">Enviar Respuestas</button>
     

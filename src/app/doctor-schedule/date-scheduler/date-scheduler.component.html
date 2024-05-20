@@ -1,54 +1,61 @@
 <div class="content">
   <h3>Agregar horarios de atención</h3>
-<div class="flex">
-  <div class="fecha">
+  <div class="flex">
+    <div class="fecha">
 
-    <clr-date-container>
-      <label>Fecha inicio</label>
-      <input
-        type="date"
-        autocomplete="off"
-        clrDate
-        name="demo"
-        [(ngModel)]="date"
-      />
-    </clr-date-container>
-    <clr-date-container>
-      <label>Fecha final</label>
-      <input
-        type="date"
-        autocomplete="off"
-        clrDate
-        name="demo"
-        [(ngModel)]="date_final"
-      />
-    </clr-date-container>
+      <clr-date-container>
+        <label>Fecha inicio</label>
+        <input
+          type="date"
+          autocomplete="off"
+          clrDate
+          name="demo"
+          [(ngModel)]="date"
+        />
+      </clr-date-container>
+      <clr-date-container>
+        <label>Fecha final</label>
+        <input
+          type="date"
+          autocomplete="off"
+          clrDate
+          name="demo"
+          [(ngModel)]="date_final"
+        />
+      </clr-date-container>
+    </div>
+    <div class="flex">
+      <div class="bottom"><p>Hora</p></div>
+      <div class="bottom"><input clrInput class="addhora" type="time" name="eta" [(ngModel)]="hour" /></div>
+      <div class="bottom"><input clrInput class="addhora" type="time" name="eta" [(ngModel)]="hour_final" /></div>
+      <div class="bottom">
+        <button class="btn btn-primary" id="add" [disabled]="isDisabled" (click)="agregar()">
+          Agregar
+        </button>
+      </div>
+      
+      
+    </div>
+    
   </div>
-  <p>
-    Hora
-    <input class="addhora" type="time" name="eta" [(ngModel)]="hour" />
-    <input class="addhora" type="time" name="eta" [(ngModel)]="hour_final" />
-    <button class="btn btn-primary" id="add" [disabled]="isDisabled" (click)="agregar()">
-      Agregar
-    </button>
-  </p>
-</div>
-  <div class="horarios">
+ 
 
     <ng-container *ngFor="let dateL of getDates()">
-      <span>{{dateL}}</span>
-      <ng-container *ngFor="let time of usagedDates[dateL]">
-
-        <a role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs">
-          <button id="deletehour" type="button" class="btn btn-icon horario" aria-label="home" (click)="deletehour(time.id)">
-            {{ formatHora(time.hora) }}
-          </button>
-          <span class="tooltip-content">Eliminar</span>
-        </a>
-
-      </ng-container>
-
+      <div class="dates">
+        <h3>{{dateL}}</h3>
+        <div class="horarios">
+          <ng-container *ngFor="let time of usagedDates[dateL]">
+            <a role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs">
+              <button id="deletehour" type="button" class="btn btn-icon horario" aria-label="home" (click)="deletehour(time.id)">
+                {{ formatHora(time.hora) }}
+              </button>
+              <span class="tooltip-content">Eliminar</span>
+            </a>
+          
+          </ng-container>
+        </div>
+      </div>
     </ng-container>
 
-  </div>
+  
 </div>
