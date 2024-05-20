@@ -37,21 +37,21 @@ export class NewAppointmentComponent implements OnInit {
     this.treatment='';
     this.selectedHour=0;
   }
-  
+
   ngOnInit(): void {
     this.tratamientos();
   }
-  
+
   disponibles() {
     const url = `${environment.apiUrl}/schedules/availableDates`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('user'))
-      .set('fecha',this.formatdate(this.date) );
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.availableDates) {
             this.availableDates = response.availableDates;
+            this.getDates(this.date);
             console.log(this.availableDates);
           } else {
             console.error('Error:', response);
@@ -61,7 +61,17 @@ export class NewAppointmentComponent implements OnInit {
           console.error('Error:', error);
         }
       );
-  
+
+  }
+  dateretun:any;
+  getDates(fecha:any) {
+    this.dateretun=Object.keys(this.availableDates);
+    this.dateretun.forEach((date: any) => {
+      if(date==this.formatdate(fecha)){
+        this.availableDates= this.availableDates[date];
+      }
+    });
+    return this.dateretun
   }
   formatdate(date:string ):string{
     const dateObj = new Date(date);
@@ -70,7 +80,7 @@ export class NewAppointmentComponent implements OnInit {
     const year = dateObj.getFullYear();
     const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
     const day = dateObj.getDate().toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
-    
+
     // Crea la cadena de fecha en el formato deseado (YYYY/MM/DD)
     return `${year}-${month}-${day}`;
   }
@@ -116,7 +126,7 @@ export class NewAppointmentComponent implements OnInit {
           console.error('Error:', error);
         }
       );
-  
+
   }
   agendar(){
     this.isDisabled=true;
@@ -131,7 +141,7 @@ export class NewAppointmentComponent implements OnInit {
       document.body.style.cursor = 'default';
     }else{
 
-    
+
       const url = `${environment.apiUrl}/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
@@ -141,7 +151,7 @@ export class NewAppointmentComponent implements OnInit {
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
         this.isDisabled=false;
-        document.body.style.cursor = 'default';  
+        document.body.style.cursor = 'default';
         console.log('Solicitud POST exitosa:', response);
         Swal.fire({
           icon: "success",
@@ -161,7 +171,7 @@ export class NewAppointmentComponent implements OnInit {
       (error) => {
         console.error('Error en la solicitud POST:', error);
         this.isDisabled=false;
-        document.body.style.cursor = 'default';  
+        document.body.style.cursor = 'default';
       }
     );
 

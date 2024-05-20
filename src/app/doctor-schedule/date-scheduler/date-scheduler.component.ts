@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { storageService } from 'src/app/storage.service';
 import { Router } from '@angular/router';
@@ -9,12 +9,14 @@ import Swal from 'sweetalert2';
   templateUrl: './date-scheduler.component.html',
   styleUrls: ['./date-scheduler.component.css']
 })
-export class DateSchedulerComponent {
+export class DateSchedulerComponent implements OnInit{
   name: string;
   lastname: string;
   lastname2: string;
   date: string;
+  date_final: string;
   hour:string;
+  hour_final: string;
   usagedDates: any[] = [];
   isDisabled: boolean = false;
   constructor(private http:HttpClient, private route:Router, private storage:storageService) {
@@ -23,6 +25,11 @@ export class DateSchedulerComponent {
     this.lastname2 = '';
     this.date = '';
    this.hour='';
+   this.hour_final='';
+   this.date_final='';
+  }
+  ngOnInit(): void {
+    this.search();
   }
   formatdate(date:string ):string{
     const dateObj = new Date(date);
@@ -31,7 +38,7 @@ export class DateSchedulerComponent {
     const year = dateObj.getFullYear();
     const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
     const day = dateObj.getDate().toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
-    
+
     // Crea la cadena de fecha en el formato deseado (YYYY/MM/DD)
     return `${year}-${month}-${day}`;
   }
@@ -47,36 +54,20 @@ export class DateSchedulerComponent {
   }
 
   search() {
-    if(!this.date){
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Faltan campos por llenar"
-      });
-    }else{
-
-    
       const url = `${environment.apiUrl}/schedules/availableDates`;
-    
+
       const idDoctor = this.storage.getDataItem('user');
-      const formattedDate = this.formatdate(this.date);
-    
+
       // Construir los parámetros
       const params = new HttpParams()
         .set('idDoctor', idDoctor)
-        .set('fecha', formattedDate);
-    
+
       // Hacer la solicitud GET con los parámetros
       this.http.get(url, { params }).subscribe(
         (response: any) => {
-          if (response && response.availableDates && Array.isArray(response.availableDates)) {
-          
+          if (response && response.availableDates) {
             this.usagedDates = response.availableDates;
             console.log(this.usagedDates);
-          } else {
-            console.error('Error:', response);
-            this.usagedDates = [];//AGREGUE ESTO PARA QUE SALGA QUE ESTA LIMPIO Y MUESTRE MENSAJE DE QUE NO HAY HORARIOS
-            // Podrías manejar el error aquí si la respuesta no tiene la estructura esperada
           }
         },
         (error) => {
@@ -84,9 +75,12 @@ export class DateSchedulerComponent {
           // Aquí puedes manejar errores de la solicitud HTTP
         }
       );
-    }
   }
-  
+  dateretun:any;
+  getDates() {
+    this.dateretun=Object.keys(this.usagedDates);
+    return this.dateretun
+  }
   agregar() {
     this.isDisabled=true;
     document.body.style.cursor = 'wait';
@@ -97,10 +91,10 @@ export class DateSchedulerComponent {
         text: "Faltan campos por llenar"
       });
       this.isDisabled=false;
-      document.body.style.cursor = 'default';  
+      document.body.style.cursor = 'default';
     }else{
-      const hora = this.hour;
-      const url = `${environment.apiUrl}/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha=${this.formatdate(this.date)}&hora=${hora}&status=true`;
+      //idDoctor=7&fecha_inicio=2024-05-18&fecha_final=2024-06-02&hora_inicio=08%3A00&hora_final=10%3A00&status=true
+      const url = `${environment.apiUrl}/schedules/addDates?idDoctor=${this.storage.getDataItem('user')}&fecha_inicio=${this.formatdate(this.date)}&fecha_final=${this.formatdate(this.date_final)}&hora_inicio=${this.hour}&hora_final=${this.hour_final}&status=true`;
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json'
@@ -109,7 +103,7 @@ export class DateSchedulerComponent {
           this.http.post(url, {headers}).subscribe(
             (response: any) => {
               this.isDisabled=false;
-              document.body.style.cursor = 'default';          
+              document.body.style.cursor = 'default';
           console.log('Solicitud POST exitosa:', response);
           Swal.fire({
             icon: "success",
@@ -121,14 +115,14 @@ export class DateSchedulerComponent {
         (error) => {
           console.error('Error en la solicitud POST:', error);
           this.isDisabled=false;
-          document.body.style.cursor = 'default';    
+          document.body.style.cursor = 'default';
         }
     );
   }
   }
   deletehour(id:any){
     const url = `${environment.apiUrl}/schedules/deleteDates`;
-  
+
       const params = new HttpParams()
         .set('idHorario', id);
         ;

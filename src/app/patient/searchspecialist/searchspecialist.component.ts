@@ -59,29 +59,6 @@ export class SearchspecialistComponent {
           text:'No hay un doctor con esta especialidad'
         })
       }
-    },(error)=>{
-      console.error('Error:', error);
     })
-    // const params = new HttpParams()
-    //   .set('especialidad', this.especialidad);
-    //   this.http.get(url, { params }).subscribe(
-    //     (response: any) => {
-    //       if (response && response.doctors) {
-    //         this.doctors = response.doctors;
-    //       } else {
-    //         console.error('Error:', response);
-    //         Swal.fire({
-    //           icon: "error",
-    //           title: "Error",
-    //           text: "Especialidad no existente"
-    //         });
-
-    //       }
-    //     },
-    //     (error) => {
-    //       console.error('Error:', error);
-    //     }
-    //   );
-
   }
 }

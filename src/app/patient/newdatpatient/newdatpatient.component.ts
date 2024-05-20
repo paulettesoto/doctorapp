@@ -38,33 +38,41 @@ export class NewdatpatientComponent implements OnInit {
     this.maxDate = this.formatdate(maxDate.toISOString().split('T')[0]);
   }
   ngOnInit(): void {
-  
+
 
     this.tratamientos();
   }
- 
-  
+
+  dateretun:any;
+  getDates(fecha:any) {
+    this.dateretun=Object.keys(this.availableDates);
+    this.dateretun.forEach((date: any) => {
+      if(date==this.formatdate(fecha)){
+        this.availableDates= this.availableDates[date];
+      }
+    });
+    return this.dateretun
+  }
   disponibles() {
     const url = `${environment.apiUrl}/schedules/availableDates`;
 
     const params = new HttpParams()
       .set('idDoctor', this.storage.getDataItem('idDoctor')) //aqui poner el this iddoctor que es
-      .set('fecha',this.formatdate(this.date) );
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.availableDates) {
             this.availableDates = response.availableDates;
+            this.getDates(this.date);
             console.log(this.availableDates);
           } else {
             console.error('Error:', response);
-            this.availableDates=[];
           }
         },
         (error) => {
           console.error('Error:', error);
         }
       );
-  
+
   }
   formatdate(date:string ):string{
     const dateObj = new Date(date);
@@ -73,7 +81,7 @@ export class NewdatpatientComponent implements OnInit {
     const year = dateObj.getFullYear();
     const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
     const day = dateObj.getDate().toString().padStart(2, '0'); // Ajusta para que siempre tenga dos dígitos
-    
+
     // Crea la cadena de fecha en el formato deseado (YYYY/MM/DD)
     return `${year}-${month}-${day}`;
   }
@@ -105,7 +113,7 @@ export class NewdatpatientComponent implements OnInit {
     const url = `${environment.apiUrl}/treatments/treatments`;
 
     const params = new HttpParams()
-      .set('idDoctor', this.storage.getDataItem('idDoctor')); 
+      .set('idDoctor', this.storage.getDataItem('idDoctor'));
       this.http.get(url, { params }).subscribe(
         (response: any) => {
           if (response && response.treatments) {
@@ -119,10 +127,10 @@ export class NewdatpatientComponent implements OnInit {
           console.error('Error:', error);
         }
       );
-  
+
   }
   agendar(){
-   
+
   //  ${environment.apiUrl}/dates/setDate?celular=${this.phonenumber}&correo=${this.email}&Nombre=${this.name}&PrimerApe=${this.lastname}&SegundoApe=${this.lastname2}&idTratamiento=${this.treatment}&idDoctor=${this.storage.getDataItem('user')}&edad=${this.age}&fechanac=${this.formatdate(this.datebirth)}&fecha=${this.formatdate(this.date)}&hora=${String(this.formatHora(this.selectedHour))}&idPaciente=1
     const url = `${environment.apiUrl}/patientdates/setDate?idPaciente=${this.storage.getDataItem("user")}&idDoctor=${this.storage.getDataItem('idDoctor')}&idTratamiento=${this.treatment}&fecha=${this.formatdate(this.date)}&hora=${this.formatHora(this.selectedHour)}`;
     const headers = new HttpHeaders({
@@ -130,7 +138,7 @@ export class NewdatpatientComponent implements OnInit {
       'accept': 'application/json'
      });
   // Realiza la solicitud POST
-  if (!this.treatment || !this.date || !this.selectedHour) { //AGREGUE ESTO 
+  if (!this.treatment || !this.date || !this.selectedHour) { //AGREGUE ESTO
     Swal.fire({
       icon: "error",
       title: "Error",
@@ -140,6 +148,7 @@ export class NewdatpatientComponent implements OnInit {
   }else{
     this.http.post(url, {headers}).subscribe(
       (response: any) => {
+        console.log(response);
         Swal.fire({
           icon: "success",
           text: "Cita agendada"
@@ -152,7 +161,7 @@ export class NewdatpatientComponent implements OnInit {
       }
     );
   }
- 
+
 
   }
 }
