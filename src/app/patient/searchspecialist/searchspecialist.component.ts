@@ -46,10 +46,10 @@ export class SearchspecialistComponent {
 
   }
   search() {
-    console.log(this.especialidad.value);
+    console.log(this.especialidad);
 
     // const url = `${environment.apiUrl}/patientdoctors/buscar_doctor`;
-    this.patientService.SearchDoctor(this.especialidad.value).subscribe(res=>{
+    this.patientService.SearchDoctor(this.especialidad).subscribe(res=>{
       if(res!=null){
         this.doctors= res.doctors;
       }else{
