@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit{
     // Limpiar localStorage
     this.storage.clearAllDataItems();
   }
-
+  back(){
+    this.route.navigate(['']);
+  }
 
   login() {
     this.isDisabled=true;

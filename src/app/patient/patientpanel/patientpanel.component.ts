@@ -28,7 +28,7 @@ export class PatientpanelComponent implements OnInit {
   }
   historial(iddocpanel:any){
     this.storage.setDataItem('idDoctor',iddocpanel);
-    this.route.navigate(['/respuestas']);
+    this.route.navigate(['/answers']);
   }
   ngOnInit(){
     this.mostrar();

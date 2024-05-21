@@ -39,7 +39,7 @@ export class FavoritesComponent {
   calificar(id:any){
 
     this.storage.setDataItem('idDoctor',id);
-    this.route.navigate(['/hacercoment']);
+    this.route.navigate(['/makecomment']);
 
   }
   doctorlist() {
