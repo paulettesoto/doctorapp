@@ -26,6 +26,25 @@ export class UpdatedataComponent {
     this.email = '';
     this. formatofecha='';
   }
+  validateEmail(event: KeyboardEvent): boolean {
+    const key: string = event.key;
+    const currentValue: string = (event.target as HTMLInputElement).value + key;
+    if(key ===" "){//no permitir espacios
+      return false;
+    }
+    if (currentValue.length === 1) {//que el primer caracter sea solo letras
+      return /[a-zA-Z]/.test(currentValue);
+    }else{
+      if(/^[a-zA-Z0-9._%+-@]+$/.test(currentValue)){//permitir el arroba,letras,numros y ciertos caracteres especiales
+        if(((currentValue.match(/@/g) || []).length)>1){//permitir solo un arroba y cortar mas de uno
+          return false;
+        }else{//de otra forma dejar escribir cualquier caracter
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   ngOnInit(): void {
   
     // Realizar acciones neces

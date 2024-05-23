@@ -16,6 +16,7 @@
                   <clr-input-container>
                     <label class="clr-sr-only">Nombre(s)</label>
                     <input
+                      onkeydown="return /[a-zA-Z ]/i.test(event.key)"
                       type="text"
                       autocomplete="name"
                       name="name"
@@ -27,6 +28,11 @@
                   <clr-input-container>
                     <label class="clr-sr-only">Primer apellido</label>
                     <input
+                      onkeydown="return /[a-zA-Z ]/i.test(event.key)"
+                      type="text"
+                      autocomplete="lastname"
+                      name="lastname"
+                      clrInput
                       type="text"
                       autocomplete="lastname"
                       name="lastname"
@@ -38,6 +44,7 @@
                   <clr-input-container>
                     <label class="clr-sr-only">Segundo apellido</label>
                     <input
+                      onkeydown="return /[a-zA-Z ]/i.test(event.key)"
                       type="text"
                       autocomplete="lastname2"
                       name="lastname2"
@@ -50,7 +57,6 @@
                     <label class="clr-sr-only">Celular</label>
                     <input
                       type="tel"
-                   
                       autocomplete="phonenumber"
                       name="phonenumber"
                       clrInput
@@ -67,9 +73,10 @@
                   <clr-input-container>
                     <label class="clr-sr-only">Correo</label>
                     <input
-                      type="text"
+                      type="email"
                       autocomplete="email"
                       name="email"
+                      (keydown)="validateEmail($event)"
                       clrInput
                       placeholder="Correo"
                       [(ngModel)]="email"

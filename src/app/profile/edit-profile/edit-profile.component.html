@@ -10,23 +10,23 @@
             <div>
                 <clr-input-container>
                     <label class="clr-sr-only"></label>
-                    <input type="text" autocomplete="name" name="name" clrInput placeholder="Nombre(s)" [(ngModel)]="name" />
+                    <input type="text" autocomplete="name" name="name" onkeydown="return /[a-zA-Z ]/i.test(event.key)" clrInput placeholder="Nombre(s)" [(ngModel)]="name" />
                 </clr-input-container>
                 <clr-input-container>
                     <label class="clr-sr-only"></label>
-                    <input type="text" autocomplete="lastname" name="lastname" clrInput placeholder="Primer apellido" [(ngModel)]="lastname" />
+                    <input type="text" autocomplete="lastname" name="lastname" onkeydown="return /[a-zA-Z ]/i.test(event.key)" clrInput placeholder="Primer apellido" [(ngModel)]="lastname" />
                 </clr-input-container>
                 <clr-input-container>
                     <label class="clr-sr-only"></label>
-                    <input type="text" autocomplete="lastname2" name="lastname2" clrInput placeholder="Segundo apellido" [(ngModel)]="lastname2" />
+                    <input type="text" autocomplete="lastname2" name="lastname2" onkeydown="return /[a-zA-Z ]/i.test(event.key)" clrInput placeholder="Segundo apellido" [(ngModel)]="lastname2" />
                 </clr-input-container>
                 <clr-input-container>
                     <label class="clr-sr-only">Celular</label>
-                    <input type="text" autocomplete="phonenumber" name="phonenumber" clrInput placeholder="Celular" [(ngModel)]="phonenumber" />
+                    <input type="tel" autocomplete="phonenumber" name="phonenumber" clrInput placeholder="Celular" [(ngModel)]="phonenumber" />
                 </clr-input-container>
                 <clr-input-container>
                     <label class="clr-sr-only">Correo</label>
-                    <input type="text" autocomplete="email" name="email" clrInput placeholder="Correo" [(ngModel)]="email" />
+                    <input type="text" autocomplete="email" name="email" (keydown)="validateEmail($event)" clrInput placeholder="Correo" [(ngModel)]="email" />
                 </clr-input-container>
                 <button type="submit" [disabled]="isDisabled" class="btn btn-primary" (click)="update()">
           Modificar
