@@ -38,6 +38,7 @@ export class RegisterComponent {
     this.foto='fotodoctor';
     this.hoja='hojadoctor';
   }
+
   validateEmail(event: KeyboardEvent): boolean {
     const key: string = event.key;
     const currentValue: string = (event.target as HTMLInputElement).value + key;
@@ -57,6 +58,7 @@ export class RegisterComponent {
     }
     return false;
   }
+
 
   back(){
     this.route.navigate(['']);
