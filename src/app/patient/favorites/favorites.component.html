@@ -3,10 +3,10 @@
         <div class="search">
             <ng-container *ngFor="let favorite of favorites" (click)="abrirdoctor()" >
                 <div class="doctordata" >
-                    <p>Nombre: {{favorite.Nombre}} {{favorite.PrimerApe}} {{favorite.SegundoApe}}<br> 
-                    Especialidad: {{favorite.especialidad}}<br>
-                    Cedula: {{favorite.cedula}}<br>
-                    Celular: {{favorite.celular}}</p> 
+                    <h5>Nombre: {{favorite.Nombre}} {{favorite.PrimerApe}} {{favorite.SegundoApe}}</h5> 
+                    <h5>Especialidad: {{favorite.especialidad}}</h5>
+                    <h5> {{favorite.cedula}}</h5>
+                    <h5>Celular: {{favorite.celular}}</h5>
                     <button id="calificar" class="btn btn-primary" (click)="calificar(favorite.id)">Calificar doctor</button>
                 </div>
                 

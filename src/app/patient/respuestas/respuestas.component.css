@@ -1,4 +1,11 @@
-
+p{
+    display:flex;
+    flex-direction: column;
+    vertical-align: bottom;
+}
+.flex{
+    display: flex;
+}
 .pdf{
     margin: auto 0 0 70%;
 }

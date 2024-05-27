@@ -13,6 +13,10 @@
   padding-right: 10rem;
   background: linear-gradient(180deg, #78c4f049 0%, rgb(255, 255, 255) 100%);
 }
+.back{
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
 .contenido{
     width: 100%;
     margin: 0 auto;

@@ -7,6 +7,10 @@
     background-size: cover ;
     background-position: center left ;
 }
+.back{
+  margin-left: 3rem;
+  margin-top: 2rem;
+}
 .login{
     position: absolute;
     top: 50%;
@@ -27,43 +31,4 @@
   width: 75%;
   flex-direction: column;
   display: flex;
-}
-
-.login-group clr-select-container label{
-  font-size: 20px;
-}
-.login-group clr-select-container select{
-  width: 250px;
-  margin-top: 5px;
-  font-size: 18px;
-  border-bottom: 1px solid #041f26;
-}
-.login-group clr-input-container input{
-  margin-top: 5px;
-  width: 250px;
-  font-size: 18px;
-}
-.login-group clr-password-container input{
-  width: 215px;
-  font-size: 18px;
-}
-.welcome{
-  font-size: 30px;
-  font-weight: 400;
-}
-.login-group button{
-  margin-top: 10px;
-}
-.login-group button:hover{
-  transform: scale(1.1);
-  transition: .2s ease-in;
-}
-.signup_data{
-  margin-top: 10px;
-  font-size: 16px;
-}
-.signup_data .signup:hover{
-  border-bottom: 1px solid blue;
-  font-weight: 500;
-  transition: .2s;
 }

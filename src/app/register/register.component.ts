@@ -38,7 +38,9 @@ export class RegisterComponent {
     this.foto='fotodoctor';
     this.hoja='hojadoctor';
   }
- 
+  back(){
+    this.route.navigate(['']);
+  }
   register(){
     if ( this.confirmPassword !== this.password) {
       Swal.fire({

@@ -16,6 +16,7 @@ export class HacercomentComponent {
   idDoctor:string; //CHECAR. NO ESTA BIEN. SOLO FALTA TRAERME ESTE DATO
   //user:string;
   //idDoctor:string;
+  isDisabled:boolean=false;
   constructor(private http:HttpClient, private route:Router, private storage:storageService){
    // this.user='';
    //this.idDoctor='';
@@ -27,9 +28,13 @@ export class HacercomentComponent {
    this.storage.getDataItem('idDoctor');
 
   }
-  
+  giveCalification(star:number){
+    this.calificacion =star;
+  }
   enviar(){
+    this.isDisabled=true;
     if(!this.comentar|| !this.calificacion){
+      this.isDisabled=false;
       Swal.fire({
         icon: "error",
         title: "Error",
@@ -42,7 +47,7 @@ export class HacercomentComponent {
         'accept': 'application/json'
        });
     // Realiza la solicitud POST
-  this.http.post(url, {headers}).subscribe(
+      this.http.post(url, {headers}).subscribe(
       (response: any) => {
         console.log('Solicitud POST exitosa:', response);
         Swal.fire({
@@ -50,9 +55,11 @@ export class HacercomentComponent {
           text: "Comentario enviado"
         });
         // Manejar la respuesta según tus necesidades
+        this.isDisabled=false;
       },
       (error) => {
         console.error('Error en la solicitud POST:', error);
+        this.isDisabled=false;
       }
   );
   this.comentar = '';

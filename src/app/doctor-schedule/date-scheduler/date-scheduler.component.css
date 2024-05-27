@@ -28,7 +28,19 @@
 .horarios{
     display: grid;
     grid-template-columns: repeat(10,1fr);
-    width: 100%;
+    width: calc(100%-4rem);
+    padding-bottom: 1rem;
+    border-bottom: solid 1px rgba(128, 128, 128, .4);
+    margin-right: 2rem;
+}
+
+h3{
+    margin: 0;
+    margin-top: 1rem;
+}
+.bottom{
+    display: flex;
+    flex-direction: column-reverse;
 }
 .horario{
   display: flex;

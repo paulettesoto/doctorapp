@@ -3,7 +3,9 @@ import { AppModule } from 'src/app/app.module';
 
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { NavbarpatientComponent } from 'src/app/shared/navbarpatient/navbarpatient.component';
+import { ClarityIcons, undoIcon } from '@cds/core/icon';
 
+ClarityIcons.addIcons(undoIcon);
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { storageService } from 'src/app/storage.service';
@@ -38,8 +40,10 @@ export class RegisterpatientComponent {
     this.password = '';
     this.confirmPassword = '';
   }
-
-  register(){
+  back(){
+    this.route.navigate(['']);
+  }
+    register(){
     this.isDisabled =true;
     document.body.style.cursor = 'wait';
     if( (!this.name|| !this.lastname || !this.lastname2 || !this.phonenumber || !this.fecha_nac || !this.email|| !this.password)|| !this.confirmPassword){
