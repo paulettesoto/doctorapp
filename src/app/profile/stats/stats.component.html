@@ -1,26 +1,75 @@
 <div class="content">
-    <div id="chart">
-        <apx-chart
-          [series]="chartOptions.series"
-          [chart]="chartOptions.chart"
-          [dataLabels]="chartOptions.dataLabels"
-          [plotOptions]="chartOptions.plotOptions"
-          [yaxis]="chartOptions.yaxis"
-          [xaxis]="chartOptions.xaxis"
-          [fill]="chartOptions.fill"
-          [title]="chartOptions.title">
-        </apx-chart>
-      </div>
-      <div id="chart2">
-        <apx-chart
-          [series]="chartOptions2.series"
-          [chart]="chartOptions2.chart"
-          [dataLabels]="chartOptions2.dataLabels"
-          [plotOptions]="chartOptions2.plotOptions"
-          [yaxis]="chartOptions2.yaxis"
-          [xaxis]="chartOptions2.xaxis"
-          [fill]="chartOptions2.fill"
-          [title]="chartOptions2.title">
-        </apx-chart>
-      </div>
+  <div id="star">
+    <apx-chart
+      [series]="starOptions.series"
+      [chart]="starOptions.chart"
+      [labels]="starOptions.labels"
+      [responsive]="starOptions.responsive"
+    ></apx-chart>
+  </div>
+  <div id="tratment">
+    <apx-chart
+    [series]="TratmentsOptions.series"
+    [chart]="TratmentsOptions.chart"
+    [labels]="TratmentsOptions.labels"
+    [responsive]="TratmentsOptions.responsive"
+    ></apx-chart>
+  </div>
+  <div id="ocupation">
+    <apx-chart
+    [series]="ocupationOptions.series"
+    [chart]="ocupationOptions.chart"
+    [labels]="ocupationOptions.labels"
+    [responsive]="ocupationOptions.responsive"
+    ></apx-chart>
+  </div>
+  <div id="ages">
+    <apx-chart
+      [series]="agesOptions.series"
+      [chart]="agesOptions.chart"
+      [dataLabels]="agesOptions.dataLabels"
+      [plotOptions]="agesOptions.plotOptions"
+      [xaxis]="agesOptions.xaxis"
+      [colors]="agesOptions.colors"
+      [title]="agesOptions.title"
+      [legend]="agesOptions.legend"
+    ></apx-chart>
+  </div>
+</div>
+<div id="patients">
+  <apx-chart
+    [series]="patientsOptions.series"
+    [chart]="patientsOptions.chart"
+    [xaxis]="patientsOptions.xaxis"
+    [dataLabels]="patientsOptions.dataLabels"
+    [grid]="patientsOptions.grid"
+    [stroke]="patientsOptions.stroke"
+    [title]="patientsOptions.title"
+  ></apx-chart>
+</div>
+<div id="cancel">
+  <apx-chart
+    [series]="cancelOptions.series"
+    [chart]="cancelOptions.chart"
+    [dataLabels]="cancelOptions.dataLabels"
+    [plotOptions]="cancelOptions.plotOptions"
+    [responsive]="cancelOptions.responsive"
+    [xaxis]="cancelOptions.xaxis"
+    [legend]="cancelOptions.legend"
+    [fill]="cancelOptions.fill"
+  ></apx-chart>
+</div>
+<div id="schedules">
+  <apx-chart
+    [series]="schedulesOptions.series"
+    [chart]="schedulesOptions.chart"
+    [dataLabels]="schedulesOptions.dataLabels"
+    [plotOptions]="schedulesOptions.plotOptions"
+    [xaxis]="schedulesOptions.xaxis"
+    [colors]="schedulesOptions.colors"
+    [fill]="schedulesOptions.fill"
+    [yaxis]="schedulesOptions.yaxis"
+    [legend]="schedulesOptions.legend"
+    [grid]="schedulesOptions.grid"
+  ></apx-chart>
 </div>
