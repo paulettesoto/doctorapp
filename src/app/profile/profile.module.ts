@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgApexchartsModule } from "ng-apexcharts";
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
@@ -13,6 +13,7 @@ import { ServicePanelComponent } from './service-panel/service-panel.component';
 
 import '@cds/core/icon/register.js';
 import { ClarityIcons, trashIcon } from '@cds/core/icon';
+import { StatsComponent } from './stats/stats.component';
 
 ClarityIcons.addIcons(trashIcon);
 
@@ -21,7 +22,8 @@ ClarityIcons.addIcons(trashIcon);
   declarations: [
     EditProfileComponent,
     UpdatepasswordComponent,
-    ServicePanelComponent
+    ServicePanelComponent,
+    StatsComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ ClarityIcons.addIcons(trashIcon);
     BrowserAnimationsModule,
     ClarityModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgApexchartsModule
   ]
 })
 export class ProfileModule { }

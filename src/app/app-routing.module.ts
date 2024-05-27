@@ -17,11 +17,10 @@ import { DateSchedulerComponent } from './doctor-schedule/date-scheduler/date-sc
 import { ClinicalRecordsComponent } from './patients/clinical-records/clinical-records.component';
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { ServicePanelComponent } from './profile/service-panel/service-panel.component';
-
+import { StatsComponent } from './profile/stats/stats.component';
 //patient
 import { PatientpanelComponent } from './patient/patientpanel/patientpanel.component';
 import { RegisterpatientComponent } from './patient/registerpatient/registerpatient.component';
-
 import { SearchspecialistComponent } from './patient/searchspecialist/searchspecialist.component';
 import { UpdatedataComponent } from './patient/perfilpatient/updatedata/updatedata.component';
 import { UpdatepasswordpatientComponent } from './patient/perfilpatient/updatepasswordpatient/updatepasswordpatient.component';
@@ -47,6 +46,7 @@ const routes: Routes = [
   { path: "patients/patientdetail/clinical-records", component: ClinicalRecordsComponent , canActivate: [AuthGuard]},
   { path: "patients/patient-detail", component: PatientDetailComponent , canActivate: [AuthGuard]},
   { path: "profile/service-panel", component: ServicePanelComponent , canActivate: [AuthGuard]},
+  { path: "profile/stats", component: StatsComponent , canActivate: [AuthGuard]},
 
 
   //patient
