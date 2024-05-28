@@ -89,19 +89,17 @@ export class ScheduleViewComponent implements OnInit {
     const minutes = fechaActual.getMinutes().toString().padStart(2, '0'); // Obtener los minutos (asegurando que tenga dos dígitos)
 
     const horaEnFormatoHHMM = `${hours}:${minutes}`;
-    console.log(fechaAComparar)
-    console.log(fechaEnFormatoAAAAMMDD)
-    console.log(hour)
-      console.log(horaEnFormatoHHMM)
     if (fechaAComparar < fechaEnFormatoAAAAMMDD) {
-      console.log(fechaAComparar)
-      console.log(fechaEnFormatoAAAAMMDD)
+      console.log("fecha cita", fechaAComparar)
+      console.log("fecha actual",fechaEnFormatoAAAAMMDD)
       return true;
-    } else if (hour< horaEnFormatoHHMM) {
+    } else if (hour < horaEnFormatoHHMM) {
       console.log(hours)
       console.log(horaEnFormatoHHMM)
+      console.log(true)
       return true;
     } else {
+      console.log(false)
       return false;
     }
   }
