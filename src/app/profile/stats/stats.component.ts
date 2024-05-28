@@ -15,21 +15,10 @@ import {
   ApexFill,
   ApexYAxis
 } from "ng-apexcharts";
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { storageService } from 'src/app/storage.service';
 
-
-export type schedulesOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  xaxis: ApexXAxis;
-  yaxis: ApexYAxis;
-  colors: string[];
-  fill: ApexFill;
-  legend: ApexLegend;
-  title: ApexTitleSubtitle;
-  grid: ApexGrid;
-};
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -40,12 +29,14 @@ export type ChartOptions = {
   legend: ApexLegend;
   fill: ApexFill;
 };
+
 export type DonaOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
 };
+
 export type AgesOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -56,6 +47,7 @@ export type AgesOptions = {
   legend: ApexLegend;
   title: ApexTitleSubtitle;
 };
+
 export type patientsOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -65,6 +57,7 @@ export type patientsOptions = {
   stroke: ApexStroke;
   title: ApexTitleSubtitle;
 };
+
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
@@ -72,346 +65,364 @@ export type patientsOptions = {
 })
 export class StatsComponent {
   @ViewChild("star") star!: ChartComponent;
-  public starOptions: DonaOptions;
+  public starOptions!: DonaOptions;
+
   @ViewChild("ocupation") ocupation!: ChartComponent;
-  public ocupationOptions: DonaOptions;
+  public ocupationOptions!: DonaOptions;
+
   @ViewChild("tartment") tratment!: ChartComponent;
-  public TratmentsOptions: DonaOptions;
+  public TratmentsOptions!: DonaOptions;
+
   @ViewChild("ages") ages!: ChartComponent;
-  public agesOptions: AgesOptions;
+  public agesOptions!: AgesOptions;
+
   @ViewChild("patients") patients!: ChartComponent;
-  public patientsOptions: patientsOptions;
+  public patientsOptions!: patientsOptions;
+
   @ViewChild("cancel") cancel!: ChartComponent;
-  public cancelOptions: ChartOptions;
+  public cancelOptions!: ChartOptions;
+
   @ViewChild("schedules") schedules!: ChartComponent;
-  public schedulesOptions: schedulesOptions;
-  
-  constructor() {
-    this.starOptions = {
-      series: [44, 55, 13, 43, 22],//---aqui asignas las estrellas en orden--------------------------------------------------------
-      chart: {
-        type: "donut"
-      },
-      labels: ["5 Estrellas", "4 Estrellas", "3 Estrellas", "2 Estrellas", "1 Estrellas"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
+  public schedulesOptions!: patientsOptions;
+
+  doctor: number;
+  year: number;
+  month: string;
+
+  constructor(private http: HttpClient, private storage: storageService) {
+    this.doctor = this.storage.getDataItem('user');
+    const fecha = new Date();
+    this.year = fecha.getFullYear();
+    this.month = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    this.initializeChartsWithDelay();
+  }
+
+  async initializeChartsWithDelay() {
+    await this.initStarOptions();
+    await this.delay(1000);
+    await this.initTratmentsOptions();
+    await this.delay(1000);
+    await this.initOcupationOptions();
+    await this.delay(1000);
+    await this.initAgesOptions();
+    await this.delay(1000);
+    await this.initPatientsOptions();
+    await this.delay(1000);
+    await this.initSchedulesOptions();
+    await this.delay(1000);
+    await this.initCancelOptions();
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  private initStarOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/calificacion?idDoctor=${this.doctor}`;
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            this.starOptions = {
+              series: [response.comments[4][5], response.comments[3][4], response.comments[2][3], response.comments[1][2], response.comments[0][1]], 
+              chart: { type: "donut" },
+              labels: ["5 Estrellas", "4 Estrellas", "3 Estrellas", "2 Estrellas", "1 Estrellas"],
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    chart: { width: 200 },
+                    legend: { position: "bottom" }
+                  }
+                }
+              ]
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  private initTratmentsOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/treatments?idDoctor=${this.doctor}&year=${this.year}&month=${this.month}`;
+      let tratamientos: string[] = [];
+      let cantidades: number[] = [];
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            for (const treatment of response.treatments) {
+              tratamientos.push(treatment.tratamiento);
+              cantidades.push(treatment.cantidad);
             }
+            this.TratmentsOptions = {
+              series: cantidades,
+              chart: { type: "donut" },
+              labels: tratamientos,
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    chart: { width: 200 },
+                    legend: { position: "bottom" }
+                  }
+                }
+              ]
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
           }
+        },
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
         }
-      ]
-    };
-    this.TratmentsOptions = {
-      series: [50, 30, 15, 25, 35],//---aqui vas a recorrer las values----------------------------------------------------------------
-      chart: {
-        type: "donut"
-      },
-      labels: ["lavado", "puntos", "cocas", "tes", "maria "],//aqui vas a recorrer las keys----------------------------------------------------------------
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
+      );
+    });
+  }
+
+  private initOcupationOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/used_dates?idDoctor=${this.doctor}`;
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            this.ocupationOptions = {
+              series: [response.used_dates.ocupadas, response.used_dates.no_ocupadas],
+              chart: { type: "donut" },
+              labels: ["horarios ocupados", "horarios no ocupados"],
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    chart: { width: 200 },
+                    legend: { position: "bottom" }
+                  }
+                }
+              ]
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  private initAgesOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/ages?idDoctor=${this.doctor}&year=${this.year}&month=${this.month}`;
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            this.agesOptions = {
+              series: [{ name: "", data: [
+                response.age_ranges["100+"],
+                response.age_ranges["90-99"],
+                response.age_ranges["80-89"],
+                response.age_ranges["70-79"],
+                response.age_ranges["60-69"],
+                response.age_ranges["50-59"],
+                response.age_ranges["40-49"],
+                response.age_ranges["30-39"],
+                response.age_ranges["20-29"],
+                response.age_ranges["10-19"],
+                response.age_ranges["0-9"]
+              ] }],
+              chart: { type: "bar", height: 350 },
+              plotOptions: {
+                bar: {
+                  borderRadius: 0,
+                  horizontal: true,
+                  distributed: true,
+                  barHeight: "80%",
+                  isFunnel: true
+                }
+              },
+              colors: [
+                "#F44F5E", "#E55A89", "#D863B1", "#CA6CD8",
+                "#B57BED", "#8D95EB", "#62ACEA", "#4BC3E6"
+              ],
+              dataLabels: {
+                enabled: true,
+                formatter: (val, opt) => opt.w.globals.labels[opt.dataPointIndex],
+                dropShadow: { enabled: true }
+              },
+              title: { text: "rangos de edades", align: "center" },
+              xaxis: {
+                categories: [
+                  "100+", "90 - 100", "80 - 90 años", "70 - 80 años",
+                  "60 - 70 años", "50 - 60 años", "40 - 50 años",
+                  "30 - 40 años", "20 - 30 años", "10 - 20 años", "0 - 10 años"
+                ]
+              },
+              legend: { show: false }
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  private initPatientsOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/attendance?idDoctor=${this.doctor}&year=${this.year}&month=${this.month}`;
+      let fecha: string[] = [];
+      let cantidades: number[] = [];
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            for (const treatment of response.dates) {
+              fecha.push(treatment.fecha);
+              cantidades.push(treatment.cantidad);
             }
+
+            this.patientsOptions = {
+              series: [{ name: "Atendidos", data: cantidades }],
+              chart: { height: 350, type: "line", zoom: { enabled: false } },
+              dataLabels: { enabled: false },
+              stroke: { curve: "straight" },
+              title: { text: "pacientes del mes", align: "left" },
+              grid: {
+                row: { colors: ["#f3f3f3", "transparent"], opacity: 0.5 }
+              },
+              xaxis: {
+                categories: fecha
+              }
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
           }
+        },
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
         }
-      ]
-    };
-    this.ocupationOptions = {
-      series: [44, 55, 13, 43, 22],//---aqui asignas las estrellas en orden--------------------------------------------------------
-      chart: {
-        type: "donut"
-      },
-      labels: ["5 Estrellas", "4 Estrellas", "3 Estrellas", "2 Estrellas", "1 Estrellas"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
+      );
+    });
+  }
+
+  private initCancelOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/canceladas-atendidas?idDoctor=${this.doctor}&year=${this.year}&month=${this.month}`;
+      let fecha: string[] = [];
+      let confirmadas: number[] = [];
+      let canceladas: number[] = [];
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            console.log(response,"canceladas");
+            for (const treatment of response.dates) {
+              fecha.push(treatment.fecha);
+              confirmadas.push(treatment.confirmadas);
+              canceladas.push(treatment.canceladas);
             }
+
+            this.cancelOptions = {
+              series: [
+                { name: "confirmadas", data: confirmadas },
+                { name: "canceladas", data: canceladas },
+              ],
+              chart: { type: "bar", height: 350, stacked: true, toolbar: { show: true }, zoom: { enabled: true } },
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    legend: { position: "bottom", offsetX: -10, offsetY: 0 }
+                  }
+                }
+              ],
+              plotOptions: { bar: { horizontal: false } },
+              xaxis: { type: "category", categories: fecha },
+              legend: { position: "right", offsetY: 40 },
+              fill: { opacity: 1 },
+              dataLabels: { enabled: true }
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
           }
-        }
-      ]
-    };
-    this.agesOptions = {
-      series: [
-        {
-          name: "",
-          data: [200, 330, 548, 740, 880, 990, 1100, 1380]//aqui van los datos acomodados por rangos de mayor a menor---------------------------
-        }
-      ],
-      chart: {
-        type: "bar",
-        height: 350
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 0,
-          horizontal: true,
-          distributed: true,
-          barHeight: "80%",
-          isFunnel: true
-        }
-      },
-      colors: [
-        "#F44F5E",
-        "#E55A89",
-        "#D863B1",
-        "#CA6CD8",
-        "#B57BED",
-        "#8D95EB",
-        "#62ACEA",
-        "#4BC3E6"
-      ],
-      dataLabels: {
-        enabled: true,
-        formatter: function (val, opt) {
-          return opt.w.globals.labels[opt.dataPointIndex];
         },
-        dropShadow: {
-          enabled: true
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
         }
-      },
-      title: {
-        text: "Pyramid Chart",
-        align: "center"
-      },
-      xaxis: {
-        categories: [
-          "mas de 70 años", "60 - 70 años", "50 - 60 años", "40 - 50 años", "30 - 40 años", "20 - 30 años", "10 - 20 años", "0 - 10 años"
-        ]
-      },
-      legend: {
-        show: false
-      }
-    };
-    this.patientsOptions = {
-      series: [
-        {
-          name: "Atendidos",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]// pacientes atendidos en ese dia--------------------------------------------------------
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-      title: {
-        text: "Product Trends by Month",
-        align: "left"
-      },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5
-        }
-      },
-      xaxis: {
-        categories: [//dias--------------------------------------------------------
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep"
-        ]
-      }
-    };
-    this.cancelOptions = {
-      series: [
-        {
-          name: "PRODUCT A",
-          data: [44, 55, 41, 67, 22, 43]
-        },
-        {
-          name: "PRODUCT B",
-          data: [13, 23, 20, 8, 13, 27]
-        },
-        {
-          name: "PRODUCT C",
-          data: [11, 17, 15, 15, 21, 14]
-        },
-        {
-          name: "PRODUCT D",
-          data: [21, 7, 25, 13, 22, 8]
-        }
-      ],
-      chart: {
-        type: "bar",
-        height: 350,
-        stacked: true,
-        toolbar: {
-          show: true
-        },
-        zoom: {
-          enabled: true
-        }
-      },
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: "bottom",
-              offsetX: -10,
-              offsetY: 0
+      );
+    });
+  }
+
+  private initSchedulesOptions(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const url = `${environment.apiUrl}/stats/used_hours?idDoctor=${this.doctor}`;
+      let fecha: string[] = [];
+      let cantidades: any[] = [];
+
+      this.http.get(url).subscribe(
+        (response: any) => {
+          if (response) {
+            console.log(response,"used hours");
+            for (const [hour, count] of Object.entries(response.used_hours)) {
+              fecha.push(hour);
+              cantidades.push(count);
             }
-          }
-        }
-      ],
-      plotOptions: {
-        bar: {
-          horizontal: false
-        }
-      },
-      xaxis: {
-        type: "category",
-        categories: [
-          "01/2011",
-          "02/2011",
-          "03/2011",
-          "04/2011",
-          "05/2011",
-          "06/2011"
-        ]
-      },
-      legend: {
-        position: "right",
-        offsetY: 40
-      },
-      fill: {
-        opacity: 1
-      },
-      dataLabels: {
-        enabled: true
-      }
-    };
-    this.schedulesOptions = {
-      series: [
-        {
-          data: [
-            {
-              x: "2008",
-              y: [2800, 4500]
-            },
-            {
-              x: "2009",
-              y: [3200, 4100]
-            },
-            {
-              x: "2010",
-              y: [2950, 7800]
-            },
-            {
-              x: "2011",
-              y: [3000, 4600]
-            },
-            {
-              x: "2012",
-              y: [3500, 4100]
-            },
-            {
-              x: "2013",
-              y: [4500, 6500]
-            },
-            {
-              x: "2014",
-              y: [4100, 5600]
-            }
-          ]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "rangeBar",
-        zoom: {
-          enabled: false
-        }
-      },
-      plotOptions: {
-        bar: {
-          isDumbbell: true,
-          columnWidth: 3,
-          dumbbellColors: [["#008FFB", "#00E396"]]
-        }
-      },
-      legend: {
-        show: true,
-        showForSingleSeries: true,
-        position: "top",
-        horizontalAlign: "left",
-        customLegendItems: ["Product A", "Product B"]
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          type: "vertical",
-          gradientToColors: ["#00E396"],
-          inverseColors: true,
-          stops: [0, 100]
-        }
-      },
-      grid: {
-        xaxis: {
-          lines: {
-            show: true
+
+            this.schedulesOptions = {
+              series: [{ name: "Atendidos", data: cantidades }],
+              chart: { height: 350, type: "line", zoom: { enabled: false } },
+              dataLabels: { enabled: false },
+              stroke: { curve: "straight" },
+              title: { text: "pacientes del mes", align: "left" },
+              grid: {
+                row: { colors: ["#f3f3f3", "transparent"], opacity: 0.5 }
+              },
+              xaxis: {
+                categories: fecha
+              }
+            };
+            resolve();
+          } else {
+            console.error('Error:', response);
+            reject(response);
           }
         },
-        yaxis: {
-          lines: {
-            show: false
-          }
+        (error) => {
+          console.error('Error:', error);
+          reject(error);
         }
-      },
-      xaxis: {
-        tickPlacement: "on"
-      },
-      dataLabels: {
-        enabled: true,
-        formatter: function(val: number[], opts: any) {
-          return `${val[0]} - ${val[1]}`;
-        },
-        style: {
-          colors: ['#F3F4F5', '#fff']
-        }
-      },
-      yaxis: {
-        title: {
-          text: "Value Range"
-        }
-      },
-      colors: ["#008FFB", "#00E396"],
-      title: {
-        text: "Yearly Product Ranges",
-        align: "center"
-      }
-    };
-    
+      );
+    });
   }
 }

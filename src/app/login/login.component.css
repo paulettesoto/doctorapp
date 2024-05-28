@@ -22,7 +22,7 @@
     border-radius: 10%;
     padding: 2rem;
     width: 30%;
-    height: 50%;
+    height: fit-content;
     background-color: #ffffff;
 }
 .login-group{
@@ -31,4 +31,11 @@
   width: 75%;
   flex-direction: column;
   display: flex;
+}
+.tittle{
+  margin: 0;
+  padding: 0;
+}
+.welcome{
+  margin: 0;
 }
